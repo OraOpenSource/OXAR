@@ -137,6 +137,14 @@ Node4ORDS is install in ```/var/www/node4ords```. It can be controlled by:
 /etc/init.d/node4ords status
 ```
 
+Static content can be put in ```/var/www/node4ords/public/``` and referenced by http://&lt;server_name&gt;/public/&lt;filepath&gt;
+
+###ORDS
+ORDS is located in ```/ords```
+
+The APEX images are stored in ```/ords/apex_images```
+
+
 ##Tomcat Manager
 This server uses [Apache Tomcat](http://tomcat.apache.org/) as the web container for ORDS. By default, the firewall restricts public access to the Tomcat server directly. If you do want to make it accessible run:
 
