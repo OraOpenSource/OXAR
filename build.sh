@@ -20,9 +20,6 @@
 #ratom <my_file> and then look in your Atom editor to modify
 
 
-#TODO makesure that /usr/local/bin is in the path
-http://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
-
 #*** LINUX ***
 OOS_SOURCE_DIR=$PWD
 mkdir $OOS_SOURCE_DIR/tmp
@@ -31,7 +28,7 @@ mkdir $OOS_SOURCE_DIR/tmp
 
 
 #Yum updates
-cd $OOS_SOURCE_DIR/tmp
+cd $OOS_SOURCE_DIR
 source ./scripts/yum.sh
 
 
