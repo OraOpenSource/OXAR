@@ -1,4 +1,4 @@
-# oraclexe_apex
+#Oracle XE & APEX
 The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The code provided in this project handles the automatic build. There is also a listing below of prebuilt images for popular cloud providers.
 
 Note: Currently these machines aren't ready for production as they lack backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases
