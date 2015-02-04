@@ -2,7 +2,7 @@
 cd $OOS_SOURCE_DIR/oracle
 perl -i -p -e "s/OOS_APEX_PUB_USR_PWD/$OOS_APEX_PUB_USR_PWD/g" oracle_config.sql
 
-sqlplus sys/$OOS_ORACLE_PWD as sysdba @scripts/oracle_config.sql
+sqlplus sys/$OOS_ORACLE_PWD as sysdba @oracle_config.sql
 
 #Create Oracle Users
 if [ "$OOS_CREATE_ORACLE_USER_YN" = "Y" ]; then
