@@ -18,7 +18,7 @@ java -jar ords.war configdir /ords/conf
 #java -jar ords.war install simple
 #config: /usr/share/ords/
 
-#ORDS2
+#ORDS2
 java -jar ords.war
 
 #SQL Developer administration
@@ -27,8 +27,6 @@ java -jar ords.war user adminlistener "Listener Administrator"
 #Deploy to Tomcat
 cd /usr/share/$OOS_TC_NAME/webapps
 cp /ords/ords.war .
-
-/etc/init.d/tomcat restart
 
 #Copy APEX images
 cd /ords

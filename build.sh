@@ -79,10 +79,6 @@ cd $OOS_SOURCE_DIR
 source ./scripts/ords.sh
 
 
-#Start services
-/etc/init.d/tomcat stop
-/etc/init.d/tomcat start
-/etc/init.d/node4ords restart
 
 #*** CLEANUP ***
 cd $OOS_SOURCE_DIR
