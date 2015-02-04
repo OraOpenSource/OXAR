@@ -87,3 +87,6 @@ source ./scripts/ords.sh
 #*** CLEANUP ***
 cd $OOS_SOURCE_DIR
 rm -rf tmp
+
+#Reboot
+shutdown -r now
