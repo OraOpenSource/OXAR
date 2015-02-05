@@ -18,7 +18,7 @@ java -jar ords.war configdir /ords/conf
 #java -jar ords.war install simple
 #config: /usr/share/ords/
 
-#ORDS2
+#ORDS2ip-172-30-0-94.us-west-2.compute.internal
 java -jar ords.war
 
 #SQL Developer administration

@@ -5,7 +5,6 @@
 cd $OOS_SOURCE_DIR/tmp
 wget $OOS_ORACLE_FILE_URL
 
-
 #Install Oracle
 cd $OOS_SOURCE_DIR/tmp
 unzip $OOS_ORACLE_FILENAME
@@ -28,3 +27,8 @@ cd /u01/app/oracle/product/11.2.0/xe/bin
 
 #Configure for all profiles (so accesible on boot login)
 echo . /u01/app/oracle/product/11.2.0/xe/bin/oracle_env.sh >> /etc/profile
+
+#Cleanup
+cd $OOS_SOURCE_DIR/tmp
+rm -rf $OOS_ORACLE_FILE_URL
+rm -rf Disk1
