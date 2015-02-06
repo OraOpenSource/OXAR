@@ -9,6 +9,7 @@ OOS_ORACLE_PWD=oracle
 #Use 8081 so no conflicts with Tomcat. This is configured for plsql gateway (not used)
 OOS_ORACLE_HTTP_PORT=8081
 OOS_ORACLE_TNS_PORT=1521
+
 #URL to download Oracle XE rpm from
 #Ex: http://<server_name>/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 #To download go to: http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html

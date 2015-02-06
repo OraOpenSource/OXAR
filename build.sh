@@ -48,9 +48,6 @@ source ./scripts/swap_space.sh
 cd $OOS_SOURCE_DIR
 source ./scripts/oracexe.sh
 
-#TODO Oracle update of .ora files
-
-
 #APEX install
 cd $OOS_SOURCE_DIR
 source ./scripts/apex.sh

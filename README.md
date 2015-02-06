@@ -11,8 +11,9 @@ CentOS 7
 
 #Download
 ```bash
-#Note It helps to run all the scripts as root
+#If not root run:
 #sudo -i
+
 cd /tmp
 yum install git -y
 git clone https://github.com/OraOpenSource/oraclexe-apex.git

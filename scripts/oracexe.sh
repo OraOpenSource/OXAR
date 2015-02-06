@@ -17,9 +17,8 @@ cd response/
 perl -i -p -e "s/ORACLE_HTTP_PORT=8080/ORACLE_HTTP_PORT=$OOS_ORACLE_HTTP_PORT/g" xe.rsp
 perl -i -p -e "s/ORACLE_PASSWORD=<value required>/ORACLE_PASSWORD=$OOS_ORACLE_PWD/g" xe.rsp
 perl -i -p -e "s/ORACLE_CONFIRM_PASSWORD=<value required>/ORACLE_CONFIRM_PASSWORD=$OOS_ORACLE_PWD/g" xe.rsp
+perl -i -p -e "s/ORACLE_LISTENER_PORT=1521/ORACLE_LISTENER_PORT=$OOS_ORACLE_TNS_PORT/g" xe.rsp
 
-
-TODO change 1521
 
 #/etc/init.d/oracle-xe configure responseFile=xe.rsp >> XEsilentinstall.log
 /etc/init.d/oracle-xe configure responseFile=xe.rsp
@@ -29,12 +28,10 @@ cd /u01/app/oracle/product/11.2.0/xe/bin
 . ./oracle_env.sh
 
 #Configure for all profiles (so accesible on boot login)
-echo . /u01/app/oracle/product/11.2.0/xe/bin/oracle_env.sh >> /etc/profile
+echo . $ORACLE_HOME/bin/oracle_env.sh >> /etc/profile
 
 #Update the .ora files to use localhost instead of the current hostname
 #This is required since Amazon AMIs change the hostname
-cd $OOS_SOURCE_DIR/oracle
-
 cd $ORACLE_HOME/network/admin
 #backup files
 mv listener.ora listener.bkp
