@@ -1,15 +1,71 @@
 #Oracle XE & APEX
 The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The code provided in this project handles the automatic build. There is also a listing below of prebuilt images for popular cloud providers.
 
-Note: Currently these machines aren't ready for production as they lack backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases
+*Note: Currently these machines are not recommended for production us as they lack backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
+
+#Current Software Versions
+<table>
+  <tr>
+    <th>App</th>
+    <th>Version</th>
+  </tr>
+  <tr>
+    <td>Oracle</td>
+    <td>Oracle XE 11.2.0.2.0</td>
+  </tr>
+  <tr>
+    <td>APEX</td>
+    <td>4.2.6.00.03</td>
+  </tr>
+  <tr>
+    <td>ORDS</td>
+    <td>2.0.10.289.08.09</td>
+  </tr>
+  <tr>
+    <td>Tomcat</td>
+    <td>7.0.57</td>
+  </tr>
+</table>
 
 #Supported OS's
 This script currently works on the following operating systems
 
-CentOS 7
+<table>
+  <tr>
+    <th>OS</th>
+    <th>Version</th>
+  </tr>
+  <tr>
+    <td>CentOS</td>
+    <td>7.0.1406</td>
+  </tr>
+</table>
 
+#Prebuilt Images
+The goal of this project is to have prebuilt images for major cloud providers. You can use the any of the public images below. Alternative you can build your own image with the instructions further down on this page.
 
-#Download
+TOOD list of prebuilt images for different cloud platforms
+
+<table>
+  <tr>
+    <th>Provider</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Digital Ocean</td>
+    <td>TODO Note about this.</td>
+  </tr>
+
+</table>
+
+#Manual Build
+If you don't want to use a prebuilt image, you can build your own vm with the following instructions.
+
+##Download
 ```bash
 #If not root run:
 #sudo -i
@@ -39,14 +95,9 @@ To build the server run the following commands. It is very important that you ru
 . build.sh
 
 #For now you must open build.sh and run each section manually
-#This is do to an ORDS issue that doesn't allow for silent install. Once fixed you won't need to run each section manually
+#This is due to an ORDS issue that doesn't allow for silent install. Once fixed you won't need to run each section manually
 
 ```
-
-#Prebuilt Images
-The goal of this project is to have prebuilt images for major cloud providers.
-
-TOOD list of prebuilt images for different cloud platforms
 
 
 #How to connect
