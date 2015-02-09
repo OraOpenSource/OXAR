@@ -62,8 +62,8 @@ This is the most recent AMIs for each cloud platform. For older versions, please
   <tr>
     <td>Amazon EC2</td>
     <td>
-      OS username: fedora</br>
-      Region: us-west-2</br>
+      OS username: fedora<br>
+      Region: us-west-2<br>
       AMI: [ami-e7280dd7](https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-e7280dd7) </br>
       Review the [AWS EC2 setup](docs/amazon_aws.md) doc
     </td>
