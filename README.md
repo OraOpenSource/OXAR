@@ -39,12 +39,16 @@ This script currently works on the following operating systems
     <td>CentOS</td>
     <td>7.0.1406</td>
   </tr>
+  <tr>
+    <td>Fedora</td>
+    <td>21</td>
+  </tr>
 </table>
 
 #Prebuilt Images
 The goal of this project is to have prebuilt images for major cloud providers. You can use the any of the public images below. Alternative you can build your own image with the instructions further down on this page.
 
-TOOD list of prebuilt images for different cloud platforms
+This is the most recent AMIs for each cloud platform. For older versions, please see the individual README.md files for each release of this project.
 
 <table>
   <tr>
@@ -52,13 +56,19 @@ TOOD list of prebuilt images for different cloud platforms
     <th>Description</th>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>Digital Ocean</td>
+    <td>There is a build for this, however Digital Ocean does not currently support publically sharing droplets.</td>
   </tr>
   <tr>
-    <td>Digital Ocean</td>
-    <td>TODO Note about this.</td>
+    <td>Amazon EC2</td>
+    <td>
+      OS username: fedora</br>
+      Region: us-west-2</br>
+      AMI: [ami-e7280dd7](https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-e7280dd7)</br>
+      Review the [AWS EC2 setup](docs/amazon_aws.md) doc
+    </td>
   </tr>
+
 
 </table>
 
@@ -105,8 +115,6 @@ To build the server run the following commands. It is very important that you ru
 ##Oracle / SQL*Plus
 Since direct connections to the database aren't encrypted you will need to tunnel your connection over SSH. Jeff Smith has a good example on [how to connect using SQL Developer](http://www.thatjeffsmith.com/archive/2014/09/30-sql-developer-tips-in-30-days-day-17-using-ssh-tunnels/).
 
-By default a user called *OOS_USER* (password: oracle) has been created.
-
 <table>
   <tr>
     <th>Username</th>
@@ -131,16 +139,6 @@ By default a user called *OOS_USER* (password: oracle) has been created.
   <tr>
     <td>APEX_PUBLIC_USER</td>
     <td>oracle</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
     <td></td>
   </tr>
 </table>
