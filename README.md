@@ -1,38 +1,9 @@
-<!-- TOC depth:6 withLinks:1 updateOnSave:1 -->
-- [Oracle XE & APEX](#oracle-xe-apex)
-- [Current Software Versions](#current-software-versions)
-- [Supported OS's](#supported-oss)
-- [Prebuilt Images](#prebuilt-images)
-- [Manual Build](#manual-build)
-	- [Download](#download)
-- [If not root run:](#if-not-root-run)
-- [sudo -i](#sudo-i)
-	- [Configure](#configure)
-- [Look for "CHANGEME" in this file](#look-for-changeme-in-this-file)
-		- [APEX](#apex)
-	- [Build](#build)
-- [Eventually you will be able to do the following](#eventually-you-will-be-able-to-do-the-following)
-- [Dependent on issue #2](#dependent-on-issue-2)
-- [. build.sh](#-buildsh)
-- [For now you must open build.sh and run each section manually](#for-now-you-must-open-buildsh-and-run-each-section-manually)
-- [This is due to an ORDS issue that doesn't allow for silent install. Once fixed you won't need to run each section manually](#this-is-due-to-an-ords-issue-that-doesnt-allow-for-silent-install-once-fixed-you-wont-need-to-run-each-section-manually)
-- [How to connect](#how-to-connect)
-	- [Oracle / SQL*Plus](#oracle-sqlplus)
-	- [APEX](#apex)
-		- [APEX Web Listener](#apex-web-listener)
-		- [ORDS](#ords)
-	- [Tomcat Manager](#tomcat-manager)
-- [Port Configurations](#port-configurations)
-- [Other](#other)
-	- [Editing server files locally](#editing-server-files-locally)
-<!-- /TOC -->
-
-#Oracle XE & APEX
+# Oracle XE & APEX
 The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The code provided in this project handles the automatic build. There is also a listing below of prebuilt images for popular cloud providers.
 
 *Note: Currently these machines are not recommended for production us as they lack backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
 
-#Current Software Versions
+# Current Software Versions
 <table>
   <tr>
     <th>App</th>
@@ -56,7 +27,7 @@ The goal of this project is to make it easy for developers to quickly build and/
   </tr>
 </table>
 
-#Supported OS's
+# Supported OS's
 This script currently works on the following operating systems
 
 <table>
@@ -74,7 +45,7 @@ This script currently works on the following operating systems
   </tr>
 </table>
 
-#Prebuilt Images
+# Prebuilt Images
 The goal of this project is to have prebuilt images for major cloud providers. You can use the any of the public images below. Alternative you can build your own image with the instructions further down on this page.
 
 <table>
@@ -91,7 +62,7 @@ The goal of this project is to have prebuilt images for major cloud providers. Y
     <td>
       OS username: fedora<br>
       Region: us-west-2<br>
-      AMI: <a href="https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-e7280dd7" target="_blank">ami-e7280dd7</a><br>
+      AMI: <a href="https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-4b37127b" target="_blank">ami-4b37127b</a><br>
       Review the <a href="docs/amazon_aws.md">AWS EC2 setup</a> doc
     </td>
   </tr>
@@ -99,10 +70,10 @@ The goal of this project is to have prebuilt images for major cloud providers. Y
 
 </table>
 
-#Manual Build
+# Manual Build
 If you don't want to use a prebuilt image, you can build your own vm with the following instructions.
 
-##Download
+## Download
 ```bash
 #If not root run:
 #sudo -i
@@ -113,7 +84,7 @@ git clone https://github.com/OraOpenSource/oraclexe-apex.git
 cd oraclexe-apex
 ```
 
-##Configure
+## Configure
 You then can optionally modify the config file to change the default installation options.
 
 ```bash
@@ -121,10 +92,10 @@ You then can optionally modify the config file to change the default installatio
 vi config.sh
 ```
 
-###APEX
+### APEX
 There are additional APEX configurations that you may want to make in the ```scripts/oracle_config.sql``` file. You can run them later on or manually configure them in the APEX admin account.
 
-##Build
+## Build
 To build the server run the following commands. It is very important that you run it starting from the same folder that it resides in.
 ```bash
 #Eventually you will be able to do the following
@@ -137,9 +108,9 @@ To build the server run the following commands. It is very important that you ru
 ```
 
 
-#How to connect
+# How to connect
 
-##Oracle / SQL*Plus
+## Oracle / SQL*Plus
 Since direct connections to the database aren't encrypted you will need to tunnel your connection over SSH. Jeff Smith has a good example on [how to connect using SQL Developer](http://www.thatjeffsmith.com/archive/2014/09/30-sql-developer-tips-in-30-days-day-17-using-ssh-tunnels/).
 
 <table>
@@ -171,7 +142,7 @@ Since direct connections to the database aren't encrypted you will need to tunne
 </table>
 
 
-##APEX
+## APEX
 To connect to APEX go to http://&lt;server_name&gt;/ and it will direct you to the APEX login page.
 
 <table>
@@ -197,7 +168,7 @@ To connect to APEX go to http://&lt;server_name&gt;/ and it will direct you to t
 
 
 
-###APEX Web Listener
+### APEX Web Listener
 This project uses [Node4ORDS](https://github.com/OraOpenSource/node4ords) as a web listener. The Node4ORDS project provides the ability to server static content and will provide additional web server functionality. Please read its documentation for more information.
 
 Node4ORDS is install in ```/var/www/node4ords```. It can be controlled by:
@@ -210,13 +181,13 @@ Node4ORDS is install in ```/var/www/node4ords```. It can be controlled by:
 
 Static content can be put in ```/var/www/node4ords/public/``` and referenced by http://&lt;server_name&gt;/public/&lt;filepath&gt;
 
-###ORDS
+### ORDS
 ORDS is located in ```/ords```
 
 The APEX images are stored in ```/ords/apex_images```
 
 
-##Tomcat Manager
+## Tomcat Manager
 This server uses [Apache Tomcat](http://tomcat.apache.org/) as the web container for ORDS. By default, the firewall restricts public access to the Tomcat server directly. If you do want to make it accessible run:
 
 ```bash
@@ -255,7 +226,7 @@ Tomcat is located in ```/usr/share/apache-tomcat-7.0.57/```. *Note that the loca
 /etc/init.d/tomcat start
 ```
 
-#Port Configurations
+# Port Configurations
 The default port settings are as follows:
 <table>
   <tr>
@@ -298,8 +269,8 @@ The default port settings are as follows:
 
 
 
-#Other
-##Editing server files locally
+# Other
+## Editing server files locally
 To make it easier to edit files on the server (and avoid using vi), [Remote-Atom](https://github.com/randy3k/remote-atom) (ratom) is installed by default. This requires that you have the [Atom](https://atom.io/) text editor on your desktop and have installed the [ratom](https://github.com/randy3k/remote-atom).
 
 When you connect to the server use the following connection string:
