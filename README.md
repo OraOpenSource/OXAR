@@ -48,8 +48,6 @@ This script currently works on the following operating systems
 #Prebuilt Images
 The goal of this project is to have prebuilt images for major cloud providers. You can use the any of the public images below. Alternative you can build your own image with the instructions further down on this page.
 
-This is the most recent AMIs for each cloud platform. For older versions, please see the individual README.md files for each release of this project.
-
 <table>
   <tr>
     <th>Provider</th>
