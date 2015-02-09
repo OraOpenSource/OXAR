@@ -64,7 +64,7 @@ This is the most recent AMIs for each cloud platform. For older versions, please
     <td>
       OS username: fedora<br>
       Region: us-west-2<br>
-      AMI: <a href="https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-e7280dd7">ami-e7280dd7</a><br>
+      AMI: <a href="https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-e7280dd7" target="_blank">ami-e7280dd7</a><br>
       Review the <a href="docs/amazon_aws.md">AWS EC2 setup</a> doc
     </td>
   </tr>
@@ -102,7 +102,7 @@ To build the server run the following commands. It is very important that you ru
 ```bash
 #Eventually you will be able to do the following
 #Dependent on issue #2
-. build.sh
+#. build.sh
 
 #For now you must open build.sh and run each section manually
 #This is due to an ORDS issue that doesn't allow for silent install. Once fixed you won't need to run each section manually
