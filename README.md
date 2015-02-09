@@ -64,9 +64,8 @@ This is the most recent AMIs for each cloud platform. For older versions, please
     <td>
       OS username: fedora<br>
       Region: us-west-2<br>
-      [GitHub](http://github.com) <br>
-      AMI: [ami-e7280dd7](https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-e7280dd7) <br>
-      Review the [AWS EC2 setup](docs/amazon_aws.md) doc
+      AMI: <a href="https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-e7280dd7">ami-e7280dd7</a><br>
+      Review the <a href="docs/amazon_aws.md">AWS EC2 setup</a> doc
     </td>
   </tr>
 
