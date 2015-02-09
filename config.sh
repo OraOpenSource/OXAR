@@ -56,7 +56,7 @@ OOS_ORDS_FILENAME=${OOS_ORDS_FILE_URL##*/}
 
 #TOMCAT config
 #Note: If not a tar.gz then remove the additional ".*" in OOS_TC_NAME
-OOS_TC_FILE_URL=http://apache.mirror.rafal.ca/tomcat/tomcat-7/v7.0.57/bin/apache-tomcat-7.0.57.tar.gz
+OOS_TC_FILE_URL=http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.57/bin/apache-tomcat-7.0.57.tar.gz
 OOS_TC_FILENAME=${OOS_TC_FILE_URL##*/}
 OOS_TC_NAME=${OOS_TC_FILENAME%.*.*}
 
