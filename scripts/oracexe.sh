@@ -45,9 +45,10 @@ perl -i -p -e "s/1521/$OOS_ORACLE_TNS_PORT/g" listener.ora
 perl -i -p -e "s/1521/$OOS_ORACLE_TNS_PORT/g" tnsnames.ora
 
 #restart oracle
-/etc/init.d/oracle-xe restart
+/etc/init.d/oracle-xe stop
+/etc/init.d/oracle-xe start
 
 #Cleanup
 cd $OOS_SOURCE_DIR/tmp
-rm -rf $OOS_ORACLE_FILE_URL
+rm -rf $OOS_ORACLE_FILENAME
 rm -rf Disk1
