@@ -1,3 +1,32 @@
+<!-- TOC depth:6 withLinks:1 updateOnSave:1 -->
+- [Oracle XE & APEX](#oracle-xe-apex)
+- [Current Software Versions](#current-software-versions)
+- [Supported OS's](#supported-oss)
+- [Prebuilt Images](#prebuilt-images)
+- [Manual Build](#manual-build)
+	- [Download](#download)
+- [If not root run:](#if-not-root-run)
+- [sudo -i](#sudo-i)
+	- [Configure](#configure)
+- [Look for "CHANGEME" in this file](#look-for-changeme-in-this-file)
+		- [APEX](#apex)
+	- [Build](#build)
+- [Eventually you will be able to do the following](#eventually-you-will-be-able-to-do-the-following)
+- [Dependent on issue #2](#dependent-on-issue-2)
+- [. build.sh](#-buildsh)
+- [For now you must open build.sh and run each section manually](#for-now-you-must-open-buildsh-and-run-each-section-manually)
+- [This is due to an ORDS issue that doesn't allow for silent install. Once fixed you won't need to run each section manually](#this-is-due-to-an-ords-issue-that-doesnt-allow-for-silent-install-once-fixed-you-wont-need-to-run-each-section-manually)
+- [How to connect](#how-to-connect)
+	- [Oracle / SQL*Plus](#oracle-sqlplus)
+	- [APEX](#apex)
+		- [APEX Web Listener](#apex-web-listener)
+		- [ORDS](#ords)
+	- [Tomcat Manager](#tomcat-manager)
+- [Port Configurations](#port-configurations)
+- [Other](#other)
+	- [Editing server files locally](#editing-server-files-locally)
+<!-- /TOC -->
+
 #Oracle XE & APEX
 The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The code provided in this project handles the automatic build. There is also a listing below of prebuilt images for popular cloud providers.
 
@@ -163,12 +192,6 @@ To connect to APEX go to http://&lt;server_name&gt;/ and it will direct you to t
     <td>oos_user</td>
     <td>oracle</td>
     <td>You can start developing on this account. It is linked to OOS_USER schema</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
   </tr>
 </table>
 
