@@ -3,7 +3,7 @@
 #*** ORACLE ***
 #Get Files needed to install
 cd $OOS_SOURCE_DIR/tmp
-wget $OOS_ORACLE_FILE_URL
+curl -O -C - $OOS_ORACLE_FILE_URL
 
 #Install Oracle
 cd $OOS_SOURCE_DIR/tmp

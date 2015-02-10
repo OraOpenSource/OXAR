@@ -4,7 +4,7 @@
 #Instructions: http://www.davidghedini.com/pg/entry/install_tomcat_7_on_centos
 #Tuning: http://javamaster.wordpress.com/2013/03/13/apache-tomcat-tuning-guide/
 cd $OOS_SOURCE_DIR/tmp
-wget $OOS_TC_FILE_URL
+curl -O -C - $OOS_TC_FILE_URL
 tar -xzf $OOS_TC_FILENAME
 mv $OOS_TC_NAME /usr/share
 

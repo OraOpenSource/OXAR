@@ -7,7 +7,6 @@ yum install bc -y
 yum install perl -y
 yum install java-1.7.0-openjdk-src.x86_64 -y
 yum install git -y
-yum install wget -y
 yum install firewalld -y
 yum install java -y
 yum install which -y
