@@ -1,7 +1,9 @@
 # Oracle XE & APEX
-The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handles the automatic build. There is also a listing below of prebuilt images for popular cloud providers.
+The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handles the automatic build.
 
-*Note: Currently these machines are not recommended for production us as they lack backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
+*We would like to make pre-built appliances for the major cloud providers however it is currently against Oracle's licensing policy. If things change we will make things available.*
+
+*Note: Currently this build is not recommended for production us as it lacks backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
 
 # Current Software Versions
 <table>
@@ -46,32 +48,10 @@ This script currently works on the following operating systems
 </table>
 
 # Prebuilt Images
-The goal of this project is to have prebuilt images for major cloud providers. You can use the any of the public images below. Alternative you can build your own image with the instructions further down on this page.
-
-<table>
-  <tr>
-    <th>Provider</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>Digital Ocean</td>
-    <td>There is a build for this, however Digital Ocean does not currently support publically sharing droplets.</td>
-  </tr>
-  <tr>
-    <td>Amazon EC2</td>
-    <td>
-      OS username: fedora<br>
-      Region: us-west-2<br>
-      AMI: <a href="https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:ami=ami-4b37127b" target="_blank">ami-4b37127b</a><br>
-      Review the <a href="docs/amazon_aws.md">AWS EC2 setup</a> doc
-    </td>
-  </tr>
-
-
-</table>
+Due to licensing issues, we can not provide a prebuilt image or appliance. As such you will need to manually build the VM yourself with the provided scripts.
 
 # Manual Build
-If you don't want to use a prebuilt image, you can build your own vm with the following instructions.
+You can build your own vm with the following instructions.
 
 ## Download
 ```bash
@@ -85,11 +65,46 @@ cd oraclexe-apex
 ```
 
 ## Configure
-You then can optionally modify the config file to change the default installation options.
 
 ```bash
 #Look for "CHANGEME" in this file
 vi config.sh
+```
+
+**\* Due to licensing requirements, you must download the Oracle installtion files and modify the following parameters in the config file with the location of these files. \* **
+
+<table>
+  <tr>
+    <th>Parameter</th>
+    <th>Desc</th>
+  </tr>
+  <tr>
+    <td>OOS_ORACLE_FILE_URL</td>
+    <td>Download: http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html</td>
+  </tr>
+  <tr>
+    <td>OOS_APEX_FILE_URL</td>
+    <td>Download: http://download.oracleapex.com</td>
+  </tr>
+  <tr>
+    <td>OOS_ORDS_FILE_URL</td>
+    <td>Download: http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/index.html</td>
+  </tr>
+</table>
+
+These can be references to files on a web server or to the location on the server. Some examples:
+
+```bash
+#Assuming the file resided on myserver.com
+OOS_ORACLE_FILE_URL=http://myserver.com/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+#Assuming the file is placed in the /tmp folder on the machine
+OOS_ORACLE_FILE_URL=file:///tmp/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+```
+
+You can copy files from your local machine to the remote server easily using ```scp```. Example:
+
+```bash
+scp oracle-xe-11.2.0-1.0.x86_64.rpm.zip username@servername.com:/tmp
 ```
 
 ### APEX
@@ -106,7 +121,6 @@ To build the server run the following commands. It is very important that you ru
 #This is due to an ORDS issue that doesn't allow for silent install. Once fixed you won't need to run each section manually
 
 ```
-
 
 # How to connect
 
