@@ -1,8 +1,6 @@
 # Oracle XE & APEX
 The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handles the automatic build.
 
-*We would like to make pre-built appliances for the major cloud providers however it is currently against Oracle's licensing policy. If things change we will make things available.*
-
 *Note: Currently this build is not recommended for production us as it lacks backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
 
 # Current Software Versions
@@ -71,7 +69,7 @@ cd oraclexe-apex
 vi config.sh
 ```
 
-**\* Due to licensing requirements, you must download the Oracle installtion files and modify the following parameters in the config file with the location of these files. \* **
+** Due to licensing requirements, you must download the Oracle installtion files and modify the following parameters in the config file with the location of these files. **
 
 <table>
   <tr>
