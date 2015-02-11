@@ -69,7 +69,7 @@ cd oraclexe-apex
 vi config.sh
 ```
 
-** Due to licensing requirements, you must download the Oracle installtion files and modify the following parameters in the config file with the location of these files. **
+**Due to licensing requirements, you must download the Oracle installtion files and modify the following parameters in the config file with the location of these files.**
 
 <table>
   <tr>
