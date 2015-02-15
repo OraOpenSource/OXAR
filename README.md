@@ -48,6 +48,8 @@ This script currently works on the following operating systems
 # Prebuilt Images
 Due to licensing issues, we can not provide a prebuilt image or appliance. As such you will need to manually build the VM yourself with the provided scripts.
 
+If you are using Amazon AWS EC2, please be sure to follow the configuration steps listed <a href="docs/amazon_aws.md">here</a>.
+
 # Manual Build
 You can build your own vm with the following instructions.
 
@@ -287,7 +289,7 @@ To make it easier to edit files on the server (and avoid using vi), [Remote-Atom
 
 When you connect to the server use the following connection string:
 ```bash
-ssh -R 52698:localhost:52698 root@<server_name>
+ssh -R 52698:localhost:52698 <username>@<server_name_or_ip_address>
 ```
 *Note: Port 52698 is the default port and can be changed in the plugins settings in Atom*
 
