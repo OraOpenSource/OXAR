@@ -1,6 +1,42 @@
 #!/usr/bin/env bash
 #Example from: http://stackoverflow.com/questions/5228345/bash-script-how-to-reference-a-file-for-variables
 
+
+
+#Module Options (Y/N)
+#CHANGEME (for the modules below)
+
+#Added as part of #11
+OOS_MODULE_ORACLE=Y
+#APEX=APEX, Tomcat, ORDS
+OOS_MODULE_APEX=Y
+
+
+#DO NOT modify these modules
+OOS_MODULE_ORDS=Y
+if [ "$OOS_MODULE_APEX" = "N" ]; then
+  OOS_MODULE_ORDS=N;
+fi;
+
+OOS_MODULE_TOMCAT=Y
+if [ "$OOS_MODULE_APEX" = "N" ]; then
+  OOS_MODULE_TOMCAT=N;
+fi;
+
+OOS_MODULE_NODE4ORDS=Y
+if [ "$OOS_MODULE_APEX" = "N" ]; then
+  OOS_MODULE_NODE4ORDS=N;
+fi;
+
+
+echo \*\*\* Module Configuration \*\*\*
+echo Oracle XE: $OOS_MODULE_ORACLE
+echo APEX: $OOS_MODULE_APEX
+echo ORDS: $OOS_MODULE_ORDS
+echo Tomcat: $OOS_MODULE_TOMCAT
+echo Node4ORDS: $OOS_MODULE_NODE4ORDS
+
+
 #System
 
 #Oracle
@@ -20,9 +56,10 @@ OOS_ORACLE_FILENAME_RPM=${OOS_ORACLE_FILENAME%.*}
 
 #Create Oracle and APEX User (optional)
 #If Change to "N" to disable creating default Oracle User
-OOS_CREATE_ORACLE_USER_YN=Y
+OOS_ORACLE_CREATE_USER_YN=Y
 OOS_ORACLE_USER_NAME=oos_user
 OOS_ORACLE_USER_PASS=oracle
+OOS_APEX_CREATE_USER_YN=Y
 OOS_APEX_USER_WORKSPACE=oos_user
 OOS_APEX_USER_NAME=oos_user
 OOS_APEX_USER_PASS=oracle
@@ -66,24 +103,31 @@ OOS_TC_PWD=oracle
 
 
 
-#Validations (don't modify the CHANGEME here)
-if [ "$OOS_ORACLE_FILE_URL" = "CHANGEME" ] || [ "$OOS_ORACLE_FILE_URL" = "" ]; then
-  echo OOS_ORACLE_FILE_URL must be specified
-  exit 1
-else
-  echo ok to continue
+#*** VALIDATIONS ***
+# (don't modify the CHANGEME here)
+if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
+  if [ "$OOS_ORACLE_FILE_URL" = "CHANGEME" ] || [ "$OOS_ORACLE_FILE_URL" = "" ]; then
+    echo OOS_ORACLE_FILE_URL must be specified
+    exit 1
+  else
+    echo OOS_ORACLE_FILE_URL=$OOS_ORACLE_FILE_URL
+  fi
 fi
 
-if [ "$OOS_APEX_FILE_URL" = "CHANGEME" ] || [ "$OOS_APEX_FILE_URL" = "" ]; then
-  echo OOS_APEX_FILE_URL must be specified
-  exit 1
-else
-  echo ok to continue
+if [ "$OOS_MODULE_APEX" = "Y" ]; then
+  if [ "$OOS_APEX_FILE_URL" = "CHANGEME" ] || [ "$OOS_APEX_FILE_URL" = "" ]; then
+    echo OOS_APEX_FILE_URL must be specified
+    exit 1
+  else
+    echo OOS_APEX_FILE_URL=$OOS_APEX_FILE_URL
+  fi
 fi
 
-if [ "$OOS_ORDS_FILE_URL" = "CHANGEME" ] || [ "$OOS_ORDS_FILE_URL" = "" ]; then
-  echo OOS_ORDS_FILE_URL must be specified
-  exit 1
-else
-  echo ok to continue
+if [ "$OOS_MODULE_ORDS" = "Y" ]; then
+  if [ "$OOS_ORDS_FILE_URL" = "CHANGEME" ] || [ "$OOS_ORDS_FILE_URL" = "" ]; then
+    echo OOS_ORDS_FILE_URL must be specified
+    exit 1
+  else
+    echo OOS_ORDS_FILE_URL=$OOS_ORDS_FILE_URL
+  fi
 fi

@@ -22,52 +22,79 @@
 
 #*** LINUX ***
 OOS_SOURCE_DIR=$PWD
-mkdir $OOS_SOURCE_DIR/tmp
+mkdir -p $OOS_SOURCE_DIR/tmp
 
 #Required packages and updates
 
 
 #Yum updates
+echo; echo \* Running yum updates \*; echo
 cd $OOS_SOURCE_DIR
 source ./scripts/yum.sh
 
 
 #Load configurations
+echo; echo \* Loading configurations \*; echo
 cd $OOS_SOURCE_DIR
 source ./config.sh
 
 #Install ratom (optional)
-cd $OOS_SOURCE_DIR
-source ./scripts/ratom.sh
+echo; echo \* Installing ratom \*; echo
+if [ "$(which ratom)" == "" ]; then
+  cd $OOS_SOURCE_DIR
+  source ./scripts/ratom.sh
+else
+  echo ratom already installed
+fi
 
-#Expand swap
-cd $OOS_SOURCE_DIR
-source ./scripts/swap_space.sh
 
 #Oracle install
-cd $OOS_SOURCE_DIR
-source ./scripts/oracexe.sh
+if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
+  #Expand swap
+  echo; echo \* Expanding Swap Space \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/swap_space.sh
+
+  echo; echo \* Installing Oracle XE \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/oracexe.sh
+
+  #Oracle config
+  echo; echo \* Oracle Config \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/oracle_config.sh
+fi
 
 #APEX install
-cd $OOS_SOURCE_DIR
-source ./scripts/apex.sh
+if [ "$OOS_MODULE_APEX" = "Y" ]; then
+  echo; echo \* Installing APEX \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/apex.sh
 
-#Oracle config
-cd $OOS_SOURCE_DIR
-source ./scripts/oracle_config.sh
+  echo; echo \* Configuring APEX \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/apex_config.sh
+fi
 
 
 #Node.js
-cd $OOS_SOURCE_DIR
-source ./scripts/node4ords.sh
+if [ "$OOS_MODULE_NODE4ORDS" = "Y" ]; then
+  echo; echo \* Installing Node.js \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/node4ords.sh
+fi
 
 
 #Tomcat
-cd $OOS_SOURCE_DIR
-source ./scripts/tomcat.sh
+if [ "$OOS_MODULE_TOMCAT" = "Y" ]; then
+  echo; echo \* Installing Tomcat \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/tomcat.sh
+fi
 
 
 #Firewalld
+echo; echo \* Configuring firewalld \*; echo
 cd $OOS_SOURCE_DIR
 source ./scripts/firewalld.sh
 
@@ -75,12 +102,16 @@ source ./scripts/firewalld.sh
 
 #ORDS
 #**** Note for now must run this manually (step by step)
-cd $OOS_SOURCE_DIR
-source ./scripts/ords.sh
+if [ "$OOS_MODULE_ORDS" = "Y" ]; then
+  echo; echo \* Installing ORDS \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/ords.sh
+fi;
 
 
 
 #*** CLEANUP ***
+echo; echo \* Cleanup \*; echo
 cd $OOS_SOURCE_DIR
 rm -rf tmp
 

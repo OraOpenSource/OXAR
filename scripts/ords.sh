@@ -18,10 +18,22 @@ java -jar ords.war configdir /ords/conf
 #java -jar ords.war install simple
 #config: /usr/share/ords/
 
-#ORDS2ip-172-30-0-94.us-west-2.compute.internal
+#ORDS2
+echo; echo Manual input required for ORDS config; echo
+echo dbserver: localhost
+echo database listen port: $OOS_ORACLE_TNS_PORT
+echo Enter 1 db service name, or 2 for db SID: 1
+echo Enter the db service name: xe
+echo Enter the db user name: APEX_PUBLIC_USER
+echo Enter the db password for APEX_PUBLIC_USER: $OOS_APEX_PUB_USR_PWD
+echo Confirm password: $OOS_APEX_PUB_USR_PWD
+echo Enter 1 for pwds for RESTful Services db users, 2 use the same pwd as used for APEX_PUBLIC_USER, 3 to skip this step :2
+echo Enter 1 if to start in standalone mode, 2 to exit:2
+
 java -jar ords.war
 
 #SQL Developer administration
+echo; echo Manual input required for ORDS admin listener; echo
 java -jar ords.war user adminlistener "Listener Administrator"
 
 #Deploy to Tomcat

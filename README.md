@@ -78,6 +78,7 @@ cd oraclexe-apex
 vi config.sh
 ```
 
+### Files
 **Due to licensing requirements, you must download the Oracle installation files and modify the following parameters in the config file with the location of these files.**
 
 <table>
@@ -114,15 +115,35 @@ You can copy files from your local machine to the remote server easily using ```
 scp oracle-xe-11.2.0-1.0.x86_64.rpm.zip username@servername.com:/tmp
 ```
 
+### Modules
+You can optionally chose which modules you want installed. This install supports the following optional modules which can be modified in ```config.sh```
+
+<table>
+  <tr>
+    <th>Module</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>OOS_MODULE_ORACLE</td>
+    <td>Y</td>
+    <td>Install Oracle XE</td>
+  </tr>
+  <tr>
+    <td>OOS_MODULE_APEX</td>
+    <td>Y</td>
+    <td>Install's APEX and all of it's components (Tomcat, ORDS, etc)</td>
+  </tr>
+</table>
+
 ### APEX
-There are additional APEX configurations that you may want to make in the ```scripts/oracle_config.sql``` file. You can run them later on or manually configure them in the APEX admin account.
+There are additional APEX configurations that you may want to make in the ```scripts/apex_config.sql``` file. You can run them later on or manually configure them in the APEX admin account.
 
 ## Build
 To build the server run the following commands. It is very important that you run it starting from the same folder that it resides in.
 ```bash
-#Eventually you will be able to do the following
-#Dependent on issue #2
-#. build.sh
+#If installing APEX/ORDS, you will be prompted for some configuration options at some point (issue #2)
+. build.sh
 
 #For now you must open build.sh and run each section manually
 #This is due to an ORDS issue that doesn't allow for silent install. Once fixed you won't need to run each section manually
