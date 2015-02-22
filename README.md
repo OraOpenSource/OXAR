@@ -30,7 +30,13 @@ The goal of this project is to make it easy for developers to quickly build and/
     <td>7.0.57</td>
     <td></td>
   </tr>
+  <tr>
+    <td>Node-oracledb</td>
+    <td>0.3.1</td>
+    <td>Node.js driver for Oracle: (https://github.com/oracle/node-oracledb)[https://github.com/oracle/node-oracledb]</td>
+  </tr>
 </table>
+
 
 # Supported OS's
 This script currently works on the following operating systems

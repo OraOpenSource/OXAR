@@ -12,6 +12,7 @@ OOS_MODULE_ORACLE=Y
 OOS_MODULE_APEX=Y
 
 
+
 #DO NOT modify these modules
 OOS_MODULE_ORDS=Y
 if [ "$OOS_MODULE_APEX" = "N" ]; then
@@ -23,9 +24,18 @@ if [ "$OOS_MODULE_APEX" = "N" ]; then
   OOS_MODULE_TOMCAT=N;
 fi;
 
+#Always install Node.js
+OOS_MODULE_NODEJS=Y
+
 OOS_MODULE_NODE4ORDS=Y
 if [ "$OOS_MODULE_APEX" = "N" ]; then
   OOS_MODULE_NODE4ORDS=N;
+fi;
+
+
+OOS_MODULE_NODE_ORACLEDB=Y
+if [ "$OOS_MODULE_ORACLE" = "N" ]; then
+  OOS_MODULE_NODE_ORACLEDB=N;
 fi;
 
 
@@ -35,6 +45,9 @@ echo APEX: $OOS_MODULE_APEX
 echo ORDS: $OOS_MODULE_ORDS
 echo Tomcat: $OOS_MODULE_TOMCAT
 echo Node4ORDS: $OOS_MODULE_NODE4ORDS
+echo Node.js: $OOS_MODULE_NODEJS
+echo Node-oracledb: $OOS_MODULE_NODE_ORACLEDB
+
 
 
 #System

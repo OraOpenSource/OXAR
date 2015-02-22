@@ -27,16 +27,17 @@ mkdir -p $OOS_SOURCE_DIR/tmp
 #Required packages and updates
 
 
+#Load configurations
+echo; echo \* Loading configurations \*; echo
+cd $OOS_SOURCE_DIR
+source ./config.sh
+
+
 #Yum updates
 echo; echo \* Running yum updates \*; echo
 cd $OOS_SOURCE_DIR
 source ./scripts/yum.sh
 
-
-#Load configurations
-echo; echo \* Loading configurations \*; echo
-cd $OOS_SOURCE_DIR
-source ./config.sh
 
 #Install ratom (optional)
 echo; echo \* Installing ratom \*; echo
@@ -77,19 +78,19 @@ if [ "$OOS_MODULE_APEX" = "Y" ]; then
 fi
 
 
-#Node.js
+#12: Install Oracle Node driver
+if [ "$OOS_MODULE_NODE_ORACLEDB" = "Y" ]; then
+  echo; echo \* Installing node-oracledb \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/node-oracledb.sh
+fi
+
+
+#Node4ORDS
 if [ "$OOS_MODULE_NODE4ORDS" = "Y" ]; then
-  echo; echo \* Installing Node.js \*; echo
+  echo; echo \* Installing Node4ORDS \*; echo
   cd $OOS_SOURCE_DIR
   source ./scripts/node4ords.sh
-
-  #13: Bower support
-  echo; echo \* Installing Bower \*; echo
-  if [ "$(which bower)" == "" ]; then
-    npm install -g bower
-  else
-    echo bower already installed
-  fi
 fi
 
 
@@ -109,12 +110,12 @@ source ./scripts/firewalld.sh
 
 
 #ORDS
-#**** Note for now must run this manually (step by step)
+#This includes some manual intervention now
 if [ "$OOS_MODULE_ORDS" = "Y" ]; then
   echo; echo \* Installing ORDS \*; echo
   cd $OOS_SOURCE_DIR
   source ./scripts/ords.sh
-fi;
+fi
 
 
 

@@ -13,10 +13,20 @@ yum install which -y
 
 #https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 #Download and install Node.js
-cd $OOS_SOURCE_DIR/tmp
-curl -sL https://rpm.nodesource.com/setup | bash -
-yum install -y nodejs
+if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
+  echo; echo \* Installing NodeJS \*
+  cd $OOS_SOURCE_DIR/tmp
+  curl -sL https://rpm.nodesource.com/setup | bash -
+  yum install -y nodejs
 
+  #13: Bower support (since node.js will be installed by default)
+  echo; echo \* Installing Bower \*; echo
+  if [ "$(which bower)" == "" ]; then
+    npm install -g bower
+  else
+    echo bower already installed
+  fi
+fi
 
 #Configure path to include /usr/local/bin (required for ratom)
 #Some instances of CentOS don't have this predefined
