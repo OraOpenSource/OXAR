@@ -82,6 +82,14 @@ if [ "$OOS_MODULE_NODE4ORDS" = "Y" ]; then
   echo; echo \* Installing Node.js \*; echo
   cd $OOS_SOURCE_DIR
   source ./scripts/node4ords.sh
+
+  #13: Bower support
+  echo; echo \* Installing Bower \*; echo
+  if [ "$(which bower)" == "" ]; then
+    npm install -g bower
+  else
+    echo bower already installed
+  fi
 fi
 
 
