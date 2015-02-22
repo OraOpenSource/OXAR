@@ -31,3 +31,6 @@ echo '}' >> /etc/profile
 echo "" >> /etc/profile
 echo "pathadd /usr/local/bin" >> /etc/profile
 echo "" >> /etc/profile
+
+#rerun profile to load full path
+. /etc/profile
