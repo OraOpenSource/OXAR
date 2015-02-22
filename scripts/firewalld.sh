@@ -8,7 +8,7 @@ service firewalld start
 #Adding Tomcat firewall ports just in case want to test
 cd /etc/firewalld/services
 
-cp $OOS_SOURCE_DIR/scripts/tomcat.xml .
+\cp $OOS_SOURCE_DIR/scripts/tomcat.xml .
 
 systemctl start firewalld
 firewall-cmd --zone=public --add-service=http --permanent
