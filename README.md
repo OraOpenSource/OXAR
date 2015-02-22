@@ -8,11 +8,11 @@ The goal of this project is to make it easy for developers to quickly build and/
   <tr>
     <th>App</th>
     <th>Version</th>
-    <th>Comments</th>
+    <th>Description</th>
   </tr>
   <tr>
-    <td>Oracle</td>
-    <td>Oracle XE 11.2.0.2.0</td>
+    <td>Oracle XE</td>
+    <td>11.2.0.2.0</td>
     <td></td>
   </tr>
   <tr>
@@ -144,10 +144,6 @@ To build the server run the following commands. It is very important that you ru
 ```bash
 #If installing APEX/ORDS, you will be prompted for some configuration options at some point (issue #2)
 . build.sh
-
-#For now you must open build.sh and run each section manually
-#This is due to an ORDS issue that doesn't allow for silent install. Once fixed you won't need to run each section manually
-
 ```
 
 # How to connect
@@ -159,7 +155,7 @@ Since direct connections to the database aren't encrypted you will need to tunne
   <tr>
     <th>Username</th>
     <th>Password</th>
-    <th>Comments</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td>OOS_USER</td>
@@ -192,7 +188,7 @@ To connect to APEX go to http://&lt;server_name&gt;/ and it will direct you to t
     <th>Workspace</th>
     <th>Username</th>
     <th>Password</th>
-    <th>Comments</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td>INTERNAL</td>
@@ -243,7 +239,7 @@ You can then access Tomcat via http://&lt;server_name&gt;:8080 and Tomcat Manage
   <tr>
     <th>Username</th>
     <th>Password</th>
-    <th>Comments</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td>tomat</td>
@@ -275,7 +271,7 @@ The default port settings are as follows:
     <th>Port</th>
     <th>Service</th>
     <th>Open</th>
-    <th>Comments</th>
+    <th>Description</th>
   </tr>
   <tr>
   	<td>22</td>
