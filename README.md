@@ -8,22 +8,27 @@ The goal of this project is to make it easy for developers to quickly build and/
   <tr>
     <th>App</th>
     <th>Version</th>
+    <th>Comments</th>
   </tr>
   <tr>
     <td>Oracle</td>
     <td>Oracle XE 11.2.0.2.0</td>
+    <td></td>
   </tr>
   <tr>
     <td>APEX</td>
     <td>4.2.6.00.03</td>
+    <td>Any version of APEX will work with the current setup. You just need to modify the config file accordingly</td>
   </tr>
   <tr>
     <td>ORDS</td>
     <td>2.0.10.289.08.09</td>
+    <td></td>
   </tr>
   <tr>
     <td>Tomcat</td>
     <td>7.0.57</td>
+    <td></td>
   </tr>
 </table>
 
