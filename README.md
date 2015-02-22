@@ -33,7 +33,7 @@ The goal of this project is to make it easy for developers to quickly build and/
   <tr>
     <td>Node-oracledb</td>
     <td>0.3.1</td>
-    <td>Node.js driver for Oracle: [https://github.com/oracle/node-oracledb](https://github.com/oracle/node-oracledb)</td>
+    <td>Node.js driver for Oracle: [https://github.com/oracle/node-oracledb](https://github.com/oracle/node-oracledb) </td>
   </tr>
 </table>
 
