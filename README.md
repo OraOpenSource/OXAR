@@ -60,8 +60,10 @@ You can build your own vm with the following instructions.
 
 ## Download
 ```bash
-#If not root run:
-#sudo -i
+#Ensure user is currently root
+if [ "$(whoami)" != "root" ]; then
+  sudo -i
+fi
 
 cd /tmp
 yum install git -y
