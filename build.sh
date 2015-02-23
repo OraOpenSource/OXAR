@@ -120,9 +120,10 @@ fi
 
 
 #*** CLEANUP ***
-echo; echo \* Cleanup \*; echo
-cd $OOS_SOURCE_DIR
-rm -rf tmp
+# Leave files for now
+# echo; echo \* Cleanup \*; echo
+# cd $OOS_SOURCE_DIR
+# rm -rf tmp
 
 #Reboot
 shutdown -r now
