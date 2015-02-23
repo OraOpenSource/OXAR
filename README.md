@@ -3,7 +3,7 @@ The goal of this project is to make it easy for developers to quickly build and/
 
 *Note: Currently this build is not recommended for production us as it lacks backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
 
-For more information and to signup for our email list go to [oraopensource.com](http://www.oraopensource.com)
+For more information and to signup for our email list go to [oraopensource.com](http://www.oraopensource.com) You can follow the related blogs on this project [here](http://www.oraopensource.com/blog/?category=Oracle+XE+%2B+APEX+VM).
 
 # Current Software Versions
 <table>
