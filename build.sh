@@ -126,4 +126,5 @@ fi
 # rm -rf tmp
 
 #Reboot
+echo Rebooting in: ; for i in {15..1..1};do echo -n "$i." && sleep 1; done
 shutdown -r now
