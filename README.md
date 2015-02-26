@@ -5,6 +5,8 @@ The goal of this project is to make it easy for developers to quickly build and/
 
 For more information and to signup for our email list go to [oraopensource.com](http://www.oraopensource.com) You can follow the related blogs on this project [here](http://www.oraopensource.com/blog/?category=Oracle+XE+%2B+APEX+VM).
 
+If you need additional help, there is a [How-To video](http://www.oraopensource.com/blog/2015/2/25/video-how-to-build-oracle-xe-apex-machine) for this installation which walks you through the entire process.
+
 # Current Software Versions
 <table>
   <tr>
