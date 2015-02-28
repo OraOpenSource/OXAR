@@ -10,6 +10,7 @@ yum install git -y
 yum install firewalld -y
 yum install java -y
 yum install which -y
+yum install net-tools -y
 
 #https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 #Download and install Node.js
