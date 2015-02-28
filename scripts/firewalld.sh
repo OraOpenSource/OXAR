@@ -6,6 +6,7 @@ service firewalld start
 
 
 #Adding Tomcat firewall ports just in case want to test
+#Can copy other examples from: /usr/lib/firewalld/services/
 cd /etc/firewalld/services
 
 \cp $OOS_SOURCE_DIR/scripts/tomcat.xml .
