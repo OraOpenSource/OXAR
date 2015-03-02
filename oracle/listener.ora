@@ -17,8 +17,8 @@ SID_LIST_LISTENER =
 LISTENER =
   (DESCRIPTION_LIST =
     (DESCRIPTION =
+      #If having listener connection issues comment out the line below: http://verma-sourabh.blogspot.ca/2014/09/solved-while-starting-listener-oracle.html
       (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC_FOR_XE))
-      #Change the values below
       (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
     )
   )
