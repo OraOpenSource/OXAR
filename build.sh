@@ -33,10 +33,17 @@ cd $OOS_SOURCE_DIR
 source ./config.sh
 
 
-#Yum updates
-echo; echo \* Running yum updates \*; echo
-cd $OOS_SOURCE_DIR
-source ./scripts/yum.sh
+#APT-GET/Yum updates
+if [ "$OOS_OS_TYPE" = "Debian" ]; then
+  echo; echo \* Running apt-get updates \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/apt-get.sh
+else
+  echo; echo \* Running yum updates \*; echo
+  cd $OOS_SOURCE_DIR
+  source ./scripts/yum.sh
+fi
+
 
 
 #Install ratom (optional)
