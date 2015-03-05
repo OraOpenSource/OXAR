@@ -9,7 +9,12 @@ curl -O -C - $OOS_ORACLE_FILE_URL
 cd $OOS_SOURCE_DIR/tmp
 unzip $OOS_ORACLE_FILENAME
 cd Disk1
-rpm -ivh $OOS_ORACLE_FILENAME_RPM
+if $OOS_OS_TYPE = "Debian" then
+  alien --scripts -d $OOS_ORACLE_FILENAME_RPM
+else
+  rpm -ivh $OOS_ORACLE_FILENAME_RPM
+fi
+
 
 #Silent configuration
 cd response/

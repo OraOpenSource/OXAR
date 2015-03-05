@@ -65,7 +65,7 @@ if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
 
   echo; echo \* Installing Oracle XE \*; echo
   cd $OOS_SOURCE_DIR
-  source ./scripts/oracexe.sh
+  source ./scripts/oraclexe.sh
 
   #Oracle config
   echo; echo \* Oracle Config \*; echo
