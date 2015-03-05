@@ -2,6 +2,9 @@
 #Example from: http://stackoverflow.com/questions/5228345/bash-script-how-to-reference-a-file-for-variables
 
 
+#Added as part of #9
+#Change RHEL to DEBIAN if Debian is in use
+OOS_OS_TYPE=RHEL
 
 #Module Options (Y/N)
 #CHANGEME (for the modules below)
@@ -40,6 +43,7 @@ fi;
 
 
 echo \*\*\* Module Configuration \*\*\*
+echo OS: $OOS_OS_TYPE
 echo Oracle XE: $OOS_MODULE_ORACLE
 echo APEX: $OOS_MODULE_APEX
 echo ORDS: $OOS_MODULE_ORDS
