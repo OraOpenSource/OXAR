@@ -58,8 +58,12 @@ This script currently works on the following operating systems
     <td>Fedora</td>
     <td>21</td>
   </tr>
-    <tr>
+  <tr>
     <td>Oracle Enterprise Linux</td>
+    <td>7.0</td>
+  </tr>
+  <tr>
+    <td>Debian (pending)</td>
     <td>7.0</td>
   </tr>
 </table>
