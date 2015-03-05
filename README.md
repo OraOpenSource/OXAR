@@ -80,7 +80,12 @@ if [ "$(whoami)" != "root" ]; then
 fi
 
 cd /tmp
+
+# IF RHEL type OS
 yum install git -y
+# IF Debian type OS
+apt-get install git-core
+
 git clone https://github.com/OraOpenSource/oraclexe-apex.git
 cd oraclexe-apex
 ```
