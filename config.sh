@@ -3,7 +3,7 @@
 
 
 #Added as part of #9
-#Change RHEL to DEBIAN if Debian is in use
+#Change RHEL to Debian if Debian is in use
 OOS_OS_TYPE=RHEL
 
 #Module Options (Y/N)
