@@ -4,23 +4,25 @@ apt-get update
 #yum install unzip -y
 apt-get install unzip
 #yum install libaio -y
-apt-get install libaio
+apt-get install libaio1
 #yum install bc -y
 apt-get install bc
 #yum install perl -y
 apt-get install perl
 #yum install java-1.7.0-openjdk-src.x86_64 -y
-apt-get install java-1.7.0-openjdk-src.x86_64
+apt-get install openjdk-7-jdk
 #yum install git -y
 apt-get install git-core
 #yum install firewalld -y
-apt-get install firewalld
+apt-get remove ufw
+apt-get install firewall-applet
 #yum install java -y
-apt-get install java
+#apt-get install java
 #yum install which -y
-apt-get install which
+#apt-get install which
 #yum install net-tools -y
-apt-get install net-tools
+apt-get install gnome-nettool
+apt-get install curl
 #https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 #Download and install Node.js
 if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
