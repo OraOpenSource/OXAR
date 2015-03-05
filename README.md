@@ -64,7 +64,7 @@ This script currently works on the following operating systems
   </tr>
   <tr>
     <td>Debian (pending)</td>
-    <td>7.0</td>
+    <td>7.8</td>
   </tr>
 </table>
 
