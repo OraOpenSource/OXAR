@@ -1,2 +1,4 @@
 # Enforce LF endings for all shell scripts
 *.sh text eol=lf
+*.xml text eol=lf
+init.d/* text eol=lf
