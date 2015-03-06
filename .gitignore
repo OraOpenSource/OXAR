@@ -1,2 +1,5 @@
 _ignore*
 *.screenflow
+
+### Vagrant ###
+.vagrant/
