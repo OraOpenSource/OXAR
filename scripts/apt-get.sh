@@ -14,8 +14,7 @@ apt-get install openjdk-7-jdk
 #yum install git -y
 apt-get install git-core
 #yum install firewalld -y
-apt-get remove ufw
-apt-get install firewall-applet
+apt-get install ufw
 #yum install java -y
 #apt-get install java
 #yum install which -y
