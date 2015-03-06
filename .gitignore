@@ -3,3 +3,5 @@ _ignore*
 
 ### Vagrant ###
 .vagrant/
+files/**
+!files/README.txt
