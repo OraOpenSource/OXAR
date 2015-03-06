@@ -1,0 +1,2 @@
+# Enforce LF endings for all shell scripts
+*.sh text=LF
