@@ -1,27 +1,27 @@
 #!/bin/bash
 #yum update -y
-apt-get update
+apt-get update -y
 #yum install unzip -y
-apt-get install unzip
+apt-get install unzip -y
 #yum install libaio -y
-apt-get install libaio1
+apt-get install libaio1 -y
 #yum install bc -y
-apt-get install bc
+apt-get install bc -y
 #yum install perl -y
-apt-get install perl
+apt-get install perl -y
 #yum install java-1.7.0-openjdk-src.x86_64 -y
-apt-get install openjdk-7-jdk
+apt-get install openjdk-7-jdk -y
 #yum install git -y
-apt-get install git-core
+apt-get install git-core -y
 #yum install firewalld -y
-apt-get install ufw
+apt-get install ufw -y
 #yum install java -y
 #apt-get install java
 #yum install which -y
 #apt-get install which
 #yum install net-tools -y
-apt-get install gnome-nettool
-apt-get install curl
+apt-get install gnome-nettool -y
+apt-get install curl -y
 #https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 #Download and install Node.js
 if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
@@ -30,7 +30,7 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   #curl -sL https://rpm.nodesource.com/setup | bash -
   curl -sL https://deb.nodesource.com/set | bash -
   #yum install -y nodejs
-  apt-get install nodejs
+  apt-get install nodejs -y
   #13: Bower support (since node.js will be installed by default)
   echo; echo \* Installing Bower \*; echo
   if [ "$(which bower)" == "" ]; then
