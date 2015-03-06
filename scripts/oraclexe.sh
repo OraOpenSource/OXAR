@@ -10,6 +10,10 @@ cd $OOS_SOURCE_DIR/tmp
 unzip $OOS_ORACLE_FILENAME
 cd Disk1
 if [ "$OOS_OS_TYPE" = "Debian" ]; then
+  rm -f /dev/shm
+  mkdir /dev/shm
+  mount -B /run/shm /dev/shm
+  touch /dev/shm/.oracle-shm
   alien --scripts -d $OOS_ORACLE_FILENAME_RPM
   dpkg --install oracle-xe_11.2.0-2_amd64.deb
 else
