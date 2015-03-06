@@ -11,6 +11,7 @@ unzip $OOS_ORACLE_FILENAME
 cd Disk1
 if [ "$OOS_OS_TYPE" = "Debian" ]; then
   alien --scripts -d $OOS_ORACLE_FILENAME_RPM
+  dpkg --install oracle-xe_11.2.0-2_amd64.deb
 else
   rpm -ivh $OOS_ORACLE_FILENAME_RPM
 fi
