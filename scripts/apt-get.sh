@@ -22,6 +22,7 @@ apt-get install ufw -y
 #yum install net-tools -y
 apt-get install gnome-nettool -y
 apt-get install curl -y
+apt-get install alien -y
 #https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 #Download and install Node.js
 if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
