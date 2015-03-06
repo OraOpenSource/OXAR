@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd $OOS_SOURCE_DIR
-if $OOS_OS_TYPE = "Debian" then
+if [ "$OOS_OS_TYPE" = "Debian" ]; then
   apt-get install gcc-c++
 else
   yum install gcc-c++ -y
