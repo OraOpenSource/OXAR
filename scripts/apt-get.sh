@@ -28,7 +28,7 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   echo; echo \* Installing NodeJS \*
   cd $OOS_SOURCE_DIR/tmp
   #curl -sL https://rpm.nodesource.com/setup | bash -
-  curl -sL https://deb.nodesource.com/set | bash -
+  curl -sL https://deb.nodesource.com/setup | bash -
   #yum install -y nodejs
   apt-get install nodejs -y
   #13: Bower support (since node.js will be installed by default)
