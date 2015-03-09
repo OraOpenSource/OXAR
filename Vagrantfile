@@ -23,9 +23,9 @@ Vagrant.configure(2) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 22, host: 49022
-  config.vm.network "forwarded_port", guest: 80, host: 49080
-  config.vm.network "forwarded_port", guest: 1521, host: 49521
+  config.vm.network "forwarded_port", guest: 22, host: 50022
+  config.vm.network "forwarded_port", guest: 80, host: 50080
+  config.vm.network "forwarded_port", guest: 1521, host: 50521
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -74,8 +74,9 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
   config.vm.provision "shell", inline: <<-SHELL
+    export OOS_DEPLOY_TYPE="VAGRANT"
+
     mkdir -p /tmp/vagrant-deploy
-    cd /tmp/vagrant-deploy
 
 	cp -R /vagrant/apex /tmp/vagrant-deploy/
 	cp -R /vagrant/init.d /tmp/vagrant-deploy/
@@ -86,8 +87,12 @@ Vagrant.configure(2) do |config|
 
     yum -y install perl
 	
-	perl -i -p -e "s/OOS_ORACLE_FILE_URL=CHANGEME/OOS_ORACLE_FILE_URL=file:\/\/\/vagrant\/files\/oracle-xe-11.2.0-1.0.x86_64.rpm.zip/g" config.sh
-    perl -i -p -e "s/OOS_APEX_FILE_URL=CHANGEME/OOS_APEX_FILE_URL=file:\/\/\/vagrant\/files\/apex_4.2.6.zip/g" config.sh
-    perl -i -p -e "s/OOS_ORDS_FILE_URL=CHANGEME/OOS_ORDS_FILE_URL=file:\/\/\/vagrant\/files\/ords.2.0.10.289.08.09.zip/g" config.sh
+    cd /tmp/vagrant-deploy
+
+	perl -i -p -e "s/OOS_ORACLE_FILE_URL=CHANGEME/OOS_ORACLE_FILE_URL=file:\\/\\/\\/vagrant\\/files\\/oracle-xe-11.2.0-1.0.x86_64.rpm.zip/g" config.sh
+    perl -i -p -e "s/OOS_APEX_FILE_URL=CHANGEME/OOS_APEX_FILE_URL=file:\\/\\/\\/vagrant\\/files\\/apex_4.2.6.zip/g" config.sh
+    perl -i -p -e "s/OOS_ORDS_FILE_URL=CHANGEME/OOS_ORDS_FILE_URL=file:\\/\\/\\/vagrant\\/files\\/ords.2.0.10.289.08.09.zip/g" config.sh
+
+    ./build.sh > /tmp/build.log
   SHELL
 end
