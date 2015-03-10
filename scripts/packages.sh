@@ -35,14 +35,16 @@ fi
 if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   echo; echo \* Installing NodeJS \*
   cd $OOS_SOURCE_DIR/tmp
-  curl -sL https://rpm.nodesource.com/setup | bash -
   if [ -n "$(command -v yum)" ]; then
+    curl -sL https://rpm.nodesource.com/setup | bash -
     yum install -y nodejs
   elif [ -n "$(command -v apt-get)" ]; then
+    curl -sL https://deb.nodesource.com/setup | bash -
     apt-get install nodejs -y
   else
     echo; echo \* No known package manager found \*
   fi
+  
   #13: Bower support (since node.js will be installed by default)
   echo; echo \* Installing Bower \*; echo
   if [ "$(which bower)" == "" ]; then
