@@ -6,11 +6,13 @@ echo; echo Config Validations; echo;
 
 # (don't modify the CHANGEME here)
 
-if [ "$OOS_OS_TYPE" = "" ]; then
-  echo OOS_OS_TYPE must be specified to RHEL or Debian
-  exit 1
+if [ -n "$(command -v yum)" ]; then
+  echo package manager is yum
+elif [ -n "$(command -v apt-get)" ]; then
+  echo package manager is apt-get
 else
-  echo OOS_OS_TYPE=$OOS_OS_TYPE
+  echo package manager cannot be detected
+  exit 1
 fi
 
 if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
