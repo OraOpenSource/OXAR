@@ -9,7 +9,9 @@ curl -O -C - $OOS_ORACLE_FILE_URL
 cd $OOS_SOURCE_DIR/tmp
 unzip $OOS_ORACLE_FILENAME
 cd Disk1
-if [ "$OOS_OS_TYPE" = "Debian" ]; then
+if [ -n "$(command -v yum)" ]; then
+  rpm -ivh $OOS_ORACLE_FILENAME_RPM
+elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* OS changes prior to install of DB \*; echo
   rm -f /dev/shm
   mkdir /dev/shm
@@ -20,10 +22,7 @@ if [ "$OOS_OS_TYPE" = "Debian" ]; then
   echo; echo \* Begin DB install \*; echo
   dpkg --install oracle-xe_11.2.0-2_amd64.deb
   echo; echo \* DB install complete \*; echo
-else
-  rpm -ivh $OOS_ORACLE_FILENAME_RPM
 fi
-
 
 #Silent configuration
 cd response/
