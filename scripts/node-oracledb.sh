@@ -1,10 +1,10 @@
 #!/bin/bash
 
 cd $OOS_SOURCE_DIR
-if [ "$OOS_OS_TYPE" = "Debian" ]; then
-  apt-get install gcc -y
-else
+if [ -n "$(command -v yum)" ]; then
   yum install gcc-c++ -y
+elif [ -n "$(command -v apt-get)" ]; then
+  apt-get install gcc -y
 fi
 
 git clone https://github.com/oracle/node-oracledb.git
