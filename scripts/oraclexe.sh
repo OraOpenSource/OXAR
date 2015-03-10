@@ -17,6 +17,9 @@ elif [ -n "$(command -v apt-get)" ]; then
   mkdir /dev/shm
   mount -B /run/shm /dev/shm
   touch /dev/shm/.oracle-shm
+  ln -s /usr/bin/awk /bin/awk
+  mkdir /var/lock/subsys
+  touch /var/lock/subsys/listener
   echo; echo \* convert RPM to DEB \*; echo
   alien --scripts -d $OOS_ORACLE_FILENAME_RPM
   echo; echo \* Begin DB install \*; echo
