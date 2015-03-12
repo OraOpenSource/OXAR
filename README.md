@@ -58,9 +58,13 @@ This script currently works on the following operating systems
     <td>Fedora</td>
     <td>21</td>
   </tr>
-    <tr>
+  <tr>
     <td>Oracle Enterprise Linux</td>
     <td>7.0</td>
+  </tr>
+  <tr>
+    <td>Debian (pending)</td>
+    <td>7.8</td>
   </tr>
 </table>
 
@@ -80,7 +84,12 @@ if [ "$(whoami)" != "root" ]; then
 fi
 
 cd /tmp
+
+# IF RHEL type OS
 yum install git -y
+# IF Debian type OS
+apt-get install git-core
+
 git clone https://github.com/OraOpenSource/oraclexe-apex.git
 cd oraclexe-apex
 ```
