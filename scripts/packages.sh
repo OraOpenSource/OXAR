@@ -18,6 +18,8 @@ elif [ -n "$(command -v apt-get)" ]; then
   apt-get update -y
   apt-get install unzip -y
   apt-get install libaio1 -y
+  apt-get install unixodbc -y
+  apt-get install openssh-server -y
   apt-get install bc -y
   apt-get install perl -y
   apt-get install openjdk-7-jdk -y
