@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 #Example from: http://stackoverflow.com/questions/5228345/bash-script-how-to-reference-a-file-for-variables
 
-
-
 #Module Options (Y/N)
 #CHANGEME (for the modules below)
 
@@ -10,8 +8,6 @@
 OOS_MODULE_ORACLE=Y
 #APEX=APEX, Tomcat, ORDS
 OOS_MODULE_APEX=Y
-
-
 
 #DO NOT modify these modules
 OOS_MODULE_ORDS=Y
@@ -32,14 +28,13 @@ if [ "$OOS_MODULE_APEX" = "N" ]; then
   OOS_MODULE_NODE4ORDS=N;
 fi;
 
-
 OOS_MODULE_NODE_ORACLEDB=Y
 if [ "$OOS_MODULE_ORACLE" = "N" ]; then
   OOS_MODULE_NODE_ORACLEDB=N;
 fi;
 
-
 echo \*\*\* Module Configuration \*\*\*
+echo OS: $OOS_OS_TYPE
 echo Oracle XE: $OOS_MODULE_ORACLE
 echo APEX: $OOS_MODULE_APEX
 echo ORDS: $OOS_MODULE_ORDS
@@ -47,8 +42,6 @@ echo Tomcat: $OOS_MODULE_TOMCAT
 echo Node4ORDS: $OOS_MODULE_NODE4ORDS
 echo Node.js: $OOS_MODULE_NODEJS
 echo Node-oracledb: $OOS_MODULE_NODE_ORACLEDB
-
-
 
 #System
 
@@ -66,7 +59,6 @@ OOS_ORACLE_FILE_URL=CHANGEME
 OOS_ORACLE_FILENAME=${OOS_ORACLE_FILE_URL##*/}
 OOS_ORACLE_FILENAME_RPM=${OOS_ORACLE_FILENAME%.*}
 
-
 #Create Oracle and APEX User (optional)
 #If Change to "N" to disable creating default Oracle User
 OOS_ORACLE_CREATE_USER_YN=Y
@@ -76,8 +68,6 @@ OOS_APEX_CREATE_USER_YN=Y
 OOS_APEX_USER_WORKSPACE=oos_user
 OOS_APEX_USER_NAME=oos_user
 OOS_APEX_USER_PASS=oracle
-
-
 
 #APEX Configs
 #URL to download APEX from
@@ -103,8 +93,6 @@ OOS_APEX_REST_PUB_USR_PWD=oracle
 OOS_ORDS_FILE_URL=CHANGEME
 OOS_ORDS_FILENAME=${OOS_ORDS_FILE_URL##*/}
 
-
-
 #TOMCAT config
 #Note: If not a tar.gz then remove the additional ".*" in OOS_TC_NAME
 OOS_TC_FILE_URL=https://s3-us-west-2.amazonaws.com/orclfiles/apache-tomcat-7.0.57.tar.gz
@@ -113,7 +101,6 @@ OOS_TC_NAME=${OOS_TC_FILENAME%.*.*}
 
 OOS_TC_USERNAME=tomcat
 OOS_TC_PWD=oracle
-
 
 #Call Validations
 source ./scripts/config_validation.sh

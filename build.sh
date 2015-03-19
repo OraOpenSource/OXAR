@@ -19,25 +19,21 @@
 #To edit a file on the server, simply type:
 #ratom <my_file> and then look in your Atom editor to modify
 
-
 #*** LINUX ***
 OOS_SOURCE_DIR=$PWD
 mkdir -p $OOS_SOURCE_DIR/tmp
 
 #Required packages and updates
 
-
 #Load configurations
 echo; echo \* Loading configurations \*; echo
 cd $OOS_SOURCE_DIR
 source ./config.sh
 
-
-#Yum updates
-echo; echo \* Running yum updates \*; echo
+#APT-GET/Yum updates
+echo; echo \* Running updates \*; echo
 cd $OOS_SOURCE_DIR
-source ./scripts/yum.sh
-
+source ./scripts/packages.sh
 
 #Install ratom (optional)
 echo; echo \* Installing ratom \*; echo
@@ -48,7 +44,6 @@ else
   echo ratom already installed
 fi
 
-
 #Oracle install
 if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
   #Expand swap
@@ -58,7 +53,7 @@ if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
 
   echo; echo \* Installing Oracle XE \*; echo
   cd $OOS_SOURCE_DIR
-  source ./scripts/oracexe.sh
+  source ./scripts/oraclexe.sh
 
   #Oracle config
   echo; echo \* Oracle Config \*; echo
@@ -77,14 +72,12 @@ if [ "$OOS_MODULE_APEX" = "Y" ]; then
   source ./scripts/apex_config.sh
 fi
 
-
 #12: Install Oracle Node driver
 if [ "$OOS_MODULE_NODE_ORACLEDB" = "Y" ]; then
   echo; echo \* Installing node-oracledb \*; echo
   cd $OOS_SOURCE_DIR
   source ./scripts/node-oracledb.sh
 fi
-
 
 #Node4ORDS
 if [ "$OOS_MODULE_NODE4ORDS" = "Y" ]; then
@@ -93,7 +86,6 @@ if [ "$OOS_MODULE_NODE4ORDS" = "Y" ]; then
   source ./scripts/node4ords.sh
 fi
 
-
 #Tomcat
 if [ "$OOS_MODULE_TOMCAT" = "Y" ]; then
   echo; echo \* Installing Tomcat \*; echo
@@ -101,13 +93,10 @@ if [ "$OOS_MODULE_TOMCAT" = "Y" ]; then
   source ./scripts/tomcat.sh
 fi
 
-
 #Firewalld
 echo; echo \* Configuring firewalld \*; echo
 cd $OOS_SOURCE_DIR
 source ./scripts/firewalld.sh
-
-
 
 #ORDS
 #This includes some manual intervention now
@@ -116,8 +105,6 @@ if [ "$OOS_MODULE_ORDS" = "Y" ]; then
   cd $OOS_SOURCE_DIR
   source ./scripts/ords.sh
 fi
-
-
 
 #*** CLEANUP ***
 # Leave files for now
