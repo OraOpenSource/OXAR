@@ -85,10 +85,14 @@ fi
 
 cd /tmp
 
-# IF RHEL type OS
-yum install git -y
-# IF Debian type OS
-apt-get install git-core
+#Install Git
+if [ -n "$(command -v yum)" ]; then
+  #RHEL type OS
+  yum install git -y
+else
+  #Debian type OS
+  apt-get install git-core
+fi
 
 git clone https://github.com/OraOpenSource/oraclexe-apex.git
 cd oraclexe-apex
