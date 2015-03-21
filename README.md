@@ -102,6 +102,9 @@ cd oraclexe-apex
 
 ```bash
 #Look for "CHANGEME" in this file
+#Hints for vi:
+#Type:<esc key>?CHANGEME   to search for CHANGEME
+#Once done modifying an entry, hit <esc> and type: n  to search for next entry
 vi config.sh
 ```
 
