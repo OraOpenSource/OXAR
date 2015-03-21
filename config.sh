@@ -93,6 +93,9 @@ OOS_APEX_REST_PUB_USR_PWD=oracle
 OOS_ORDS_FILE_URL=CHANGEME
 OOS_ORDS_FILENAME=${OOS_ORDS_FILE_URL##*/}
 
+OOS_ORDS_USERNAME=adminlistener
+OOS_ORDS_PASSWORD=oracle
+
 #TOMCAT config
 #Note: If not a tar.gz then remove the additional ".*" in OOS_TC_NAME
 OOS_TC_FILE_URL=https://s3-us-west-2.amazonaws.com/orclfiles/apache-tomcat-7.0.57.tar.gz

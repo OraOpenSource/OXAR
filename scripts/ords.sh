@@ -35,7 +35,9 @@ java -jar ords.war
 
 #SQL Developer administration
 echo; echo Manual input required for ORDS admin listener; echo
-java -jar ords.war user adminlistener "Listener Administrator"
+echo; password: $OOS_ORDS_PASSWORD
+echo;
+java -jar ords.war user $OOS_ORDS_USERNAME "Listener Administrator"
 
 #Deploy to Tomcat
 cd /usr/share/$OOS_TC_NAME/webapps
