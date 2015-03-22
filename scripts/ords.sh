@@ -35,7 +35,7 @@ java -jar ords.war
 
 #SQL Developer administration
 echo; echo Manual input required for ORDS admin listener; echo
-echo; password: $OOS_ORDS_PASSWORD
+echo; echo password: $OOS_ORDS_PASSWORD
 echo;
 java -jar ords.war user $OOS_ORDS_USERNAME "Listener Administrator"
 
