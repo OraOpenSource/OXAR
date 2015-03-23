@@ -1,3 +1,6 @@
+***This document is best viewed in [flatdoc format](http://oraopensource.github.io/flatdoc?repo=oraclexe-apex&path=README.md)***
+<a name="constants"></a>
+
 # Oracle XE & APEX
 The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handles the automatic build.
 
