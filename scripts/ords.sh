@@ -27,7 +27,6 @@ if [ "$OOS_DEPLOY_TYPE" == "VAGRANT" ];
     java -jar ords.war set-properties --conf apex_al /vagrant/ords/apex_al.properties
     java -jar ords.war set-properties --conf apex_rt /vagrant/ords/apex_rt.properties
   else
-    # Skip manual ORDS setup procedures
     echo; echo Manual input required for ORDS config; echo
     echo dbserver: localhost
     echo database listen port: $OOS_ORACLE_TNS_PORT
@@ -44,7 +43,9 @@ if [ "$OOS_DEPLOY_TYPE" == "VAGRANT" ];
 
     #SQL Developer administration
     echo; echo Manual input required for ORDS admin listener; echo
-    java -jar ords.war user adminlistener "Listener Administrator"
+    echo; echo password: $OOS_ORDS_PASSWORD
+    echo;
+    java -jar ords.war user $OOS_ORDS_USERNAME "Listener Administrator"
 fi;
 
 #Deploy to Tomcat

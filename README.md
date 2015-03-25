@@ -1,5 +1,8 @@
+***This document is best viewed in [flatdoc format](http://oraopensource.github.io/flatdoc?repo=oraclexe-apex&path=README.md)***
+<a name="constants"></a>
+
 # Oracle XE & APEX
-The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handles the automatic build.
+The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handle the automatic build.
 
 *Note: Currently this build is not recommended for production us as it lacks backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
 
@@ -85,10 +88,14 @@ fi
 
 cd /tmp
 
-# IF RHEL type OS
-yum install git -y
-# IF Debian type OS
-apt-get install git-core
+#Install Git
+if [ -n "$(command -v yum)" ]; then
+  #RHEL type OS
+  yum install git -y
+else
+  #Debian type OS
+  apt-get install git-core
+fi
 
 git clone https://github.com/OraOpenSource/oraclexe-apex.git
 cd oraclexe-apex
@@ -98,6 +105,9 @@ cd oraclexe-apex
 
 ```bash
 #Look for "CHANGEME" in this file
+#Hints for vi:
+#Type:<esc key>?CHANGEME   to search for CHANGEME
+#Once done modifying an entry, hit <esc> and type: n  to search for next entry
 vi config.sh
 ```
 
@@ -217,7 +227,7 @@ To connect to APEX go to http://&lt;server_name&gt;/ and it will direct you to t
     <td>INTERNAL</td>
     <td>admin</td>
     <td>Oracle1!</td>
-    <td>Workspace administor account</td>
+    <td>Workspace administrator account</td>
   </tr>
   <tr>
     <td>OOS_USER</td>
@@ -230,7 +240,7 @@ To connect to APEX go to http://&lt;server_name&gt;/ and it will direct you to t
 
 
 ### APEX Web Listener
-This project uses [Node4ORDS](https://github.com/OraOpenSource/node4ords) as a web listener. The Node4ORDS project provides the ability to server static content and will provide additional web server functionality. Please read its documentation for more information.
+This project uses [Node4ORDS](https://github.com/OraOpenSource/node4ords) as a web listener. The Node4ORDS project provides the ability to serve static content and will provide additional web server functionality. Please read its documentation for more information.
 
 Node4ORDS is install in ```/var/www/node4ords```. It can be controlled by:
 ```bash
@@ -340,7 +350,7 @@ ssh -R 52698:localhost:52698 <username>@<server_name_or_ip_address>
 ```
 *Note: Port 52698 is the default port and can be changed in the plugins settings in Atom*
 
-Once you're connect to edit a file locally simply type:
+Once you're connected, to edit a file locally, simply type:
 ```bash
 ratom <myfile>
 ```

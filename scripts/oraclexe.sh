@@ -9,7 +9,24 @@ curl -O -C - $OOS_ORACLE_FILE_URL
 cd $OOS_SOURCE_DIR/tmp
 unzip $OOS_ORACLE_FILENAME
 cd Disk1
-rpm -ivh $OOS_ORACLE_FILENAME_RPM
+if [ -n "$(command -v yum)" ]; then
+  rpm -ivh $OOS_ORACLE_FILENAME_RPM
+elif [ -n "$(command -v apt-get)" ]; then
+  echo; echo \* OS changes prior to install of DB \*; echo
+  rm -rf /dev/shm
+  mkdir /dev/shm
+  mount -t tmpfs shmfs -o size=2048m /dev/shm
+  #mount -B /run/shm /dev/shm
+  touch /dev/shm/.oracle-shm
+  ln -s /usr/bin/awk /bin/awk
+  mkdir /var/lock/subsys
+  touch /var/lock/subsys/listener
+  echo; echo \* convert RPM to DEB \*; echo
+  alien --scripts -d $OOS_ORACLE_FILENAME_RPM
+  echo; echo \* Begin DB install \*; echo
+  dpkg --install oracle-xe_11.2.0-2_amd64.deb
+  echo; echo \* DB install complete \*; echo
+fi
 
 #Silent configuration
 cd response/
@@ -21,7 +38,9 @@ perl -i -p -e "s/ORACLE_LISTENER_PORT=1521/ORACLE_LISTENER_PORT=$OOS_ORACLE_TNS_
 
 
 #/etc/init.d/oracle-xe configure responseFile=xe.rsp >> XEsilentinstall.log
+echo; echo \* begin DB configure \*; echo
 /etc/init.d/oracle-xe configure responseFile=xe.rsp
+echo; echo \* DB configure complete \*; echo
 
 #Configure env variables
 cd /u01/app/oracle/product/11.2.0/xe/bin
