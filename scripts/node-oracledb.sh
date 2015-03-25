@@ -15,7 +15,7 @@ export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
 
 npm install -g
 
-#Note: pathadd function added as part of yum.sh
+#Note: pathadd function added as part of packages.sh
 echo
 echo "" >> /etc/profile
 echo "export NODE_PATH=/usr/lib/node_modules" >> /etc/profile
