@@ -51,7 +51,7 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-    vb.cpus = "2"
+    vb.cpus = "1"
     vb.memory = "1024"
 
   end
@@ -78,20 +78,15 @@ Vagrant.configure(2) do |config|
 
     mkdir -p /tmp/vagrant-deploy
 
-	cp -R /vagrant/apex /tmp/vagrant-deploy/
-	cp -R /vagrant/init.d /tmp/vagrant-deploy/
-	cp -R /vagrant/oracle /tmp/vagrant-deploy/
-	cp -R /vagrant/scripts /tmp/vagrant-deploy/
-	cp /vagrant/build.sh /tmp/vagrant-deploy/
-	cp /vagrant/config.sh /tmp/vagrant-deploy/
+    #TODO: Why not copy everything?
+  	cp -R /vagrant/apex /tmp/vagrant-deploy/
+  	cp -R /vagrant/init.d /tmp/vagrant-deploy/
+  	cp -R /vagrant/oracle /tmp/vagrant-deploy/
+  	cp -R /vagrant/scripts /tmp/vagrant-deploy/
+  	cp /vagrant/build.sh /tmp/vagrant-deploy/
+  	cp /vagrant/config.sh /tmp/vagrant-deploy/
 
-    yum -y install perl
-	
     cd /tmp/vagrant-deploy
-
-	perl -i -p -e "s/OOS_ORACLE_FILE_URL=CHANGEME/OOS_ORACLE_FILE_URL=file:\\/\\/\\/vagrant\\/files\\/oracle-xe-11.2.0-1.0.x86_64.rpm.zip/g" config.sh
-    perl -i -p -e "s/OOS_APEX_FILE_URL=CHANGEME/OOS_APEX_FILE_URL=file:\\/\\/\\/vagrant\\/files\\/apex_4.2.6.zip/g" config.sh
-    perl -i -p -e "s/OOS_ORDS_FILE_URL=CHANGEME/OOS_ORDS_FILE_URL=file:\\/\\/\\/vagrant\\/files\\/ords.2.0.10.289.08.09.zip/g" config.sh
 
     ./build.sh > /tmp/build.log
   SHELL
