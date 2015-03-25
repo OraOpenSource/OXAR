@@ -71,15 +71,35 @@ This script currently works on the following operating systems
   </tr>
 </table>
 
-# Prebuilt Images
-Due to licensing issues, we can not provide a prebuilt image or appliance. As such you will need to manually build the VM yourself with the provided scripts.
+# Deployment Options
 
-If you are using Amazon AWS EC2, please be sure to follow the configuration steps listed <a href="docs/amazon_aws.md">here</a>.
+<table>
+  <tr>
+    <th>Option</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Native Build</td>
+    <td>This is the default option and assumes thats you will be running this script on the machine that it will be installed on. Common uses of this is to run in a VM or cloud machine.</td>
+  </tr>
+  <tr>
+    <td><a href="https://www.vagrantup.com/" target="_blank">Vagrant</a></td>
+    <td>Vagrant is a tool for building development environments. Some additional configuration is required when running this script with Vagrant. These changes are noted in the documentation</td>
+  </tr>
+  <tr>
+    <td>Prebuilt Images</td>
+    <td>Due to licensing issues, we can not provide a prebuilt image or appliance. As such you will need to manually build the VM yourself with the provided scripts.<br><br>
 
-# Manual Build
+If you are using Amazon AWS EC2, please be sure to follow the configuration steps listed <a href="docs/amazon_aws.md">here</a>.</td>
+  </tr>
+</table>
+
+# Build
 You can build your own vm with the following instructions.
 
 ## Download
+###Native Build
+
 ```bash
 #Ensure user is currently root
 if [ "$(whoami)" != "root" ]; then
@@ -101,13 +121,24 @@ git clone https://github.com/OraOpenSource/oraclexe-apex.git
 cd oraclexe-apex
 ```
 
+###Vagrant
+Run the following on your host machine *(you will need `git` installed on your host machine)*: 
+
+```bash
+git clone https://github.com/OraOpenSource/oraclexe-apex.git
+cd oraclexe-apex
+```
+
 ## Configure
+
+*If doing a Vagrant install can modify `config.sh` in your local text editor.*
 
 ```bash
 #Look for "CHANGEME" in this file
 #Hints for vi:
 #Type:<esc key>?CHANGEME   to search for CHANGEME
 #Once done modifying an entry, hit <esc> and type: n  to search for next entry
+#Read below for help on modifying this file
 vi config.sh
 ```
 
@@ -148,6 +179,13 @@ You can copy files from your local machine to the remote server easily using ```
 scp oracle-xe-11.2.0-1.0.x86_64.rpm.zip username@servername.com:/tmp
 ```
 
+####Files-Vagrant
+Vagrant automatically maps your current folder to `/vagrant` on its VM. You can copy your files to the `oraclexe_apex` directory (on your host machine) and reference them with `/vagrant/<filename>` Example:
+
+```bash
+OOS_ORACLE_FILE_URL=file:///vagrant/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+```
+
 ### Modules
 You can optionally chose which modules you want installed. This install supports the following optional modules which can be modified in ```config.sh```
 
@@ -172,11 +210,23 @@ You can optionally chose which modules you want installed. This install supports
 ### APEX
 There are additional APEX configurations that you may want to make in the ```scripts/apex_config.sql``` file. You can run them later on or manually configure them in the APEX admin account.
 
+###Vagrant
+By default you don't need to configure anything, however you may want to modify various things about your Vagrant machine. To do so, modify `Vagrantfile`.
+
 ## Build
 To build the server run the following commands. It is very important that you run it starting from the same folder that it resides in.
+
+###Native Install
+
 ```bash
 #If installing APEX/ORDS, you will be prompted for some configuration options at some point (issue #2)
 . build.sh
+```
+
+###Vagrant
+
+```bash
+vagrant up
 ```
 
 # How to connect
