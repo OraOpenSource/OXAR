@@ -112,6 +112,9 @@ fi
 # cd $OOS_SOURCE_DIR
 # rm -rf tmp
 
-#Reboot
-echo Rebooting in: ; for i in {15..1..1};do echo -n "$i." && sleep 1; done
-shutdown -r now
+#Reboot if not deployed through Vagrant.
+if [ "$OOS_DEPLOY_TYPE" != "VAGRANT" ]; 
+  then 
+    echo Rebooting in: ; for i in {15..1..1};do echo -n "$i." && sleep 1; done
+    shutdown -r now
+fi;

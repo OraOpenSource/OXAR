@@ -1,2 +1,7 @@
 _ignore*
 *.screenflow
+
+### Vagrant ###
+.vagrant/
+files/**
+!files/README.txt
