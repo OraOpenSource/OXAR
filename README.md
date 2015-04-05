@@ -180,10 +180,11 @@ scp oracle-xe-11.2.0-1.0.x86_64.rpm.zip username@servername.com:/tmp
 ```
 
 ####Files-Vagrant
-Vagrant automatically maps your current folder to `/vagrant` on its VM. You can copy your files to the `oraclexe_apex` directory (on your host machine) and reference them with `/vagrant/<filename>` Example:
+Vagrant automatically maps your current folder to `/vagrant` on its VM. You can copy your files to the subdirectory `files` in `oraclexe_apex` (on your host machine) and reference them with `/vagrant/files/<filename>`. The `files` subdirectory has been added to [.gitignore](.gitignore) to exclude the installation files from version control.
 
+Example:
 ```bash
-OOS_ORACLE_FILE_URL=file:///vagrant/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+OOS_ORACLE_FILE_URL=file:///vagrant/files/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 ```
 
 ### Modules
@@ -325,7 +326,7 @@ You can then access Tomcat via http://&lt;server_name&gt;:8080 and Tomcat Manage
     <th>Description</th>
   </tr>
   <tr>
-    <td>tomat</td>
+    <td>tomcat</td>
     <td>oracle</td>
     <td>Admin account</td>
   </tr>
@@ -387,8 +388,34 @@ The default port settings are as follows:
   	<td>Disabled by default</td>
   </tr>
 </table>
-
-
+## Vagrant Port Mapping
+The following ports are mapped to the host and can be configured in [Vagrantfile](Vagrantfile):
+<table>
+  <tr>
+    <th>Port</th>
+    <th>Host Port</th>
+    <th>Service</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+  	<td>22</td>
+    <td>50022</td>
+  	<td>SSH</td>
+  	<td>An additional port may be assigned by Vagrant.</td>
+  </tr>
+  <tr>
+  	<td>80</td>
+    <td>50080</td>
+  	<td>Node.js</td>
+  	<td>HTTP Server</td>
+  </tr>
+  <tr>
+    <td>1521</td>
+    <td>50521</td>
+    <td>Oracle SQL connection</td>
+  	<td></td>
+   </tr>
+</table>
 
 # Other
 ## Editing server files locally

@@ -79,12 +79,12 @@ Vagrant.configure(2) do |config|
     mkdir -p /tmp/vagrant-deploy
 
     #TODO: Why not copy everything?
-  	cp -R /vagrant/apex /tmp/vagrant-deploy/
-  	cp -R /vagrant/init.d /tmp/vagrant-deploy/
-  	cp -R /vagrant/oracle /tmp/vagrant-deploy/
-  	cp -R /vagrant/scripts /tmp/vagrant-deploy/
-  	cp /vagrant/build.sh /tmp/vagrant-deploy/
-  	cp /vagrant/config.sh /tmp/vagrant-deploy/
+    cp -R /vagrant/apex /tmp/vagrant-deploy/
+    cp -R /vagrant/init.d /tmp/vagrant-deploy/
+    cp -R /vagrant/oracle /tmp/vagrant-deploy/
+    cp -R /vagrant/scripts /tmp/vagrant-deploy/
+    cp /vagrant/build.sh /tmp/vagrant-deploy/
+    cp /vagrant/config.sh /tmp/vagrant-deploy/
 
     cd /tmp/vagrant-deploy
 
