@@ -388,7 +388,7 @@ The default port settings are as follows:
   </tr>
 </table>
 ## Vagrant Port Mapping
-The following ports are mapped to the host and can be configured in [a relative link](Vagrantfile):
+The following ports are mapped to the host and can be configured in [Vagrantfile](Vagrantfile):
 <table>
   <tr>
     <th>Port</th>
