@@ -325,7 +325,7 @@ You can then access Tomcat via http://&lt;server_name&gt;:8080 and Tomcat Manage
     <th>Description</th>
   </tr>
   <tr>
-    <td>tomat</td>
+    <td>tomcat</td>
     <td>oracle</td>
     <td>Admin account</td>
   </tr>
@@ -387,8 +387,34 @@ The default port settings are as follows:
   	<td>Disabled by default</td>
   </tr>
 </table>
-
-
+## Vagrant Port Mapping
+The following ports are mapped to the host and can be configured in [a relative link](Vagrantfile):
+<table>
+  <tr>
+    <th>Port</th>
+    <th>Host Port</th>
+    <th>Service</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+  	<td>22</td>
+    <td>50022</td>
+  	<td>SSH</td>
+  	<td>An additional port may be assigned by Vagrant.</td>
+  </tr>
+  <tr>
+  	<td>80</td>
+    <td>50080</td>
+  	<td>Node.js</td>
+  	<td>HTTP Server</td>
+  </tr>
+  <tr>
+    <td>1521</td>
+    <td>50521</td>
+    <td>Oracle SQL connection</td>
+  	<td></td>
+   </tr>
+</table>
 
 # Other
 ## Editing server files locally
