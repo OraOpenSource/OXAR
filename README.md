@@ -180,10 +180,11 @@ scp oracle-xe-11.2.0-1.0.x86_64.rpm.zip username@servername.com:/tmp
 ```
 
 ####Files-Vagrant
-Vagrant automatically maps your current folder to `/vagrant` on its VM. You can copy your files to the `oraclexe_apex` directory (on your host machine) and reference them with `/vagrant/<filename>` Example:
+Vagrant automatically maps your current folder to `/vagrant` on its VM. You can copy your files to the subdirectory `files` in `oraclexe_apex` (on your host machine) and reference them with `/vagrant/files/<filename>`. The `files` subdirectory has been added to [.gitignore](.gitignore) to exclude the installation files from version control.
 
+Example:
 ```bash
-OOS_ORACLE_FILE_URL=file:///vagrant/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+OOS_ORACLE_FILE_URL=file:///vagrant/files/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 ```
 
 ### Modules
