@@ -372,13 +372,13 @@ The default port settings are as follows:
   <tr>
     <td>1521</td>
     <td>Oracle SQL connection</td>
-    <td>No</td>
+    <td>Optional (deafault: No)</td>
   	<td></td>
    </tr>
   <tr>
   	<td>8080</td>
   	<td>Tomcat</td>
-  	<td>No</td>
+  	<td>Optional (deafault: No)</td>
   	<td></td>
   </tr>
   <tr>
@@ -388,6 +388,9 @@ The default port settings are as follows:
   	<td>Disabled by default</td>
   </tr>
 </table>
+
+Open Optional ports can be configured in`config.sh` in the `FIREWALL` section. If you want to modify these values post install open `scripts/firewalld.sh` and look for examples on how to open (both temporarily and permanently).
+
 ## Vagrant Port Mapping
 The following ports are mapped to the host and can be configured in [Vagrantfile](Vagrantfile):
 <table>
