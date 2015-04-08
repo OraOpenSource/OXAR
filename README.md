@@ -392,7 +392,7 @@ The default port settings are as follows:
 Open Optional ports can be configured in`config.sh` in the `FIREWALL` section. If you want to modify the firewall settings after running the build script, open `scripts/firewalld.sh` and look for examples on how to open (both temporarily and permanently).
 
 ## Vagrant Port Mapping
-The following ports are mapped to the host and can be configured in [Vagrantfile](Vagrantfile):
+The following ports are mapped to the host and can be configured in [Vagrantfile](Vagrantfile) [Port Configurations]:
 <table>
   <tr>
     <th>Port</th>
