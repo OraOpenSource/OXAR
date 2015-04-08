@@ -372,13 +372,13 @@ The default port settings are as follows:
   <tr>
     <td>1521</td>
     <td>Oracle SQL connection</td>
-    <td>Optional (deafault: No)</td>
+    <td>Optional (default: No)</td>
   	<td></td>
    </tr>
   <tr>
   	<td>8080</td>
   	<td>Tomcat</td>
-  	<td>Optional (deafault: No)</td>
+  	<td>Optional (default: No)</td>
   	<td></td>
   </tr>
   <tr>
@@ -416,8 +416,8 @@ The following ports are mapped to the host and can be configured in [Vagrantfile
     <td>1521</td>
     <td>50521</td>
     <td>Oracle SQL connection</td>
-  	<td></td>
-   </tr>
+  	<td>The port is mapped but usable only if permitted by [firewall rules](#port-configurations).</td>
+  </tr>
 </table>
 
 # Other
