@@ -106,5 +106,12 @@ OOS_TC_NAME=${OOS_TC_FILENAME%.*.*}
 OOS_TC_USERNAME=tomcat
 OOS_TC_PWD=oracle
 
+
+#FIREWALL Config
+#Change these to Y to allow public access to their ports
+OOS_FIREWALL_TOMCAT_YN=N
+OOS_FIREWALL_ORACLE_YN=N
+
+
 #Call Validations
 source ./scripts/config_validation.sh
