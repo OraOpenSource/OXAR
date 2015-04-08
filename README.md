@@ -416,7 +416,7 @@ The following ports are mapped to the host and can be configured in [Vagrantfile
     <td>1521</td>
     <td>50521</td>
     <td>Oracle SQL connection</td>
-  	<td>The port is mapped but usable only if permitted by firewall rules (see [Port Configurations]).</td>
+  	<td>The port is mapped but usable only if permitted by firewall rules, see [Port Configurations].</td>
   </tr>
 </table>
 
