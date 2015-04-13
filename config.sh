@@ -62,6 +62,8 @@ OOS_ORACLE_FILENAME_RPM=${OOS_ORACLE_FILENAME%.*}
 #Create Oracle and APEX User (optional)
 #If Change to "N" to disable creating default Oracle User
 OOS_ORACLE_CREATE_USER_YN=Y
+#Create the default emp and dept tables
+OOS_ORACLE_CREATE_USER_DEMO_DATA_YN=Y
 OOS_ORACLE_USER_NAME=oos_user
 OOS_ORACLE_USER_PASS=oracle
 OOS_APEX_CREATE_USER_YN=Y
