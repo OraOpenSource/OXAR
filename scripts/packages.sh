@@ -46,7 +46,7 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   else
     echo; echo \* No known package manager found \*
   fi
-  
+
   #13: Bower support (since node.js will be installed by default)
   echo; echo \* Installing Bower \*; echo
   if [ "$(which bower)" == "" ]; then
@@ -70,3 +70,15 @@ echo "pathadd /usr/local/bin" >> /etc/profile
 echo "" >> /etc/profile
 #rerun profile to load full path
 . /etc/profile
+
+
+
+#Install rlwrap
+cd $OOS_SOURCE_DIR/linux
+tar -xzvf $OOS_RLWRAP_FILENAME
+cd $OOS_RLWRAP_NAME
+./configure
+make
+make install
+cd ..
+rm -rf $OOS_RLWRAP_NAME

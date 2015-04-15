@@ -115,5 +115,9 @@ OOS_FIREWALL_TOMCAT_YN=N
 OOS_FIREWALL_ORACLE_YN=N
 
 
+#RLWRAP: https://github.com/hanslub42/rlwrap
+OOS_RLWRAP_FILENAME=rlwrap-0.42.tar.gz
+OOS_RLWRAP_NAME=${OOS_RLWRAP_FILENAME%.*.*}
+
 #Call Validations
 source ./scripts/config_validation.sh
