@@ -13,6 +13,11 @@ if [ -n "$(command -v yum)" ]; then
   yum install java -y
   yum install which -y
   yum install net-tools -y
+
+  #required for rlwrap
+  yum install epel-release -y
+  yum install rlwrap -y
+
 elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* Installing packages with apt-get \*
   apt-get update -y
@@ -28,6 +33,7 @@ elif [ -n "$(command -v apt-get)" ]; then
   apt-get install gnome-nettool -y
   apt-get install curl -y
   apt-get install alien -y
+  apt-get install rlwrap -y
 else
   echo; echo \* No known package manager found \*
 fi
@@ -70,15 +76,3 @@ echo "pathadd /usr/local/bin" >> /etc/profile
 echo "" >> /etc/profile
 #rerun profile to load full path
 . /etc/profile
-
-
-
-#Install rlwrap
-cd $OOS_SOURCE_DIR/linux
-tar -xzvf $OOS_RLWRAP_FILENAME
-cd $OOS_RLWRAP_NAME
-./configure
-make
-make install
-cd ..
-rm -rf $OOS_RLWRAP_NAME
