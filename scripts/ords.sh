@@ -21,14 +21,14 @@ java -jar ords.war configdir /ords/conf
 #ORDS2
 if [ "$OOS_DEPLOY_TYPE" == "VAGRANT" ]; then
   #Replace mnemonics
-  perl -i -p -e "s/OOS_APEX_PUB_USR_PWD/$OOS_APEX_PUB_USR_PWD/g" ../ords/defaults.properties
-  perl -i -p -e "s/OOS_ORACLE_TNS_PORT/$OOS_ORACLE_TNS_PORT/g" ../ords/defaults.properties
+  perl -i -p -e "s/OOS_APEX_PUB_USR_PWD/$OOS_APEX_PUB_USR_PWD/g" $OOS_SOURCE_DIR/ords/defaults.properties
+  perl -i -p -e "s/OOS_ORACLE_TNS_PORT/$OOS_ORACLE_TNS_PORT/g" $OOS_SOURCE_DIR/ords/defaults.properties
 
   # Attempt silent ORDS configuration if provisioned though Vagrant
-  java -jar ords.war set-properties --conf defaults /vagrant/ords/defaults.properties
-  java -jar ords.war set-properties --conf apex /vagrant/ords/apex.properties
-  java -jar ords.war set-properties --conf apex_al /vagrant/ords/apex_al.properties
-  java -jar ords.war set-properties --conf apex_rt /vagrant/ords/apex_rt.properties
+  java -jar ords.war set-properties --conf defaults $OOS_SOURCE_DIR/ords/defaults.properties
+  java -jar ords.war set-properties --conf apex $OOS_SOURCE_DIR/ords/apex.properties
+  java -jar ords.war set-properties --conf apex_al $OOS_SOURCE_DIR/ords/apex_al.properties
+  java -jar ords.war set-properties --conf apex_rt $OOS_SOURCE_DIR/ords/apex_rt.properties
 else
   echo; echo Manual input required for ORDS config; echo
   echo dbserver: localhost
@@ -38,8 +38,8 @@ else
   echo Enter the db user name: APEX_PUBLIC_USER
   echo Enter the db password for APEX_PUBLIC_USER: $OOS_APEX_PUB_USR_PWD
   echo Confirm password: $OOS_APEX_PUB_USR_PWD
-  echo Enter 1 for pwds for RESTful Services db users, 2 use the same pwd as used for APEX_PUBLIC_USER, 3 to skip this step :2
-  echo Enter 1 if to start in standalone mode, 2 to exit:2
+  echo Enter 1 for pwds for RESTful Services db users, 2 use the same pwd as used for APEX_PUBLIC_USER, 3 to skip this step: 2
+  echo Enter 1 if to start in standalone mode, 2 to exit: 2
   echo
 
   java -jar ords.war
@@ -47,6 +47,7 @@ else
   #SQL Developer administration
   echo; echo Manual input required for ORDS admin listener; echo
   echo; echo password: $OOS_ORDS_PASSWORD
+  echo confirm password: $OOS_ORDS_PASSWORD
   echo;
   java -jar ords.war user $OOS_ORDS_USERNAME "Listener Administrator"
 fi;

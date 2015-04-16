@@ -53,7 +53,11 @@ Vagrant.configure(2) do |config|
   #   # Customize the amount of memory on the VM:
     vb.cpus = "1"
     vb.memory = "1024"
+    
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
+    # Disable the following after the VM has been successfully provisioned 
+    config.vbguest.auto_update = false
   end
   #
   # View the documentation for the provider you are using for more
@@ -79,8 +83,10 @@ Vagrant.configure(2) do |config|
     mkdir -p /tmp/vagrant-deploy
 
     cp -R /vagrant/apex /tmp/vagrant-deploy/
+    cp -R /vagrant/firewalld /tmp/vagrant-deploy/
     cp -R /vagrant/init.d /tmp/vagrant-deploy/
     cp -R /vagrant/oracle /tmp/vagrant-deploy/
+    cp -R /vagrant/ords /tmp/vagrant-deploy/
     cp -R /vagrant/scripts /tmp/vagrant-deploy/
     cp /vagrant/build.sh /tmp/vagrant-deploy/
     cp /vagrant/config.sh /tmp/vagrant-deploy/

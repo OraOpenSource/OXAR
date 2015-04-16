@@ -25,7 +25,7 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
   <tr>
     <td>APEX</td>
     <td>5.0.0.00.31</td>
-    <td>Any version of APEX will work with the current setup. You just need to modify the config file accordingly</td>
+    <td>Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in config.sh</td>
   </tr>
   <tr>
     <td>ORDS</td>
@@ -233,8 +233,8 @@ vagrant up
 # How to connect
 
 ## Oracle / SQL*Plus
-Since direct connections to the database aren't encrypted you will need to tunnel your connection over SSH. Jeff Smith has a good example on [how to connect using SQL Developer](http://www.thatjeffsmith.com/archive/2014/09/30-sql-developer-tips-in-30-days-day-17-using-ssh-tunnels/).
 
+They're many different ways to connec to Oracle with SQL*Plus. The [How to Connect to Oracle](docs/connect_oracle.md) document covers them.
 <table>
   <tr>
     <th>Username</th>
