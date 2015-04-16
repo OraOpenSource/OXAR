@@ -233,8 +233,8 @@ vagrant up
 # How to connect
 
 ## Oracle / SQL*Plus
-Since direct connections to the database aren't encrypted you will need to tunnel your connection over SSH. Jeff Smith has a good example on [how to connect using SQL Developer](http://www.thatjeffsmith.com/archive/2014/09/30-sql-developer-tips-in-30-days-day-17-using-ssh-tunnels/).
 
+They're many different ways to connec to Oracle with SQL*Plus. The [How to Connect to Oracle](docs/connect_oracle.md) document covers them.
 <table>
   <tr>
     <th>Username</th>
