@@ -25,7 +25,7 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
   <tr>
     <td>APEX</td>
     <td>5.0.0.00.31</td>
-    <td>Any version of APEX will work with the current setup. You just need to modify the config file accordingly</td>
+    <td>Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in config.sh</td>
   </tr>
   <tr>
     <td>ORDS</td>
