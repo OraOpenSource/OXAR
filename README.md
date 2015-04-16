@@ -24,7 +24,7 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
   </tr>
   <tr>
     <td>APEX</td>
-    <td>4.2.6.00.03</td>
+    <td>5.0.0.00.31</td>
     <td>Any version of APEX will work with the current setup. You just need to modify the config file accordingly</td>
   </tr>
   <tr>

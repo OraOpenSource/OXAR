@@ -13,6 +13,11 @@ if [ -n "$(command -v yum)" ]; then
   yum install java -y
   yum install which -y
   yum install net-tools -y
+
+  #required for rlwrap
+  yum install epel-release -y
+  yum install rlwrap -y
+
 elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* Installing packages with apt-get \*
   apt-get update -y
@@ -28,6 +33,7 @@ elif [ -n "$(command -v apt-get)" ]; then
   apt-get install gnome-nettool -y
   apt-get install curl -y
   apt-get install alien -y
+  apt-get install rlwrap -y
 else
   echo; echo \* No known package manager found \*
 fi
@@ -46,7 +52,7 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   else
     echo; echo \* No known package manager found \*
   fi
-  
+
   #13: Bower support (since node.js will be installed by default)
   echo; echo \* Installing Bower \*; echo
   if [ "$(which bower)" == "" ]; then
