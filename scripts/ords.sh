@@ -38,8 +38,8 @@ else
   echo Enter the db user name: APEX_PUBLIC_USER
   echo Enter the db password for APEX_PUBLIC_USER: $OOS_APEX_PUB_USR_PWD
   echo Confirm password: $OOS_APEX_PUB_USR_PWD
-  echo Enter 1 for pwds for RESTful Services db users, 2 use the same pwd as used for APEX_PUBLIC_USER, 3 to skip this step :2
-  echo Enter 1 if to start in standalone mode, 2 to exit:2
+  echo Enter 1 for pwds for RESTful Services db users, 2 use the same pwd as used for APEX_PUBLIC_USER, 3 to skip this step: 2
+  echo Enter 1 if to start in standalone mode, 2 to exit: 2
   echo
 
   java -jar ords.war
@@ -47,6 +47,7 @@ else
   #SQL Developer administration
   echo; echo Manual input required for ORDS admin listener; echo
   echo; echo password: $OOS_ORDS_PASSWORD
+  echo confirm password: $OOS_ORDS_PASSWORD
   echo;
   java -jar ords.war user $OOS_ORDS_USERNAME "Listener Administrator"
 fi;
