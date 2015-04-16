@@ -80,6 +80,8 @@ OOS_APEX_FILE_URL=CHANGEME
 OOS_APEX_ZIP_FILENAME=${OOS_APEX_FILE_URL##*/}
 #Note: APEX admin password has rules associated with it, which is why it is a more complicated password
 #Note: If deploying through Vagrant, please do not change the passwords below. You may do so after provisioning has completed.
+OOS_APEX_ADMIN_USER_NAME=admin
+OOS_APEX_ADMIN_EMAIL=admin@domain.com
 OOS_APEX_ADMIN_PWD=Oracle1!
 OOS_APEX_PUB_USR_PWD=oracle
 
