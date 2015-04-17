@@ -56,8 +56,10 @@ Vagrant.configure(2) do |config|
     
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
-    # Disable the following after the VM has been successfully provisioned 
-    config.vbguest.auto_update = false
+    if Vagrant.has_plugin?("vagrant-vbguest")
+      # Set the following to 'true' after the VM has been successfully provisioned 
+      config.vbguest.auto_update = false
+    end
   end
   #
   # View the documentation for the provider you are using for more
