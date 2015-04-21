@@ -44,8 +44,5 @@ else
   OOS_TC_NAME=${OOS_TC_FILENAME%.*}
 fi
 
-echo T0: $OOS_TC_FILE_URL
-echo T1: $OOS_TC_NAME
-
 #Call Validations
 source ./scripts/config_validation.sh
