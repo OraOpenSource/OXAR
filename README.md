@@ -1,3 +1,5 @@
+[![Analytics](https://ga-beacon.appspot.com/UA-59573016-4/oraclexe-apex/README.md)](https://github.com/igrigorik/ga-beacon?pixel)
+
 ***This document is best viewed in [flatdoc format](http://oraopensource.github.io/flatdoc?repo=oraclexe-apex&path=README.md)***
 <a name="constants"></a>
 
