@@ -5,11 +5,11 @@ source config.properties
 
 if [ "$OOS_MODULE_APEX" = "N" ]; then
   OOS_MODULE_ORDS=N;
-  OOS_MODULE_TOMCAT=N;  
-  OOS_MODULE_NODE4ORDS=N;  
+  OOS_MODULE_TOMCAT=N;
+  OOS_MODULE_NODE4ORDS=N;
 else
   OOS_MODULE_ORDS=Y;
-  OOS_MODULE_TOMCAT=Y;  
+  OOS_MODULE_TOMCAT=Y;
 fi;
 
 #Always install Node.js
@@ -34,8 +34,18 @@ OOS_ORACLE_FILENAME_RPM=${OOS_ORACLE_FILENAME%.*}
 OOS_APEX_ZIP_FILENAME=${OOS_APEX_FILE_URL##*/}
 OOS_ORDS_FILENAME=${OOS_ORDS_FILE_URL##*/}
 OOS_TC_FILENAME=${OOS_TC_FILE_URL##*/}
-OOS_TC_NAME=${OOS_TC_FILENAME%.*.*}
+
 OOS_RLWRAP_NAME=${OOS_RLWRAP_FILENAME%.*.*}
+
+#Get the filename excluding the extension
+if [[ ${OOS_TC_FILENAME} == *.tar.gz ]]; then
+  OOS_TC_NAME=${OOS_TC_FILENAME%.*.*}
+else
+  OOS_TC_NAME=${OOS_TC_FILENAME%.*}
+fi
+
+echo T0: $OOS_TC_FILE_URL
+echo T1: $OOS_TC_NAME
 
 #Call Validations
 source ./scripts/config_validation.sh
