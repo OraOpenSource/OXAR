@@ -25,7 +25,7 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
   <tr>
     <td>APEX</td>
     <td>5.0.0.00.31</td>
-    <td>Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in config.sh</td>
+    <td>Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in config.properties</td>
   </tr>
   <tr>
     <td>ORDS</td>
@@ -122,7 +122,7 @@ cd oraclexe-apex
 ```
 
 ###Vagrant
-Run the following on your host machine *(you will need `git` installed on your host machine)*: 
+Run the following on your host machine *(you will need `git` installed on your host machine)*:
 
 ```bash
 git clone https://github.com/OraOpenSource/oraclexe-apex.git
@@ -131,7 +131,7 @@ cd oraclexe-apex
 
 ## Configure
 
-*If doing a Vagrant install can modify `config.sh` in your local text editor.*
+*If doing a Vagrant install can modify `config.properties` in your local text editor.*
 
 ```bash
 #Look for "CHANGEME" in this file
@@ -139,7 +139,7 @@ cd oraclexe-apex
 #Type:<esc key>?CHANGEME   to search for CHANGEME
 #Once done modifying an entry, hit <esc> and type: n  to search for next entry
 #Read below for help on modifying this file
-vi config.sh
+vi config.properties
 ```
 
 ### Files
@@ -188,7 +188,7 @@ OOS_ORACLE_FILE_URL=file:///vagrant/files/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 ```
 
 ### Modules
-You can optionally chose which modules you want installed. This install supports the following optional modules which can be modified in ```config.sh```
+You can optionally chose which modules you want installed. This install supports the following optional modules which can be modified in ```config.properties```
 
 <table>
   <tr>
@@ -301,7 +301,7 @@ Node4ORDS is install in ```/var/www/node4ords```. It can be controlled by:
 /etc/init.d/node4ords status
 ```
 
-Static content can be put in ```/var/www/node4ords/public/``` and referenced by http://&lt;server_name&gt;/public/&lt;filepath&gt;
+Static content can be put in ```/var/www/public/``` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listner configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
 
 ### ORDS
 ORDS is located in ```/ords```
@@ -389,7 +389,7 @@ The default port settings are as follows:
   </tr>
 </table>
 
-Open Optional ports can be configured in`config.sh` in the `FIREWALL` section. If you want to modify the firewall settings after running the build script, open `scripts/firewalld.sh` and look for examples on how to open (both temporarily and permanently).
+Open Optional ports can be configured in`config.properties` in the `FIREWALL` section. If you want to modify the firewall settings after running the build script, open `scripts/firewalld.sh` and look for examples on how to open (both temporarily and permanently).
 
 ## Vagrant Port Mapping
 The following ports are mapped to the host and can be configured in [Vagrantfile](Vagrantfile):
