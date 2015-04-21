@@ -92,6 +92,7 @@ Vagrant.configure(2) do |config|
     cp -R /vagrant/scripts /tmp/vagrant-deploy/
     cp /vagrant/build.sh /tmp/vagrant-deploy/
     cp /vagrant/config.sh /tmp/vagrant-deploy/
+    cp /vagrant/config.properties /tmp/vagrant-deploy/
 
     cd /tmp/vagrant-deploy
 
