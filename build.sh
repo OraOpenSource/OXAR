@@ -35,7 +35,7 @@ echo; echo \* Running updates \*; echo
 cd $OOS_SOURCE_DIR
 source ./scripts/packages.sh
 
-#Install ratom (optional)
+#Install ratom
 echo; echo \* Installing ratom \*; echo
 if [ "$(which ratom)" == "" ]; then
   cd $OOS_SOURCE_DIR
@@ -113,8 +113,8 @@ fi
 # rm -rf tmp
 
 #Reboot if not deployed through Vagrant.
-if [ "$OOS_DEPLOY_TYPE" != "VAGRANT" ]; 
-  then 
+if [ "$OOS_DEPLOY_TYPE" != "VAGRANT" ];
+  then
     echo Rebooting in: ; for i in {15..1..1};do echo -n "$i." && sleep 1; done
     shutdown -r now
 fi;
