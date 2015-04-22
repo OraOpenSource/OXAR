@@ -20,6 +20,25 @@
 #ratom <my_file> and then look in your Atom editor to modify
 
 #*** LINUX ***
+
+#Parsing arguments adapted from: http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
+VERBOSE_OUT=false
+while [[ $# > 0 ]]; do
+  key="$1" 
+  echo $key
+  case $key in
+    -v|--verbose)
+      VERBOSE_OUT=true
+      echo "set vb true"
+      ;;
+    *)
+      echo "Unsupported flag: $key"
+      exit 2;
+  esac
+
+  shift 
+done
+
 OOS_SOURCE_DIR=$PWD
 mkdir -p $OOS_SOURCE_DIR/tmp
 
