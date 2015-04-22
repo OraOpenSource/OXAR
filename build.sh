@@ -2,6 +2,7 @@
 
 INSTALL_LOG=logs/install.log
 ERROR_LOG=logs/error.log
+mkdir -p logs
 
 #Parsing arguments adapted from: http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 VERBOSE_OUT=false
