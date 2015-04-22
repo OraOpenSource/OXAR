@@ -1,4 +1,4 @@
-***This document is best viewed in [flatdoc format](http://oraopensource.github.io/flatdoc?repo=oraclexe-apex&path=README.md)***
+[![Analytics](https://ga-beacon.appspot.com/UA-59573016-4/oraclexe-apex/README.md?pixel)](https://github.com/igrigorik/ga-beacon)***This document is best viewed in [flatdoc format](http://oraopensource.github.io/flatdoc?repo=oraclexe-apex&path=README.md)***
 <a name="constants"></a>
 
 # Oracle XE & APEX
