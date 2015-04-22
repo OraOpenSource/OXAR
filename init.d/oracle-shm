@@ -1,6 +1,6 @@
-#! /bin/sh
+#!/bin/sh
 # /etc/init.d/oracle-shm
-#
+# Source: http://ubuntuforums.org/showthread.php?t=1961644
 #
 case $1 in
   start)
