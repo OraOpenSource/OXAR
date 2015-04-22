@@ -36,9 +36,6 @@ else
   source ./config.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
 fi
 
-echo "made it?"
-exit 1
-
 #Dependencies
 (echo; echo \* Running updates \*; echo) | tee ${INSTALL_LOG} --append
 
