@@ -16,8 +16,12 @@ perl -i -p -e "s/OOS_TC_NAME/$OOS_TC_NAME/g" tomcat
 chmod 755 tomcat
 
 #Start tomcat at startup
-chkconfig --add tomcat
-chkconfig --level 234 tomcat on
+if [ -n "$(command -v chkconfig)" ]; then
+  chkconfig --add tomcat
+  chkconfig --level 234 tomcat on
+elif [ -n "$(command -v update-rc.d)" ]; then
+  update-rc.d tomcat defaults
+fi
 
 #Configure Users
 cd /usr/share/$OOS_TC_NAME/conf/
