@@ -1,28 +1,5 @@
 #!/bin/bash
 
-#Notes
-#
-#Some input is required before running
-#Search for CHANGEME and modify before running
-#
-#
-#- Passwords
-#All passwords (expect for APEX Admin) are set to "oracle" by default. You can change accordingly
-#
-#
-#- ratom
-#This tool allows you to edit files in atom on your desktop rather than vi on server
-#You must install the Atom editor: https://atom.io/ along with the Remote Atom plugin: https://github.com/randy3k/remote-atom
-#When connecting to server use:
-#ssh -R 52698:localhost:52698 root@<server_name/ip>
-#
-#To edit a file on the server, simply type:
-#ratom <my_file> and then look in your Atom editor to modify
-
-#*** LINUX ***
-
-
-mkdir -p logs
 INSTALL_LOG=logs/install.log
 ERROR_LOG=logs/error.log
 
@@ -47,16 +24,19 @@ OOS_SOURCE_DIR=$PWD
 mkdir -p $OOS_SOURCE_DIR/tmp
 cd $OOS_SOURCE_DIR
 
-
+#See http://stackoverflow.com/questions/692000/how-do-i-write-stderr-to-a-file-while-using-tee-with-a-pipe
+#and http://stackoverflow.com/questions/21465297/tee-stdout-and-stderr-to-separate-files-while-retaining-them-on-their-respective
 #Load configurations
 (echo; echo \* Loading configurations \*; echo) | tee ${INSTALL_LOG}
 if [ "$VERBOSE_OUT" = true ]
 then
-  source ./config.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/configout.log
-  cat logs/configout.log
+  source ./config.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
 else
-  source ./config.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+  source ./config.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
 fi
+
+echo "made it?"
+exit 1
 
 #Dependencies
 (echo; echo \* Running updates \*; echo) | tee ${INSTALL_LOG} --append
@@ -64,10 +44,9 @@ fi
 cd $OOS_SOURCE_DIR
 if [ "$VERBOSE_OUT" = true ]
 then
-  source ./scripts/packages.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/dependencies.log
-  cat logs/dependencies.log
+  source ./scripts/packages.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
 else
-  source ./scripts/packages.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+  source ./scripts/packages.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
 fi
 
 #Install ratom (optional)
@@ -75,10 +54,9 @@ fi
 if [ "$(which ratom)" == "" ]; then
   cd $OOS_SOURCE_DIR
   if [ "$VERBOSE_OUT" = true  ]; then
-    source ./scripts/ratom.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/ratom.log
-    cat ratom.log
+    source ./scripts/ratom.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/ratom.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/ratom.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 else
   echo ratom already installed
@@ -91,10 +69,9 @@ if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
   cd $OOS_SOURCE_DIR
 
   if [ "$VERBOSE_OUT" = true ]; then
-    source ./scripts/swap_space.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/swapspace.log
-    cat logs/swapspace.log
+    source ./scripts/swap_space.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/swap_space.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/swap_space.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 
 
@@ -102,20 +79,18 @@ if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
   cd $OOS_SOURCE_DIR
 
   if [ "$VERBOSE_OUT" = true  ]; then
-    source ./scripts/oraclexe.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/oraclexe.log
-    cat logs/oraclexe.log
+    source ./scripts/oraclexe.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/oraclexe.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/oraclexe.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 
   #Oracle config
   (echo; echo \* Oracle Config \*; echo) | tee ${INSTALL_LOG} --append
   cd $OOS_SOURCE_DIR
   if [ "$VERBOSE_OUT" = true  ]; then
-    source ./scripts/oracle_config.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/oracleconfig.log
-    cat logs/oracleconfig.log
+    source ./scripts/oracle_config.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/oracle_config.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/oracle_config.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 fi
 
@@ -124,20 +99,18 @@ if [ "$OOS_MODULE_APEX" = "Y" ]; then
   (echo; echo \* Installing APEX \*; echo) | tee ${INSTALL_LOG} --append
   cd $OOS_SOURCE_DIR
   if [ "$VERBOSE_OUT" = true  ]; then
-    source ./scripts/apex.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/apexinstall.log
-    cat logs/apexinstall.log
+    source ./scripts/apex.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/apex.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/apex.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 
 
   (echo; echo \* Configuring APEX \*; echo) | tee ${INSTALL_LOG} --append
   cd $OOS_SOURCE_DIR
   if [ "$VERBOSE_OUT" = true ]; then
-    source ./scripts/apex_config.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/apexinstall.log
-    cat logs/apexconfig.log
+    source ./scripts/apex_config.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/apex_config.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/apex_config.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 fi
 
@@ -146,10 +119,9 @@ if [ "$OOS_MODULE_NODE_ORACLEDB" = "Y" ]; then
   (echo; echo \* Installing node-oracledb \*; echo) | tee ${INSTALL_LOG} --append
   cd $OOS_SOURCE_DIR
   if [ "$VERBOSE_OUT" = true ]; then
-    source ./scripts/node-oracledb.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/nodeoracledb.log
-    cat logs/nodeoracledb.log
+    source ./scripts/node-oracledb.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/node-oracledb.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/node-oracledb.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 fi
 
@@ -158,10 +130,9 @@ if [ "$OOS_MODULE_NODE4ORDS" = "Y" ]; then
   (echo; echo \* Installing Node4ORDS \*; echo) | tee ${INSTALL_LOG} --append
   cd $OOS_SOURCE_DIR
   if [ "$VERBOSE_OUT" = true ]; then
-    source ./scripts/node4ords.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/node4ords.log
-    cat logs/node4ords.log
+    source ./scripts/node4ords.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/node4ords.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/node4ords.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 fi
 
@@ -170,10 +141,9 @@ if [ "$OOS_MODULE_TOMCAT" = "Y" ]; then
   (echo; echo \* Installing Tomcat \*; echo) | tee ${INSTALL_LOG} --append
   cd $OOS_SOURCE_DIR
   if [ "$VERBOSE_OUT" = true ]; then
-    source ./scripts/tomcat.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/node4ords.log
-    cat logs/node4ords.log
+    source ./scripts/tomcat.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/tomcat.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/tomcat.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 fi
 
@@ -181,10 +151,9 @@ fi
 (echo; echo \* Configuring firewalld \*; echo) | tee ${INSTALL_LOG} --append
 cd $OOS_SOURCE_DIR
 if [ "$VERBOSE_OUT" = true ]; then
-  source ./scripts/firewalld.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/firewallconfig.log
-  cat logs/firewallconfig.log
+  source ./scripts/firewalld.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
 else
-  source ./scripts/firewalld.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+  source ./scripts/firewalld.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
 fi
 
 
@@ -194,10 +163,9 @@ if [ "$OOS_MODULE_ORDS" = "Y" ]; then
   (echo; echo \* Installing ORDS \*; echo) | tee ${INSTALL_LOG} --append
   cd $OOS_SOURCE_DIR
   if [ "$VERBOSE_OUT" = true ]; then
-    source ./scripts/ords.sh >> ${INSTALL_LOG} 2> ${ERROR_LOG} &>> logs/ordsinstall.log
-    cat logs/ordsinstall.log
+    source ./scripts/ords.sh > >(tee ${INSTALL_LOG} --append) 2> >(tee ${ERROR_LOG} --append >&2)
   else
-    source ./scripts/ords.sh 2>&1 >> ${INSTALL_LOG} | tee ${ERROR_LOG} --append
+    source ./scripts/ords.sh >> ${INSTALL_LOG} 2> >(tee ${ERROR_LOG} --append >&2)
   fi
 fi
 
