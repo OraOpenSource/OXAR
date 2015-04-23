@@ -38,9 +38,13 @@ while [[ $# > 0 ]]; do
 done
 
 OOS_SOURCE_DIR=$PWD
+OOS_UTILS_DIR=${OOS_SOURCE_DIR}/utils
 OOS_LOG_DIR=${OOS_SOURCE_DIR}/logs
 OOS_INSTALL_LOG=${OOS_LOG_DIR}/install.log
 OOS_ERROR_LOG=${OOS_LOG_DIR}/error.log
+# Create empty log files
+> ${OOS_INSTALL_LOG}
+> ${OOS_ERROR_LOG}
 
 mkdir -p ${OOS_LOG_DIR}
 mkdir -p $OOS_SOURCE_DIR/tmp
@@ -193,6 +197,7 @@ fi
 #Reboot if not deployed through Vagrant.
 if [ "$OOS_DEPLOY_TYPE" != "VAGRANT" ];
   then
+    echo "Installation complete. You can review logs at ${OOS_LOG_DIR}"
     echo Rebooting in: ; for i in {15..1..1};do echo -n "$i." && sleep 1; done
     shutdown -r now
 fi;
