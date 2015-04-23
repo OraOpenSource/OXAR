@@ -2,7 +2,7 @@
 
 #*** ORDS ***
 cd $OOS_SOURCE_DIR/tmp
-curl -O -C - $OOS_ORDS_FILE_URL
+${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
 mkdir ords
 cd ords
 unzip ../$OOS_ORDS_FILENAME

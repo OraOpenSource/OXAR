@@ -3,37 +3,39 @@
 if [ -n "$(command -v yum)" ]; then
   echo; echo \* Installing packages with yum \*
   yum update -y
-  yum install unzip -y
-  yum install libaio -y
-  yum install bc -y
-  yum install perl -y
-  yum install java-1.7.0-openjdk-src.x86_64 -y
-  yum install git -y
-  yum install firewalld -y
-  yum install java -y
-  yum install which -y
-  yum install net-tools -y
-
   #required for rlwrap
   yum install epel-release -y
-  yum install rlwrap -y
+
+  yum install \
+  unzip \
+  libaio \
+  bc \
+  perl \
+  java-1.7.0-openjdk-src.x86_64 \
+  git \
+  firewalld \
+  java \
+  which \
+  net-tools \
+  rlwrap -y
 
 elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* Installing packages with apt-get \*
   apt-get update -y
-  apt-get install unzip -y
-  apt-get install libaio1 -y
-  apt-get install unixodbc -y
-  apt-get install openssh-server -y
-  apt-get install bc -y
-  apt-get install perl -y
-  apt-get install openjdk-7-jdk -y
-  apt-get install git-core -y
-  apt-get install ufw -y
-  apt-get install gnome-nettool -y
-  apt-get install curl -y
-  apt-get install alien -y
-  apt-get install rlwrap -y
+  apt-get install \
+  unzip \
+  libaio1 \
+  unixodbc \
+  openssh-server \
+  bc \
+  perl \
+  openjdk-7-jdk \
+  git-core \
+  ufw \
+  gnome-nettool \
+  curl \
+  alien \
+  rlwrap -y
 else
   echo; echo \* No known package manager found \*
 fi

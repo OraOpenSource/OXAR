@@ -3,7 +3,7 @@
 #*** APEX ***
 #Download APEX
 cd $OOS_SOURCE_DIR/tmp
-curl -O -C - $OOS_APEX_FILE_URL
+${OOS_UTILS_DIR}/download.sh $OOS_APEX_FILE_URL
 unzip $OOS_APEX_ZIP_FILENAME
 
 #Install APEX
