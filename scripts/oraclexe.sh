@@ -19,12 +19,27 @@ elif [ -n "$(command -v apt-get)" ]; then
   #mount -B /run/shm /dev/shm
   touch /dev/shm/.oracle-shm
   ln -s /usr/bin/awk /bin/awk
-  mkdir /var/lock/subsys
-  touch /var/lock/subsys/listener
+#  mkdir /var/lock/subsys
+#  touch /var/lock/subsys/listener
   echo; echo \* convert RPM to DEB \*; echo
   alien --scripts -d $OOS_ORACLE_FILENAME_RPM
   echo; echo \* Begin DB install \*; echo
   dpkg --install oracle-xe_11.2.0-2_amd64.deb
+
+  # Post-install changes
+  # Substitute `/var/lock/subsys` with `/var/run` to store pid files
+  perl -i -p -e "s/\/var\/lock\/subsys/\/var\/run/g" /etc/init.d/oracle-xe
+  
+  # Setup the oracle-shm service
+  cp $OOS_SOURCE_DIR/init.d/oracle-shm /etc/init.d/
+  chmod 755 /etc/init.d/oracle-shm
+   
+  # Start Oracle XE services at boot
+  if [ -n "$(command -v update-rc.d)" ]; then
+    update-rc.d oracle-shm defaults 01 99
+    update-rc.d oracle-xe defaults 
+  fi
+  
   echo; echo \* DB install complete \*; echo
 fi
 
