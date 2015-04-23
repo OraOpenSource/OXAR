@@ -1,4 +1,25 @@
 #!/bin/bash
+#build.sh
+#Notes
+#
+#Some input is required before running
+#Search for CHANGEME and modify before running
+#
+#
+#- Passwords
+#All passwords (expect for APEX Admin) are set to "oracle" by default. You can change accordingly
+#
+#
+#- ratom
+#This tool allows you to edit files in atom on your desktop rather than vi on server
+#You must install the Atom editor: https://atom.io/ along with the Remote Atom plugin: https://github.com/randy3k/remote-atom
+#When connecting to server use:
+#ssh -R 52698:localhost:52698 root@<server_name/ip>
+#
+#To edit a file on the server, simply type:
+#ratom <my_file> and then look in your Atom editor to modify
+
+#*** LINUX ***
 
 #Parsing arguments adapted from: http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 VERBOSE_OUT=false
