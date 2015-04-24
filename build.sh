@@ -42,11 +42,11 @@ OOS_UTILS_DIR=${OOS_SOURCE_DIR}/utils
 OOS_LOG_DIR=${OOS_SOURCE_DIR}/logs
 OOS_INSTALL_LOG=${OOS_LOG_DIR}/install.log
 OOS_ERROR_LOG=${OOS_LOG_DIR}/error.log
+
+mkdir -p ${OOS_LOG_DIR}
 # Create empty log files
 > ${OOS_INSTALL_LOG}
 > ${OOS_ERROR_LOG}
-
-mkdir -p ${OOS_LOG_DIR}
 mkdir -p $OOS_SOURCE_DIR/tmp
 cd $OOS_SOURCE_DIR
 
@@ -72,7 +72,7 @@ else
   source ./scripts/packages.sh >> ${OOS_INSTALL_LOG} 2> >(tee ${OOS_ERROR_LOG} --append >&2)
 fi
 
-#Install ratom
+#Install ratom (optional)
 (echo; echo \* Installing ratom \*; echo) | tee ${OOS_INSTALL_LOG} --append
 if [ "$(which ratom)" == "" ]; then
   cd $OOS_SOURCE_DIR
