@@ -72,7 +72,7 @@ else
   source ./scripts/packages.sh >> ${OOS_INSTALL_LOG} 2> >(tee ${OOS_ERROR_LOG} --append >&2)
 fi
 
-#Install ratom (optional)
+#Install ratom 
 (echo; echo \* Installing ratom \*; echo) | tee ${OOS_INSTALL_LOG} --append
 if [ "$(which ratom)" == "" ]; then
   cd $OOS_SOURCE_DIR
