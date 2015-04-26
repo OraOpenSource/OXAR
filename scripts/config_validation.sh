@@ -4,8 +4,6 @@
 #Moved to separate file for issue #17
 echo; echo Config Validations; echo;
 
-# (don't modify the CHANGEME here)
-
 if [ -n "$(command -v yum)" ]; then
   echo package manager is yum
 elif [ -n "$(command -v apt-get)" ]; then
@@ -19,6 +17,9 @@ if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
   if [ "$OOS_ORACLE_FILE_URL" = "CHANGEME" ] || [ "$OOS_ORACLE_FILE_URL" = "" ]; then
     echo OOS_ORACLE_FILE_URL must be specified >&2
     exit 1
+  elif ! curl --silent --head $OOS_ORACLE_FILE_URL --output /dev/null; then
+    echo "The Oracle file URL specified, $OOS_ORACLE_FILE_URL, appears invalid." >&2
+    exit 1
   else
     echo OOS_ORACLE_FILE_URL=$OOS_ORACLE_FILE_URL
   fi
@@ -28,6 +29,9 @@ if [ "$OOS_MODULE_APEX" = "Y" ]; then
   if [ "$OOS_APEX_FILE_URL" = "CHANGEME" ] || [ "$OOS_APEX_FILE_URL" = "" ]; then
     echo OOS_APEX_FILE_URL must be specified >&2
     exit 1
+  elif ! curl --silent --head $OOS_APEX_FILE_URL --output /dev/null; then
+    echo "The APEX file URL specified, $OOS_APEX_FILE_URL, appears invalid" >&2
+    exit 1
   else
     echo OOS_APEX_FILE_URL=$OOS_APEX_FILE_URL
   fi
@@ -36,6 +40,9 @@ fi
 if [ "$OOS_MODULE_ORDS" = "Y" ]; then
   if [ "$OOS_ORDS_FILE_URL" = "CHANGEME" ] || [ "$OOS_ORDS_FILE_URL" = "" ]; then
     echo OOS_ORDS_FILE_URL must be specified >&2
+    exit 1
+  elif ! curl --silent --head $OOS_ORDS_FILE_URL --output /dev/null; then
+    echo "The ORDS file URL specified, $OOS_APEX_FILE_URL, appears invalid" >&2
     exit 1
   else
     echo OOS_ORDS_FILE_URL=$OOS_ORDS_FILE_URL
