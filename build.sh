@@ -20,7 +20,14 @@
 #ratom <my_file> and then look in your Atom editor to modify
 
 #*** LINUX ***
+SCRIPT_LOCATION=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+SCRIPT_SOURCE=$(basename $0)
 
+if [[ $(whoami) != "root" ]]; then
+  echo "This program must be run as root." >&2
+  echo "Try: sudo ${SCRIPT_LOCATION}/${SCRIPT_SOURCE}" >&2
+  exit 1
+fi
 #Parsing arguments adapted from: http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 VERBOSE_OUT=false
 while [[ $# > 0 ]]; do
@@ -72,7 +79,7 @@ else
   source ./scripts/packages.sh >> ${OOS_INSTALL_LOG} 2> >(tee ${OOS_ERROR_LOG} --append >&2)
 fi
 
-#Install ratom 
+#Install ratom
 (echo; echo \* Installing ratom \*; echo) | tee ${OOS_INSTALL_LOG} --append
 if [ "$(which ratom)" == "" ]; then
   cd $OOS_SOURCE_DIR
