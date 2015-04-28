@@ -33,16 +33,8 @@ OOS_ORACLE_FILENAME=${OOS_ORACLE_FILE_URL##*/}
 OOS_ORACLE_FILENAME_RPM=${OOS_ORACLE_FILENAME%.*}
 OOS_APEX_ZIP_FILENAME=${OOS_APEX_FILE_URL##*/}
 OOS_ORDS_FILENAME=${OOS_ORDS_FILE_URL##*/}
-OOS_TC_FILENAME=${OOS_TC_FILE_URL##*/}
 
 OOS_RLWRAP_NAME=${OOS_RLWRAP_FILENAME%.*.*}
-
-#Get the filename excluding the extension
-if [[ ${OOS_TC_FILENAME} == *.tar.gz ]]; then
-  OOS_TC_NAME=${OOS_TC_FILENAME%.*.*}
-else
-  OOS_TC_NAME=${OOS_TC_FILENAME%.*}
-fi
 
 #Call Validations
 source ./scripts/config_validation.sh
