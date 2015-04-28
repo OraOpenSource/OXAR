@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set tomcat environmental variables such as CATALINA_HOME
-. /etc/tomcat/tomcat.conf
-
 #*** ORDS ***
 cd $OOS_SOURCE_DIR/tmp
 ${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
