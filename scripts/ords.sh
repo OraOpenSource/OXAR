@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set tomcat environmental variables such as CATALINA_HOME
+. /etc/tomcat/tomcat.conf
+
 #*** ORDS ***
 cd $OOS_SOURCE_DIR/tmp
 ${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
@@ -53,7 +56,7 @@ else
 fi;
 
 #Deploy to Tomcat
-cd /usr/share/$OOS_TC_NAME/webapps
+cd ${CATALINA_HOME}/webapps/
 cp /ords/ords.war .
 
 #Copy APEX images
