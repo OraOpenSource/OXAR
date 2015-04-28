@@ -11,7 +11,7 @@ perl -i -p -e "s/<tomcat-users>/<tomcat-users>\n  <\!-- Auto generated content b
 
 # Set the preferred port
 if [[ "${OOS_TOMCAT_PORT}" != 8080 ]]; then
-  sed -i 's/port\=\"8080\"/port\=\"${OOS_TOMCAT_PORT}\"/' ${CATALINA_HOME}/conf/server.xml
+  sed -i "s/port\=\"8080\"/port\=\"${OOS_TOMCAT_PORT}\"/" ${CATALINA_HOME}/conf/server.xml
 fi
 
 #Auto start tomcat
