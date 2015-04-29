@@ -43,6 +43,8 @@ else
   echo
 
   java -jar ords.war
+  #Make tomcat the owner
+  chown -R tomcat.tomcat /ords/conf
 
   #SQL Developer administration
   echo; echo Manual input required for ORDS admin listener; echo
