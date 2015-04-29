@@ -60,3 +60,5 @@ cp /ords/ords.war .
 cd /ords
 cp -r $OOS_SOURCE_DIR/tmp/apex/images .
 mv images apex_images
+
+ln -s /ords/apex_images/ /usr/share/tomcat/webapps/i
