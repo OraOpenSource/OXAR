@@ -2,5 +2,5 @@
 <service>
   <short>Tomcat</short>
   <description>Tomcat</description>
-  <port protocol="tcp" port="8080"/>
+  <port protocol="tcp" port="OOS_TOMCAT_PORT"/>
 </service>
