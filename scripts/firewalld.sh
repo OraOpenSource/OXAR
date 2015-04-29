@@ -13,6 +13,7 @@ cp $OOS_SOURCE_DIR/firewalld/*.xml .
 
 #Replace dynamic ports
 perl -i -p -e "s/OOS_ORACLE_TNS_PORT/$OOS_ORACLE_TNS_PORT/g" oracle.xml
+perl -i -p -e "s/OOS_TOMCAT_PORT/$OOS_TOMCAT_PORT/g" tomcat.xml
 
 
 systemctl start firewalld

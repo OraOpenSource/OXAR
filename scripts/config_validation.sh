@@ -35,6 +35,11 @@ if [ "$OOS_MODULE_APEX" = "Y" ]; then
   else
     echo OOS_APEX_FILE_URL=$OOS_APEX_FILE_URL
   fi
+
+  if [[ ${OOS_ORACLE_HTTP_PORT} = ${OOS_TOMCAT_PORT} ]]; then
+    echo "OOS_ORACLE_HTTP_PORT and OOS_TOMCAT_PORT must run on separate ports. Both are set to ${OOS_ORACLE_HTTP_PORT}" >&2
+    exit 1
+  fi
 fi
 
 if [ "$OOS_MODULE_ORDS" = "Y" ]; then
