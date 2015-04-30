@@ -95,7 +95,7 @@ If you are using Amazon AWS EC2, please be sure to follow the configuration step
 </table>
 
 # Build
-You can build your own vm with the following instructions.
+You can build your own VM with the following instructions.
 
 ## Download
 ###Native Build
