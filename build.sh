@@ -20,14 +20,20 @@
 #ratom <my_file> and then look in your Atom editor to modify
 
 #*** LINUX ***
-SCRIPT_LOCATION=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-SCRIPT_SOURCE=$(basename $0)
+OOS_SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$OOS_SOURCE" ]; do # resolve $OOS_SOURCE until the file is no longer a symlink
+  OOS_SOURCE_DIR="$( cd -P "$( dirname "$OOS_SOURCE" )" && pwd )"
+  OOS_SOURCE="$(readlink "$OOS_SOURCE")"
+  [[ $OOS_SOURCE != /* ]] && OOS_SOURCE="$OOS_SOURCE_DIR/$OOS_SOURCE" # if $OOS_SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+OOS_SOURCE_DIR="$( cd -P "$( dirname "$OOS_SOURCE" )" && pwd )"
 
 if [[ $(whoami) != "root" ]]; then
   echo "This program must be run as root." >&2
-  echo "Try: sudo ${SCRIPT_LOCATION}/${SCRIPT_SOURCE}" >&2
+  echo "Try: sudo ${OOS_SOURCE_DIR}/${OOS_SOURCE}" >&2
   exit 1
 fi
+
 #Parsing arguments adapted from: http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 VERBOSE_OUT=false
 while [[ $# > 0 ]]; do
@@ -44,7 +50,6 @@ while [[ $# > 0 ]]; do
   shift
 done
 
-OOS_SOURCE_DIR=$PWD
 OOS_UTILS_DIR=${OOS_SOURCE_DIR}/utils
 OOS_LOG_DIR=${OOS_SOURCE_DIR}/logs
 OOS_INSTALL_LOG=${OOS_LOG_DIR}/install.log
