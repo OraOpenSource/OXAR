@@ -317,7 +317,7 @@ service firewalld start
 firewall-cmd --zone=public --add-service=tomcat
 ```
 
-You can then access Tomcat via http://&lt;server_name&gt;:8080 and Tomcat Manager via http://&lt;server_name&gt;:8080/manager
+You can then access Tomcat Manager via `http://<server_name>:8080/manager` or Application Express via `http://<server_name>:8080/ords`
 
 <table>
   <tr>
@@ -341,11 +341,11 @@ To disable Tomcat firewall access run: *note: if you don't disable it, the next 
 firewall-cmd --zone=public --remove-service=tomcat
 ```
 
-Tomcat is located in ```/usr/share/apache-tomcat-7.0.57/```. *Note that the location may vary depending on version number.* It can be controlled by:
+Tomcat is located in `/usr/share/tomcat/`. Tomcat can be controlled by:
 
 ```bash
-/etc/init.d/tomcat stop
-/etc/init.d/tomcat start
+systemctl stop tomcat
+systemctl start tomcat
 ```
 
 # Port Configurations
