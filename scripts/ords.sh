@@ -2,7 +2,7 @@
 
 #*** ORDS ***
 cd $OOS_SOURCE_DIR/tmp
-curl -O -C - $OOS_ORDS_FILE_URL
+${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
 mkdir ords
 cd ords
 unzip ../$OOS_ORDS_FILENAME
@@ -43,6 +43,8 @@ else
   echo
 
   java -jar ords.war
+  #Make tomcat the owner
+  chown -R tomcat.tomcat /ords/conf
 
   #SQL Developer administration
   echo; echo Manual input required for ORDS admin listener; echo
@@ -53,10 +55,12 @@ else
 fi;
 
 #Deploy to Tomcat
-cd /usr/share/$OOS_TC_NAME/webapps
+cd ${CATALINA_HOME}/webapps/
 cp /ords/ords.war .
 
 #Copy APEX images
 cd /ords
 cp -r $OOS_SOURCE_DIR/tmp/apex/images .
 mv images apex_images
+
+ln -s /ords/apex_images/ /usr/share/tomcat/webapps/i

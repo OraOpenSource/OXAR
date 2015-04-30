@@ -10,6 +10,7 @@ cd /var/www
 #Get project
 git clone https://github.com/OraOpenSource/node4ords.git
 cd ./node4ords
+sed -i "s/http\:\/\/localhost:8080/http\:\/\/localhost:${OOS_TOMCAT_PORT}/" config.js
 npm install --unsafe-perm
 
 #Start on boot
