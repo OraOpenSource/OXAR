@@ -23,6 +23,11 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
     <td></td>
   </tr>
   <tr>
+    <td>SQLcl</td>
+    <td>4.1.0 Release Candidate</td>
+    <td>Command line SQL (beta)</td>
+  </tr>
+  <tr>
     <td>APEX</td>
     <td>5.0.0.00.31</td>
     <td>Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in config.properties</td>
@@ -162,6 +167,10 @@ vi config.properties
     <td>OOS_ORDS_FILE_URL</td>
     <td>Download: http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/index.html</td>
   </tr>
+  <tr>
+    <td>OOS_SQLCL_FILE_URL</td>
+    <td>Download: http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html </br></br>This is an optional file</td>
+  </tr>
 </table>
 
 These can be references to files on a web server or to the location on the server. Some examples:
@@ -232,7 +241,7 @@ vagrant up
 
 # How to connect
 
-## Oracle / SQL*Plus
+## Oracle / SQL*Plus / SQLcl
 
 They're many different ways to connec to Oracle with SQL*Plus. The [How to Connect to Oracle](docs/connect_oracle.md) document covers them.
 <table>

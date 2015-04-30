@@ -57,3 +57,8 @@ You can now connect directly to the server by running:
 ```bash
 sqlplus giffy/oracle@//vcentos:1521/XE
 ```
+
+##SQLcl
+SQLcl is the new command line interface that will replace SQL*Plus. [This article](http://www.talkapex.com/2015/04/installing-sqlcl.html) describes how to install it on your local machine. You can use sqlcl then with the SQL Tunnelling technique covered above.
+
+SQLcl is now an optional install. If installed you can run it locally on the machine, just like you would an `sqlplus` command. Instead use `sqlcl`.

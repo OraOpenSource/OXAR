@@ -19,9 +19,18 @@ if [ "$OOS_MODULE_ORACLE" = "N" ]; then
   OOS_MODULE_NODE_ORACLEDB=N;
 fi;
 
+
+if [ -z "$OOS_SQLCL_FILE_URL" ]; then
+  OOS_MODULE_SQLCL=N
+else
+  OOS_MODULE_SQLCL=Y
+  OOS_SQLCL_FILENAME=${OOS_SQLCL_FILE_URL##*/}
+fi
+
 echo \*\*\* Module Configuration \*\*\*
 echo OS: $OOS_OS_TYPE
 echo Oracle XE: $OOS_MODULE_ORACLE
+echo SQLcl: $OOS_MODULE_SQLCL
 echo APEX: $OOS_MODULE_APEX
 echo ORDS: $OOS_MODULE_ORDS
 echo Tomcat: $OOS_MODULE_TOMCAT
@@ -33,6 +42,8 @@ OOS_ORACLE_FILENAME=${OOS_ORACLE_FILE_URL##*/}
 OOS_ORACLE_FILENAME_RPM=${OOS_ORACLE_FILENAME%.*}
 OOS_APEX_ZIP_FILENAME=${OOS_APEX_FILE_URL##*/}
 OOS_ORDS_FILENAME=${OOS_ORDS_FILE_URL##*/}
+
+
 
 #Call Validations
 source ./scripts/config_validation.sh
