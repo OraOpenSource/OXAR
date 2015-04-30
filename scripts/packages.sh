@@ -17,6 +17,7 @@ if [ -n "$(command -v yum)" ]; then
   java \
   which \
   net-tools \
+  htop \
   rlwrap -y
 
 elif [ -n "$(command -v apt-get)" ]; then
@@ -35,6 +36,7 @@ elif [ -n "$(command -v apt-get)" ]; then
   gnome-nettool \
   curl \
   alien \
+  htop \
   rlwrap -y
 else
   echo; echo \* No known package manager found \*
