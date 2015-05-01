@@ -234,7 +234,7 @@ vagrant up
 
 ## Oracle / SQL*Plus
 
-There are many different ways to connec to Oracle with SQL*Plus. The [How to Connect to Oracle](docs/connect_oracle.md) document covers them.
+There are many different ways to connect to Oracle with SQL*Plus. The [How to Connect to Oracle](docs/connect_oracle.md) document covers them.
 <table>
   <tr>
     <th>Username</th>
