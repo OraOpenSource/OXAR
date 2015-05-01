@@ -200,6 +200,15 @@ if [ "$OOS_MODULE_ORDS" = "Y" ]; then
   source ./scripts/ords.sh
 fi
 
+
+#SQLcl
+if [ "$OOS_MODULE_SQLCL" = "Y" ]; then
+  (echo; echo \* Installing SQLcl \*; echo) | tee ${OOS_INSTALL_LOG} --append
+  cd $OOS_SOURCE_DIR
+  source ./scripts/sqlcl.sh
+fi
+
+
 #*** CLEANUP ***
 # Leave files for now
 # echo; echo \* Cleanup \*; echo
