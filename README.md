@@ -265,7 +265,7 @@ There are many different ways to connect to Oracle with SQL*Plus. The [How to Co
 
 
 ## APEX
-To connect to APEX go to http://&lt;server_name&gt;/ and it will direct you to the APEX login page.
+To connect to APEX go to `http://<server_name>/` and it will direct you to the APEX login page.
 
 <table>
   <tr>
