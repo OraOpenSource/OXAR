@@ -293,7 +293,7 @@ To connect to APEX go to `http://<server_name>/` and it will direct you to the A
 ### APEX Web Listener
 This project uses [Node4ORDS](https://github.com/OraOpenSource/node4ords) as a web listener. The Node4ORDS project provides the ability to serve static content and will provide additional web server functionality. Please read its documentation for more information.
 
-Node4ORDS is install in ```/var/www/node4ords```. It can be controlled by:
+Node4ORDS is installed in ```/var/www/node4ords```. It can be controlled by:
 ```bash
 /etc/init.d/node4ords start
 /etc/init.d/node4ords stop
