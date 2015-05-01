@@ -301,7 +301,7 @@ Node4ORDS is installed in ```/var/www/node4ords```. It can be controlled by:
 /etc/init.d/node4ords status
 ```
 
-Static content can be put in ```/var/www/public/``` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listner configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
+Static content can be put in ```/var/www/public/``` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listener configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
 
 ### ORDS
 ORDS is located in ```/ords```
