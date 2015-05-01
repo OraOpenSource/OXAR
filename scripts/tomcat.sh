@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #*** TOMCAT ***
-yum install tomcat tomcat-webapps tomcat-admin-webapps -y
+yum install tomcat tomcat-admin-webapps -y
 
 # Set tomcat environmental variables such as CATALINA_HOME
 . /etc/tomcat/tomcat.conf

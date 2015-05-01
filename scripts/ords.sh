@@ -43,8 +43,6 @@ else
   echo
 
   java -jar ords.war
-  #Make tomcat the owner
-  chown -R tomcat.tomcat /ords/conf
 
   #SQL Developer administration
   echo; echo Manual input required for ORDS admin listener; echo
@@ -53,6 +51,9 @@ else
   echo;
   java -jar ords.war user $OOS_ORDS_USERNAME "Listener Administrator"
 fi;
+
+#Make tomcat the owner
+chown -R tomcat.tomcat /ords/conf
 
 #Deploy to Tomcat
 cd ${CATALINA_HOME}/webapps/

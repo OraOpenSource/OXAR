@@ -90,12 +90,13 @@ Vagrant.configure(2) do |config|
     cp -R /vagrant/oracle /tmp/vagrant-deploy/
     cp -R /vagrant/ords /tmp/vagrant-deploy/
     cp -R /vagrant/scripts /tmp/vagrant-deploy/
+    cp -R /vagrant/utils /tmp/vagrant-deploy/
     cp /vagrant/build.sh /tmp/vagrant-deploy/
     cp /vagrant/config.sh /tmp/vagrant-deploy/
     cp /vagrant/config.properties /tmp/vagrant-deploy/
 
     cd /tmp/vagrant-deploy
 
-    ./build.sh > /tmp/build.log
+    ./build.sh
   SHELL
 end
