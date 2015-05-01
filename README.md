@@ -6,7 +6,7 @@ The goal of this project is to make it easy for developers to quickly build and/
 
 *Note: Currently this build is not recommended for production us as it lacks backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
 
-For more information and to signup for our email list go to [oraopensource.com](http://www.oraopensource.com) You can follow the related blogs on this project [here](http://www.oraopensource.com/blog/?category=Oracle+XE+%2B+APEX+VM).
+For more information and to signup for our email list go to [oraopensource.com](http://www.oraopensource.com). You can follow the related blogs on this project [here](http://www.oraopensource.com/blog/?category=Oracle+XE+%2B+APEX+VM).
 
 If you need additional help, there is a [How-To video](http://www.oraopensource.com/blog/2015/2/25/video-how-to-build-oracle-xe-apex-machine) for this installation which walks you through the entire process.
 
@@ -95,7 +95,7 @@ If you are using Amazon AWS EC2, please be sure to follow the configuration step
 </table>
 
 # Build
-You can build your own vm with the following instructions.
+You can build your own VM with the following instructions.
 
 ## Download
 ###Native Build
@@ -234,7 +234,7 @@ vagrant up
 
 ## Oracle / SQL*Plus
 
-They're many different ways to connec to Oracle with SQL*Plus. The [How to Connect to Oracle](docs/connect_oracle.md) document covers them.
+There are many different ways to connect to Oracle with SQL*Plus. The [How to Connect to Oracle](docs/connect_oracle.md) document covers them.
 <table>
   <tr>
     <th>Username</th>
@@ -265,7 +265,7 @@ They're many different ways to connec to Oracle with SQL*Plus. The [How to Conne
 
 
 ## APEX
-To connect to APEX go to http://&lt;server_name&gt;/ and it will direct you to the APEX login page.
+To connect to APEX go to `http://<server_name>/` and it will direct you to the APEX login page.
 
 <table>
   <tr>
@@ -293,7 +293,7 @@ To connect to APEX go to http://&lt;server_name&gt;/ and it will direct you to t
 ### APEX Web Listener
 This project uses [Node4ORDS](https://github.com/OraOpenSource/node4ords) as a web listener. The Node4ORDS project provides the ability to serve static content and will provide additional web server functionality. Please read its documentation for more information.
 
-Node4ORDS is install in ```/var/www/node4ords```. It can be controlled by:
+Node4ORDS is installed in ```/var/www/node4ords```. It can be controlled by:
 ```bash
 /etc/init.d/node4ords start
 /etc/init.d/node4ords stop
@@ -301,7 +301,7 @@ Node4ORDS is install in ```/var/www/node4ords```. It can be controlled by:
 /etc/init.d/node4ords status
 ```
 
-Static content can be put in ```/var/www/public/``` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listner configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
+Static content can be put in ```/var/www/public/``` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listener configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
 
 ### ORDS
 ORDS is located in ```/ords```
@@ -317,7 +317,7 @@ service firewalld start
 firewall-cmd --zone=public --add-service=tomcat
 ```
 
-You can then access Tomcat via http://&lt;server_name&gt;:8080 and Tomcat Manager via http://&lt;server_name&gt;:8080/manager
+You can then access Tomcat Manager via `http://<server_name>:8080/manager` or Application Express via `http://<server_name>:8080/ords`
 
 <table>
   <tr>
@@ -341,11 +341,11 @@ To disable Tomcat firewall access run: *note: if you don't disable it, the next 
 firewall-cmd --zone=public --remove-service=tomcat
 ```
 
-Tomcat is located in ```/usr/share/apache-tomcat-7.0.57/```. *Note that the location may vary depending on version number.* It can be controlled by:
+Tomcat is located in `/usr/share/tomcat/`. Tomcat can be controlled by:
 
 ```bash
-/etc/init.d/tomcat stop
-/etc/init.d/tomcat start
+systemctl stop tomcat
+systemctl start tomcat
 ```
 
 # Port Configurations
