@@ -21,22 +21,7 @@ begin
     and upper_port is null;
 
   -- To support backwards compatibility with APEX 4.2 and APEX 5.0 need to find max APEX version
-  select username
-  into l_apex_username
-  from (
-    select x.*,
-      row_number() over (order by x.apex_version_num desc) rn
-    from (
-      select
-        username,
-        to_number(regexp_substr(username, '([[:digit:]]+)$')) apex_version_num
-      from all_users
-      where 1=1
-        and regexp_like(username, '^apex_([[:digit:]]+)', 'i')
-      ) x
-    )
-  where rn = 1;
-
+  l_apex_username := apex_application.g_flow_schema_owner;
 
   if dbms_network_acl_admin.check_privilege(acl_path, l_apex_username, 'connect') IS NULL THEN
     dbms_network_acl_admin.add_privilege(
