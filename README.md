@@ -431,6 +431,9 @@ The following ports are mapped to the host and can be configured in [Vagrantfile
 ** See [Port Configurations](#port-configurations).
 
 # Other
+## OS Utility Scripts
+When setting up a new server their are some common things that you may want to do such as creating a new user, disabling root SSH access, etc. Though these tasks are outside the goal of this project, we've created a new folder [`utils/os`](utils) to store some of these common scripts which may help when setting up a new server.
+
 ## Editing server files locally
 To make it easier to edit files on the server (and avoid using vi), [Remote-Atom](https://github.com/randy3k/remote-atom) (ratom) is installed by default. This requires that you have the [Atom](https://atom.io/) text editor on your desktop and have installed the [ratom](https://github.com/randy3k/remote-atom).
 
