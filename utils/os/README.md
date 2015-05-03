@@ -18,4 +18,4 @@ To create a new user run:
 
 Where `ssh_key` is the URL to an public key. Examples are: `http://myserver.com/id_rsa.pub` or a file path e.g. `file:///tmp/id_rsa.pub`. This user is created without a password.
 
-The following article explains how to generate your own SSH key:[https://help.github.com/articles/generating-ssh-keys/](https://help.github.com/articles/generating-ssh-keys/)
+The following article explains how to generate your own SSH key: [https://help.github.com/articles/generating-ssh-keys/](https://help.github.com/articles/generating-ssh-keys/)
