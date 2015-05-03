@@ -1,7 +1,7 @@
 #!/bin/bash
 #The goal of this script is to set the PermitRootLogin flag for SSH logins
 #Ideally it would be used to disable root login
-#TODO this is still under development
+
 
 
 #Inputs

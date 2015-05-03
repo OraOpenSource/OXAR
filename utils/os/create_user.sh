@@ -1,6 +1,5 @@
 #!/bin/bash
-#TODO purpose/description
-#TODO this is still under development
+#Create user with RSA public key (so no password)
 
 
 #CU = Create User
