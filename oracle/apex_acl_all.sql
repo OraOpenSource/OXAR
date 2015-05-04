@@ -44,6 +44,8 @@ end;
 /
 commit;
 
+exit
+
 -- Can check the network ACLS using the following queries
 --
 -- select host, lower_port, upper_port, acl
