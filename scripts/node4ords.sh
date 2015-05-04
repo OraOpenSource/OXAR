@@ -12,7 +12,7 @@ npm install --unsafe-perm
 #Start on boot
 cd $OOS_SOURCE_DIR
 
-cp init.d/node4ords /etc/systemd/system/node4ords.service
+cp init.d/node4ords.service /etc/systemd/system/
 mkdir -p /ords/conf/node4ords
 cp init.d/node4ords.conf /ords/conf/node4ords/
 
