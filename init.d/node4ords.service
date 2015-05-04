@@ -1,0 +1,15 @@
+# Systemd unit file for node4ords
+
+[Unit]
+Description=Node4Ords - proxy to APEX using ORDS on Tomcat
+After=syslog.target network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/ords/conf/node4ords/node4ords.conf
+ExecStart=/bin/node ${APP_DIR}/${NODE_APP}
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
