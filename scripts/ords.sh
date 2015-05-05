@@ -10,7 +10,7 @@ systemctl stop tomcat
 mkdir ords
 cd ords
 unzip ../$OOS_ORDS_FILENAME
-mv -f ${OOS_UTILS_DIR}/ords/ords_params.properties params/ords_params.properties
+mv -f ${OOS_SOURCE_DIR}/ords/ords_params.properties params/ords_params.properties
 
 
 #clean conf folder out, or create
