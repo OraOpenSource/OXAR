@@ -3,14 +3,23 @@
 #*** ORDS ***
 cd $OOS_SOURCE_DIR/tmp
 ${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
+
+#Move the ords.war file to webapps
+systemctl stop tomcat
+
 mkdir ords
 cd ords
 unzip ../$OOS_ORDS_FILENAME
-cd ..
-mv ords /
-cd /ords
+mv -f ${OOS_SOURCE_DIR}/ords/ords_params.properties params/ords_params.properties
 
-mkdir conf
+
+#clean conf folder out, or create
+if [[ -d /ords/conf/ords ]]; then
+  rm -rf /ords/conf/ords/*
+else
+  mkdir -p /ords/conf/ords
+fi
+
 java -jar ords.war configdir /ords/conf
 
 #ORDS 3 (when out of beta)
@@ -52,16 +61,20 @@ else
   java -jar ords.war user $OOS_ORDS_USERNAME "Listener Administrator"
 fi;
 
-#Make tomcat the owner
+#Make tomcat the owner of the configuration
 chown -R tomcat.tomcat /ords/conf
 
-#Deploy to Tomcat
-cd ${CATALINA_HOME}/webapps/
-cp /ords/ords.war .
+#Source tomcat.conf to ensure ${CATALINA_HOME} is set
+. /etc/tomcat/tomcat.conf
+rm -rf ${CATALINA_HOME}/webapps/ords/ ${CATALINA_HOME}/webapps/ords.war
+mv ords.war ${CATALINA_HOME}/webapps/
 
 #Copy APEX images
 cd /ords
-cp -r $OOS_SOURCE_DIR/tmp/apex/images .
-mv images apex_images
+rm -rf apex_images/
+cp -rf ${OOS_SOURCE_DIR}/tmp/apex/images apex_images/
 
-ln -s /ords/apex_images/ /usr/share/tomcat/webapps/i
+#Make images accessible when using tomcat directly
+ln -sf /ords/apex_images/ /usr/share/tomcat/webapps/i
+
+systemctl start tomcat

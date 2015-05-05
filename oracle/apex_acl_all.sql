@@ -13,15 +13,15 @@ begin
   -- Look for the ACL currently assigned to '*' and give APEX_050000
   -- the "connect" privilege if APEX_050000 does not have the privilege yet.
 
+  -- To support backwards compatibility with APEX 4.2 and APEX 5.0 need to find max APEX version
+  l_apex_username := apex_application.g_flow_schema_owner;
+
   select acl
   into acl_path
   from dba_network_acls
   where host = '*'
     and lower_port is null
     and upper_port is null;
-
-  -- To support backwards compatibility with APEX 4.2 and APEX 5.0 need to find max APEX version
-  l_apex_username := apex_application.g_flow_schema_owner;
 
   if dbms_network_acl_admin.check_privilege(acl_path, l_apex_username, 'connect') IS NULL THEN
     dbms_network_acl_admin.add_privilege(
@@ -44,6 +44,8 @@ end;
 /
 commit;
 
+exit
+
 -- Can check the network ACLS using the following queries
 --
 -- select host, lower_port, upper_port, acl
@@ -51,4 +53,4 @@ commit;
 --
 -- select acl, principal
 -- from dba_network_acl_privileges;
--- 
+--

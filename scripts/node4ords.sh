@@ -1,8 +1,4 @@
 #!/bin/bash
-
-#*** NODE.JS ***
-
-
 #Create app
 mkdir /var/www
 cd /var/www
@@ -16,14 +12,9 @@ npm install --unsafe-perm
 #Start on boot
 cd $OOS_SOURCE_DIR
 
-cp init.d/node4ords /etc/init.d/
-chmod 755 /etc/init.d/node4ords
+cp init.d/node4ords.service /etc/systemd/system/
+mkdir -p /ords/conf/node4ords
+cp init.d/node4ords.conf /ords/conf/node4ords/
 
-if [ -n "$(command -v chkconfig)" ]; then
-  chkconfig --add node4ords
-  chkconfig --level 234 node4ords on
-elif [ -n "$(command -v update-rc.d)" ]; then
-  update-rc.d node4ords defaults
-fi
-
-/etc/init.d/node4ords start
+systemctl enable node4ords.service
+systemctl start node4ords.service
