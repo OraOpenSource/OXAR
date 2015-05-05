@@ -7,10 +7,10 @@ mkdir ords
 cd ords
 unzip ../$OOS_ORDS_FILENAME
 cd ..
-mv ords /
+mkdir -p /ords
+mv ords/* /ords/
 cd /ords
-
-mkdir conf
+mkdir -p conf
 java -jar ords.war configdir /ords/conf
 
 #ORDS 3 (when out of beta)
