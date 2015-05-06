@@ -1,17 +1,16 @@
 #!/bin/bash
 
 #*** ORDS ***
+ORDS_SOURCE_DIR=${OOS_SOURCE_DIR}/tmp/ords
 cd $OOS_SOURCE_DIR/tmp
 ${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
 
-#Move the ords.war file to webapps
 systemctl stop tomcat
 
-mkdir ords
-cd ords
+mkdir -p ${ORDS_SOURCE_DIR}
+cd ${ORDS_SOURCE_DIR}
 unzip ../$OOS_ORDS_FILENAME
 mv -f ${OOS_SOURCE_DIR}/ords/ords_params.properties params/ords_params.properties
-
 
 #clean conf folder out, or create
 if [[ -d /ords/conf/ords ]]; then
@@ -19,6 +18,17 @@ if [[ -d /ords/conf/ords ]]; then
 else
   mkdir -p /ords/conf/ords
 fi
+
+unzip ords.war
+cd scripts/install/core
+
+sqlplus sys/oracle as sysdba @ords_manual_install.sql SYSAUX TEMP /orafiles/ords/scripts/ #<< EOF1
+#oracle
+#USERS
+#TEMP
+#EOF1
+
+cd ${ORDS_SOURCE_DIR}
 
 java -jar ords.war configdir /ords/conf
 
