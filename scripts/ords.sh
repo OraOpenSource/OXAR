@@ -22,11 +22,15 @@ fi
 unzip ords.war
 cd scripts/install/core
 
-sqlplus sys/oracle as sysdba @ords_manual_install.sql SYSAUX TEMP /orafiles/ords/scripts/ #<< EOF1
-#oracle
-#USERS
-#TEMP
-#EOF1
+#Remove the HIDE property. Script fails otherwise
+sed -i.backup s/HIDE// ords_manual_create_rest_users.sql
+
+# 3 inputs: for ords_public_user - password; tablespace; temp tablespace
+sqlplus sys/oracle as sysdba @ords_manual_install.sql SYSAUX TEMP ${ORDS_SOURCE_DIR}/scripts/ << EOF1
+oracle
+USERS
+TEMP
+EOF1
 
 cd ${ORDS_SOURCE_DIR}
 
