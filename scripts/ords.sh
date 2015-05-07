@@ -2,6 +2,7 @@
 
 #*** ORDS ***
 ORDS_SOURCE_DIR=${OOS_SOURCE_DIR}/tmp/ords
+ORDS_PARAMS=${ORDS_SOURCE_DIR}/params/ords_params.properties
 cd $OOS_SOURCE_DIR/tmp
 ${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
 
@@ -10,7 +11,14 @@ systemctl stop tomcat
 mkdir -p ${ORDS_SOURCE_DIR}
 cd ${ORDS_SOURCE_DIR}
 unzip ../$OOS_ORDS_FILENAME
-mv -f ${OOS_SOURCE_DIR}/ords/ords_params.properties params/ords_params.properties
+mv -f ${OOS_SOURCE_DIR}/ords/ords_params.properties ${ORDS_PARAMS}
+
+#Update values from config.properties
+sed -i s/OOS_APEX_PUB_USR_PWD/${OOS_APEX_PUB_USR_PWD}/ ${ORDS_PARAMS}
+sed -i s/OOS_ORDS_PUBLIC_USER_PASSWORD/${OOS_ORDS_PUBLIC_USER_PASSWORD}/ ${ORDS_PARAMS}
+sed -i s/OOS_ORACLE_TNS_PORT/${OOS_ORACLE_TNS_PORT}/ ${ORDS_PARAMS}
+sed -i s/OOS_ORDS_DEFAULT_TABLESPACE/${OOS_ORDS_DEFAULT_TABLESPACE}/ ${ORDS_PARAMS}
+sed -i s/OOS_ORDS_TEMP_TABLESPACE/${OOS_ORDS_TEMP_TABLESPACE}/ ${ORDS_PARAMS}
 
 #clean conf folder out, or create
 if [[ -d /ords/conf/ords ]]; then
