@@ -47,7 +47,7 @@ if [ "$OOS_MODULE_ORDS" = "Y" ]; then
     echo OOS_ORDS_FILE_URL must be specified >&2
     exit 1
   elif ! curl --silent --head $OOS_ORDS_FILE_URL --output /dev/null; then
-    echo "The ORDS file URL specified, $OOS_APEX_FILE_URL, appears invalid" >&2
+    echo "The ORDS file URL specified, $OOS_ORDS_FILE_URL, appears invalid" >&2
     exit 1
   else
     echo OOS_ORDS_FILE_URL=$OOS_ORDS_FILE_URL
