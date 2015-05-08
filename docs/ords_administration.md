@@ -55,9 +55,10 @@ Arguments:
 So, for example, if we wanted to enable caching, we would run the command:
 
 ```bash
-sudo java -jar ords.war set-property cache.caching true
+sudo java -jar /usr/share/tomcat/webapps/ords.war set-property cache.caching true
 ```
 Giving the following confirmation
+```
 May 08, 2015 6:53:25 PM oracle.dbtools.rt.config.setup.SetProperty execute
 INFO: Modified: /ords/conf/ords/defaults.xml, setting: cache.caching = true
 ```
