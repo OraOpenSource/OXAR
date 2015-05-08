@@ -22,8 +22,6 @@ So, open the file with your preferred text editor, and update the values accordi
 vi /ords/conf/ords/defaults.xml
 ```
 
-
-
 After you have finished updating the file, you will need to re-deploy ORDS. This is achieved by restarting tomcat with the following command.
 
 ```bash
@@ -36,6 +34,9 @@ You can use the ords.war tool to update invidual properties by using the `set-pr
 
 ```bash
 java -jar /usr/share/tomcat/webapps/ords.war help set-property
+```
+Which tells us:
+```
 java -jar ords.war set-property [--conf] <name> <value>
 
 Options:
@@ -55,8 +56,10 @@ So, for example, if we wanted to enable caching, we would run the command:
 
 ```bash
 sudo java -jar ords.war set-property cache.caching true
+```
+Giving the following confirmation
 May 08, 2015 6:53:25 PM oracle.dbtools.rt.config.setup.SetProperty execute
-INFO: Modified: /ords/conf/ords/defaults.xml, settting: cache.caching = true
+INFO: Modified: /ords/conf/ords/defaults.xml, setting: cache.caching = true
 ```
 
 ## SQL Developer
@@ -70,12 +73,13 @@ Where `ordsadmin` is the desired user name and `Listener Administrator` is the d
 
 Once you run the above command, you will be prompted to give the user a password.
 
-If you are not on HTTPS, you will need to add the `security.verifySSL` entry to the ORDS configuration and set the value false. Do so by editing the file: `/ords/conf/ords/defaults.xml` and add the following entry.
+If you are not on HTTPS, you will need to add the `security.verifySSL` entry to the ORDS configuration and set the value false. Do so by running the following command:
 
-```xml
-<entry key="security.verifySSL">false</entry>
+```bash
+sudo java -jar /usr/share/tomcat/webapps/ords.war set-property security.verifySSL false
 ```
-These steps are also described in the docs: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#AELIG7183
+
+Alternatively, edit the configuration file (`/ords/conf/ords/defaults.xml`) and set the value of the entry security.verifySSL to false as described in the docs: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#AELIG7183
 
 After that is all done, open SQL Developer and create a connection to your server. Do this by going to the Tools menu, REST Data Services, Manage Connections...
 
