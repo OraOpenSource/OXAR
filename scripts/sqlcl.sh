@@ -2,7 +2,7 @@
 
 #*** SQLcl ***
 cd $OOS_SOURCE_DIR/tmp
-${OOS_UTILS_DIR}/download.sh $OOS_MODULE_SQLCL
+${OOS_UTILS_DIR}/download.sh $OOS_SQLCL_FILE_URL
 
 unzip $OOS_SQLCL_FILENAME
 
