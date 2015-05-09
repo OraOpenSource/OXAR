@@ -197,7 +197,11 @@ fi
 if [ "$OOS_MODULE_ORDS" = "Y" ]; then
   (echo; echo \* Installing ORDS \*; echo) | tee ${OOS_INSTALL_LOG} --append
   cd $OOS_SOURCE_DIR
-  source ./scripts/ords.sh
+  if [ "$VERBOSE_OUT" = true ]; then
+      source ./scripts/ords.sh > >(tee ${OOS_INSTALL_LOG} --append) 2> >(tee ${OOS_ERROR_LOG} --append >&2)
+  else
+      source ./scripts/ords.sh >> ${OOS_INSTALL_LOG} 2> >(tee ${OOS_ERROR_LOG} --append >&2)
+  fi
 fi
 
 
