@@ -10,16 +10,10 @@ fi
 git clone https://github.com/oracle/node-oracledb.git
 cd node-oracledb
 
-export NODE_PATH=/usr/lib/node_modules
-export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
-
 npm install -g
 
-#Note: pathadd function added as part of packages.sh
-echo
-echo "" >> /etc/profile
-echo "export NODE_PATH=/usr/lib/node_modules" >> /etc/profile
-echo "export LD_LIBRARY_PATH=\$ORACLE_HOME/lib" >> /etc/profile
+cd ${OOS_SOURCE_DIR}
+cp profile.d/oos_nodejs.sh /etc/profile.d/
 
 #rerun profile to load full path
 . /etc/profile
