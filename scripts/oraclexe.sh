@@ -66,8 +66,8 @@ cd ${OOS_SOURCE_DIR}/profile.d
 #Use | as field seperator to get around issue with / being field separator
 # See: http://askubuntu.com/questions/76785/how-to-escape-file-path-in-sed
 # Alternate solution: http://stackoverflow.com/questions/407523/escape-a-string-for-a-sed-replace-pattern
-sed -i "s|ORACLE_HOME|${ORACLE_HOME}|" oos_oraclexe.sh
-cp oos_oraclexe.sh /etc/profile.d/
+sed -i "s|ORACLE_HOME|${ORACLE_HOME}|" 20oos_oraclexe.sh
+cp 20oos_oraclexe.sh /etc/profile.d/
 
 #Update the .ora files to use localhost instead of the current hostname
 #This is required since Amazon AMIs change the hostname

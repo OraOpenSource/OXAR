@@ -67,7 +67,7 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
 fi
 
 cd ${OOS_SOURCE_DIR}
-cp profile.d/oos_global.sh /etc/profile.d/
+cp profile.d/10oos_global.sh /etc/profile.d/
 
 #rerun profile to load full path
 . /etc/profile

@@ -13,7 +13,7 @@ cd node-oracledb
 npm install -g
 
 cd ${OOS_SOURCE_DIR}
-cp profile.d/oos_nodejs.sh /etc/profile.d/
+cp profile.d/30oos_nodejs.sh /etc/profile.d/
 
 #rerun profile to load full path
 . /etc/profile

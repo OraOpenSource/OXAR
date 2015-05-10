@@ -24,4 +24,4 @@ mv sql sqlcl
 PATH=$PATH:/oracle/sqlcl/bin
 
 #Permanent access:
-cp $OOS_SOURCE_DIR/profile.d/oos_sqlcl.sh /etc/profile.d/
+cp $OOS_SOURCE_DIR/profile.d/40oos_sqlcl.sh /etc/profile.d/
