@@ -29,17 +29,17 @@ elif [ -n "$(command -v apt-get)" ]; then
   # Post-install changes
   # Substitute `/var/lock/subsys` with `/var/run` to store pid files
   perl -i -p -e "s/\/var\/lock\/subsys/\/var\/run/g" /etc/init.d/oracle-xe
-  
+
   # Setup the oracle-shm service
   cp $OOS_SOURCE_DIR/init.d/oracle-shm /etc/init.d/
   chmod 755 /etc/init.d/oracle-shm
-   
+
   # Start Oracle XE services at boot
   if [ -n "$(command -v update-rc.d)" ]; then
     update-rc.d oracle-shm defaults 01 99
-    update-rc.d oracle-xe defaults 
+    update-rc.d oracle-xe defaults
   fi
-  
+
   echo; echo \* DB install complete \*; echo
 fi
 
@@ -61,8 +61,13 @@ echo; echo \* DB configure complete \*; echo
 cd /u01/app/oracle/product/11.2.0/xe/bin
 . ./oracle_env.sh
 
-#Configure for all profiles (so accesible on boot login)
-echo . $ORACLE_HOME/bin/oracle_env.sh >> /etc/profile
+#Create a profile to set environment
+cd ${OOS_SOURCE_DIR}/profile.d
+#Use | as field seperator to get around issue with / being field separator
+# See: http://askubuntu.com/questions/76785/how-to-escape-file-path-in-sed
+# Alternate solution: http://stackoverflow.com/questions/407523/escape-a-string-for-a-sed-replace-pattern
+sed -i "s|ORACLE_HOME|${ORACLE_HOME}|" 20oos_oraclexe.sh
+cp 20oos_oraclexe.sh /etc/profile.d/
 
 #Update the .ora files to use localhost instead of the current hostname
 #This is required since Amazon AMIs change the hostname
