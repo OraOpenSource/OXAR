@@ -65,18 +65,9 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
     echo bower already installed
   fi
 fi
-#Configure path to include /usr/local/bin (required for ratom)
-#Some instances of CentOS don't have this predefined
-#Code from: http://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
-cd ~
-echo "" >> /etc/profile
-echo 'pathadd() {' >> /etc/profile
-echo ' if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then' >> /etc/profile
-echo ' PATH="${PATH:+"$PATH:"}$1"' >> /etc/profile
-echo ' fi' >> /etc/profile
-echo '}' >> /etc/profile
-echo "" >> /etc/profile
-echo "pathadd /usr/local/bin" >> /etc/profile
-echo "" >> /etc/profile
+
+cd ${OOS_SOURCE_DIR}
+cp profile.d/oos_global.sh /etc/profile.d/
+
 #rerun profile to load full path
 . /etc/profile
