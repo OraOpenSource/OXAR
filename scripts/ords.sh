@@ -46,21 +46,8 @@ cd ${ORDS_SOURCE_DIR}
 
 java -jar ords.war configdir /ords/conf
 
-#ORDS2
-if [ "$OOS_DEPLOY_TYPE" == "VAGRANT" ]; then
-  #Replace mnemonics
-  perl -i -p -e "s/OOS_APEX_PUB_USR_PWD/$OOS_APEX_PUB_USR_PWD/g" $OOS_SOURCE_DIR/ords/defaults.properties
-  perl -i -p -e "s/OOS_ORACLE_TNS_PORT/$OOS_ORACLE_TNS_PORT/g" $OOS_SOURCE_DIR/ords/defaults.properties
-
-  # Attempt silent ORDS configuration if provisioned though Vagrant
-  java -jar ords.war set-properties --conf defaults $OOS_SOURCE_DIR/ords/defaults.properties
-  java -jar ords.war set-properties --conf apex $OOS_SOURCE_DIR/ords/apex.properties
-  java -jar ords.war set-properties --conf apex_al $OOS_SOURCE_DIR/ords/apex_al.properties
-  java -jar ords.war set-properties --conf apex_rt $OOS_SOURCE_DIR/ords/apex_rt.properties
-else
-  java -jar ords.war
-
-fi;
+#config ORDS
+java -jar ords.war
 
 #Make tomcat the owner of the configuration
 chown -R tomcat.tomcat /ords/conf
