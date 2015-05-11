@@ -271,6 +271,12 @@ There are many different ways to connect to Oracle with SQL*Plus. The [How to Co
   </tr>
 </table>
 
+To start/stop/restart Oracle run the following commands:
+```bash
+/etc/init.d/oracle-xe start
+/etc/init.d/oracle-xe stop
+/etc/init.d/oracle-xe restart
+```
 
 ## APEX
 To connect to APEX go to `http://<server_name>/` and it will direct you to the APEX login page.
@@ -301,19 +307,20 @@ To connect to APEX go to `http://<server_name>/` and it will direct you to the A
 ### APEX Web Listener
 This project uses [Node4ORDS](https://github.com/OraOpenSource/node4ords) as a web listener. The Node4ORDS project provides the ability to serve static content and will provide additional web server functionality. Please read its documentation for more information.
 
-Node4ORDS is installed in ```/var/www/node4ords```. It can be controlled by:
+Node4ORDS is installed in `/var/www/node4ords`. It can be controlled by:
 ```bash
 systemctl start node4ords
 systemctl stop node4ords
 ```
 
-Static content can be put in ```/var/www/public/``` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listener configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
+Static content can be put in `/var/www/public/` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listener configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
 
 ### ORDS
-ORDS is located in ```/ords```
+[Oracle REST Data Services (ORDS)](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/) allows web servers (such as Tomcat) to connect serve up APEX pages. It is located in `/ords`
 
-The APEX images are stored in ```/ords/apex_images```
+The APEX images are stored in `/ords/apex_images`
 
+Since ORDS is a module that is added to Tomcat, there is no direct stop/stop commands for it. To restart ORDS, restart Tomcat.
 
 ## Tomcat Manager
 This server uses [Apache Tomcat](http://tomcat.apache.org/) as the web container for ORDS. By default, the firewall restricts public access to the Tomcat server directly. If you do want to make it accessible run:
@@ -397,6 +404,12 @@ The default port settings are as follows:
 
 Open Optional ports can be configured in`config.properties` in the `FIREWALL` section. If you want to modify the firewall settings after running the build script, open `scripts/firewalld.sh` and look for examples on how to open (both temporarily and permanently).
 
+To start/stop the Firewall:
+```bash
+systemctl start firewalld
+systemctl stop firewalld
+```
+
 ## Vagrant Port Mapping
 The following ports are mapped to the host and can be configured in [Vagrantfile](Vagrantfile):
 <table>
@@ -430,6 +443,9 @@ The following ports are mapped to the host and can be configured in [Vagrantfile
 # Other
 ## OS Utility Scripts
 When setting up a new server their are some common things that you may want to do such as creating a new user, disabling root SSH access, etc. Though these tasks are outside the goal of this project, we've created a new folder [`utils/os`](utils/os) to store some of these common scripts which may help when setting up a new server.
+
+## Oracle Utility Scrpts
+This install uses some common Oracle scripts that may be useful to run at a later time. For example, the `oracle_create_user.sql`, creates a user with all the necessary privileges to start using. For more info, go to the [`oracle`](oracle) folder.
 
 ## Editing server files locally
 To make it easier to edit files on the server (and avoid using vi), [Remote-Atom](https://github.com/randy3k/remote-atom) (ratom) is installed by default. This requires that you have the [Atom](https://atom.io/) text editor on your desktop and have installed the [ratom](https://github.com/randy3k/remote-atom).
