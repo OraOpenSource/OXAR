@@ -34,7 +34,7 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
   </tr>
   <tr>
     <td>ORDS</td>
-    <td>2.0.10.289.08.09</td>
+    <td>3.0.0.121.10.23</td>
     <td></td>
   </tr>
   <tr>
@@ -229,7 +229,6 @@ To build the server run the following commands. It is very important that you ru
 ###Native Install
 
 ```bash
-#If installing APEX/ORDS, you will be prompted for some configuration options at some point (issue #2)
 . build.sh
 ```
 
@@ -304,10 +303,8 @@ This project uses [Node4ORDS](https://github.com/OraOpenSource/node4ords) as a w
 
 Node4ORDS is installed in ```/var/www/node4ords```. It can be controlled by:
 ```bash
-/etc/init.d/node4ords start
-/etc/init.d/node4ords stop
-/etc/init.d/node4ords restart
-/etc/init.d/node4ords status
+systemctl start node4ords
+systemctl stop node4ords
 ```
 
 Static content can be put in ```/var/www/public/``` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listener configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
