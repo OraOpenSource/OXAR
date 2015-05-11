@@ -53,3 +53,12 @@ if [ "$OOS_MODULE_ORDS" = "Y" ]; then
     echo OOS_ORDS_FILE_URL=$OOS_ORDS_FILE_URL
   fi
 fi
+
+if [ ! -z "${OOS_SQLCL_FILE_URL}" ]; then
+  if ! curl --silent --head $OOS_SQLCL_FILE_URL --output /dev/null; then
+    echo "The SQLcl file URL specified, $OOS_SQLCL_FILE_URL, appears invalid" >&2
+    exit 1
+  else
+    echo OOS_SQLCL_FILE_URL=$OOS_SQLCL_FILE_URL
+  fi
+fi
