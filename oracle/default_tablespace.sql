@@ -1,3 +1,13 @@
+/*
+
+Default tablespace verified with the query:
+
+select *
+from database_properties
+where property_name = 'DEFAULT_PERMANENT_TABLESPACE';
+
+*/
+
 set define '^'
 set verify off
 
