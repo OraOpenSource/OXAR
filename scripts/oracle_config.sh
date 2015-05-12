@@ -18,3 +18,13 @@ if [ "$OOS_ORACLE_ACL_APEX_ALL_YN" = "Y" ]; then
 else
   echo Not creating Oracle User
 fi
+
+#XE has SYSTEM as the Default tablespace by default. Set back to USERS
+echo Setting default tablespace
+sqlplus sys/${OOS_ORACLE_PWD} as sysdba @default_tablespace.sql << EOF1
+USERS
+EOF1
+
+#Unlock sample data as described in docs: http://docs.oracle.com/cd/E17781_01/admin.112/e18585/toc.htm#XEGSG120
+echo Unlocking sample data \(schema: hr\)
+sqlplus sys/${OOS_ORACLE_PWD} as sysdba @unlock_sample_data.sql
