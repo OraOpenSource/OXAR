@@ -10,11 +10,10 @@ sed -i "s/http\:\/\/localhost:8080/http\:\/\/localhost:${OOS_TOMCAT_PORT}/" conf
 npm install --unsafe-perm
 
 #Start on boot
-cd $OOS_SOURCE_DIR
+cd ${OOS_SOURCE_DIR}
 
-cp init.d/node4ords.service /etc/systemd/system/
-mkdir -p /ords/conf/node4ords
-cp init.d/node4ords.conf /ords/conf/node4ords/
+cp -f init.d/node4ords.service /etc/systemd/system/
+cp init.d/node4ords.conf /etc/node4ords.conf
 
 systemctl enable node4ords.service
 systemctl start node4ords.service
