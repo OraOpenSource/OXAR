@@ -63,6 +63,7 @@ mv ords.war ${CATALINA_HOME}/webapps/
 #Place ords files in ${ORACLE_HOME}/ords
 mkdir -p ${ORACLE_HOME}/ords
 ln -sf ${CATALINA_HOME}/webapps/ords.war ${ORACLE_HOME}/ords/ords.war
+ln -sf /etc/ords $ORACLE_HOME/ords/conf
 mv * ${ORACLE_HOME}/ords/
 
 #Copy APEX images
