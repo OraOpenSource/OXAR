@@ -41,7 +41,7 @@ The service for tomcat is managed by systemd, and the unit file can be found at 
 
 ## ratom
 
-`rmate`, which is actually `rmate`, is a program that allows you to edit files from a remote server using the `atom` text editor. For more information refer to the project site, https://github.com/aurora/rmate, replacing rmate for ratom where necessary.
+`ratom`, which is actually `rmate`, is a program that allows you to edit files from a remote server using the `atom` text editor. For more information refer to the project site, https://github.com/aurora/rmate, replacing `rmate` for `ratom` where necessary.
 
 
 ## rlwrap
@@ -54,6 +54,6 @@ The installation sets up the wrapping around `sqlplus` and `rman` through the pr
 
 ## node4ords
 
-`note4ords` is a simple application written in Node.js that aims to be a proxy around the Tomcat web container. The files for this application are found in `/var/www/node4ords` as well as a systemd service file located at: `/etc/systemd/system/node4ords.service`. It also has some easy to set up configurations at: /etc/node4ords.conf.
+`note4ords` is a simple application written in Node.js that aims to be a proxy around the Tomcat web container. The files for this application are found in `/opt/node4ords` as well as a systemd service file located at: `/etc/systemd/system/node4ords.service`. It also has some easy to set up configurations at: /etc/node4ords.conf. To view any logs associated with node4ords, you can refer to: `/var/log/node4ords.log` - this is setup with a configuration file for rsyslog, and can be located at: `/etc/rsyslog.d/node4ords.conf`.
 
 ## Bower
