@@ -23,7 +23,7 @@ define create_demo_data_yn = '&3'
 
 -- Create user
 create user &new_user_name. identified by &new_user_pass. default tablespace users quota unlimited on users;
-grant connect,create view, create job, create table, create sequence, create trigger, create procedure, create any context, create type to &new_user_name.;
+grant connect, create view, create job, create table, create synonym, create sequence, create trigger, create procedure, create any context, create type to &new_user_name.;
 grant execute on utl_http to &new_user_name.;
 grant execute on dbms_crypto to &new_user_name.;
 grant execute on utl_file to &new_user_name.;
