@@ -6,8 +6,9 @@ After=syslog.target network.target
 
 [Service]
 Type=simple
-EnvironmentFile=-/ords/conf/node4ords/node4ords.conf
-ExecStart=/bin/node ${APP_DIR}/${NODE_APP}
+ExecStart=/usr/local/bin/node4ords
+StandardOutput=syslog
+StandardError=syslog
 User=root
 Group=root
 

@@ -23,13 +23,15 @@ sed -i s/OOS_APEX_LISTENERUN_PWD/${OOS_APEX_LISTENERUN_PWD}/ ${ORDS_PARAMS}
 sed -i s/OOS_APEX_REST_PUB_USR_PWD/${OOS_APEX_REST_PUB_USR_PWD}/ ${ORDS_PARAMS}
 
 #clean conf folder out, or create
-if [[ -d /ords/conf/ords ]]; then
-  rm -rf /ords/conf/ords/*
+if [[ -d /etc/ords/ ]]; then
+  rm -rf /etc/ords/*
 else
-  mkdir -p /ords/conf/ords
+  mkdir -p /etc/ords/
 fi
 
-unzip ords.war
+mkdir -p ords-archive
+cd ords-archive
+unzip ../ords.war
 cd scripts/install/core
 
 #Remove the HIDE property. Script fails otherwise
@@ -43,21 +45,29 @@ ${OOS_ORDS_TEMP_TABLESPACE}
 EOF1
 
 cd ${ORDS_SOURCE_DIR}
+rm -rf ords-archive
 
-java -jar ords.war configdir /ords/conf
+java -jar ords.war configdir /etc
 
 #config ORDS
 java -jar ords.war
 
 #Make tomcat the owner of the configuration
-chown -R tomcat.tomcat /ords/conf
+chown -R tomcat.tomcat /etc/ords
 
 #Source tomcat.conf to ensure ${CATALINA_HOME} is set
 . /etc/tomcat/tomcat.conf
 rm -rf ${CATALINA_HOME}/webapps/ords/ ${CATALINA_HOME}/webapps/ords.war
 mv ords.war ${CATALINA_HOME}/webapps/
 
+#Place ords files in ${ORACLE_HOME}/ords
+mkdir -p ${ORACLE_HOME}/ords
+ln -sf ${CATALINA_HOME}/webapps/ords.war ${ORACLE_HOME}/ords/ords.war
+ln -sf /etc/ords $ORACLE_HOME/ords/conf
+mv * ${ORACLE_HOME}/ords/
+
 #Copy APEX images
+mkdir -p /ords
 cd /ords
 rm -rf apex_images/
 cp -rf ${OOS_SOURCE_DIR}/tmp/apex/images apex_images/

@@ -1,0 +1,3 @@
+#!/bin/bash
+. /etc/node4ords.conf
+/bin/node ${APP_DIR}/${NODE_APP}
