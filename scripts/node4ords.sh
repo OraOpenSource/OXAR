@@ -1,5 +1,6 @@
 #!/bin/bash
 #Create app
+mkdir -p /var/www #for /var/www/public created in the node4ords installation
 cd /opt
 
 #Get project
