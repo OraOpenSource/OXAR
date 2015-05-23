@@ -13,9 +13,12 @@ if [ -n "$(command -v yum)" ]; then
   rpm -ivh $OOS_ORACLE_FILENAME_RPM
 elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* OS changes prior to install of DB \*; echo
-  rm -rf /dev/shm
-  mkdir /dev/shm
-  mount -t tmpfs shmfs -o size=2048m /dev/shm
+
+  if ! [[ -e /dev/shm]]; then
+    mkdir /dev/shm
+    mount -t tmpfs shmfs -o size=2048m /dev/shm
+  fi
+
   #mount -B /run/shm /dev/shm
   touch /dev/shm/.oracle-shm
   ln -s /usr/bin/awk /bin/awk
