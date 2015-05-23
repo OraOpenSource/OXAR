@@ -38,7 +38,8 @@ elif [ -n "$(command -v apt-get)" ]; then
   alien \
   htop \
   rlwrap \
-  chkconfig -y
+  chkconfig \
+  firewalld -y
 else
   echo; echo \* No known package manager found \*
 fi
