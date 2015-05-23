@@ -14,7 +14,7 @@ if [ -n "$(command -v yum)" ]; then
 elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* OS changes prior to install of DB \*; echo
 
-  if ! [[ -e /dev/shm]]; then
+  if ! [[ -e /dev/shm ]]; then
     mkdir /dev/shm
     mount -t tmpfs shmfs -o size=2048m /dev/shm
   fi
