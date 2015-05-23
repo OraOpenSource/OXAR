@@ -55,8 +55,6 @@ java -jar ords.war
 #Make tomcat the owner of the configuration
 chown -R tomcat.tomcat /etc/ords
 
-#Source tomcat.conf to ensure ${CATALINA_HOME} is set
-. /etc/tomcat/tomcat.conf
 rm -rf ${CATALINA_HOME}/webapps/ords/ ${CATALINA_HOME}/webapps/ords.war
 mv ords.war ${CATALINA_HOME}/webapps/
 
