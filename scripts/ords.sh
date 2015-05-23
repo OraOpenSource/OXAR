@@ -53,7 +53,7 @@ java -jar ords.war configdir /etc
 java -jar ords.war
 
 #Make tomcat the owner of the configuration
-chown -R tomcat.tomcat /etc/ords
+chown -R ${TOMCAT_USER}.${TOMCAT_USER} /etc/ords
 
 rm -rf ${CATALINA_HOME}/webapps/ords/ ${CATALINA_HOME}/webapps/ords.war
 mv ords.war ${CATALINA_HOME}/webapps/

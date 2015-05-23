@@ -6,6 +6,7 @@ if [ -n "$(command -v yum)" ]; then
     # Set tomcat environmental variables such as CATALINA_HOME
     . /etc/tomcat/tomcat.conf
     TOMCAT_SERVICE_NAME=tomcat.service
+    TOMCAT_USER=tomcat
 
 elif [ -n "$(command -v apt-get)" ]; then
 
@@ -13,7 +14,7 @@ elif [ -n "$(command -v apt-get)" ]; then
     # Set tomcat environmental variables such as CATALINA_HOME
     CATALINA_HOME=/var/lib/tomcat7
     TOMCAT_SERVICE_NAME=tomcat7.service
-
+    TOMCAT_USER=tomcat7
 else
 
     echo; echo \* No known package manager found \* >&2
