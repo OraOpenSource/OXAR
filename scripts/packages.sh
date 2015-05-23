@@ -39,7 +39,8 @@ elif [ -n "$(command -v apt-get)" ]; then
   htop \
   rlwrap \
   chkconfig \
-  firewalld -y
+  firewalld \
+  unzip -y
 else
   echo; echo \* No known package manager found \*
 fi
