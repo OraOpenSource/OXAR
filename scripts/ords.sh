@@ -6,7 +6,7 @@ ORDS_PARAMS=${ORDS_SOURCE_DIR}/params/ords_params.properties
 cd $OOS_SOURCE_DIR/tmp
 ${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
 
-systemctl stop tomcat
+systemctl stop ${TOMCAT_SERVICE_NAME}
 
 mkdir -p ${ORDS_SOURCE_DIR}
 cd ${ORDS_SOURCE_DIR}
@@ -73,6 +73,6 @@ rm -rf apex_images/
 cp -rf ${OOS_SOURCE_DIR}/tmp/apex/images apex_images/
 
 #Make images accessible when using tomcat directly
-ln -sf /ords/apex_images/ /usr/share/tomcat/webapps/i
+ln -sf /ords/apex_images/ ${CATALINA_HOME}/webapps/i
 
-systemctl start tomcat
+systemctl start ${TOMCAT_SERVICE_NAME}
