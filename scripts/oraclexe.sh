@@ -14,9 +14,15 @@ if [ -n "$(command -v yum)" ]; then
 elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* OS changes prior to install of DB \*; echo
 
-  if ! [[ -e /dev/shm ]]; then
+  if ! df | grep -q "/dev/shm"; then
+    rm -rf /dev/shm
     mkdir /dev/shm
     mount -t tmpfs shmfs -o size=2048m /dev/shm
+  fi
+
+  if ! [[ -e /sbin/chkconfig ]]; then
+    cp ${OOS_SOURCE_DIR}/oracle/chkconfig /sbin/chkconfig
+    ADDED_CHKCONFIG='Y'
   fi
 
   #mount -B /run/shm /dev/shm
@@ -41,6 +47,10 @@ elif [ -n "$(command -v apt-get)" ]; then
   if [ -n "$(command -v update-rc.d)" ]; then
     update-rc.d oracle-shm defaults 01 99
     update-rc.d oracle-xe defaults
+  fi
+
+  if [[ ${ADDED_CHKCONFIG} = 'Y' ]]; then
+    rm -f /sbin/chkconfig
   fi
 
   echo; echo \* DB install complete \*; echo

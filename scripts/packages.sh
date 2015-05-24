@@ -38,7 +38,6 @@ elif [ -n "$(command -v apt-get)" ]; then
   alien \
   htop \
   rlwrap \
-  chkconfig \
   firewalld \
   unzip -y
 else
