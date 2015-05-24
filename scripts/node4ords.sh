@@ -12,11 +12,16 @@ npm install --unsafe-perm
 #Start on boot
 cd ${OOS_SOURCE_DIR}
 
-cp -f init.d/node4ords.service /etc/systemd/system/
 cp node4ords/node4ords.conf /etc/node4ords.conf
-cp node4ords/rsyslog.conf /etc/rsyslog.d/node4ords.conf
 cp node4ords/node4ords /usr/local/bin/node4ords
 
-systemctl restart rsyslog
-systemctl enable node4ords.service
-systemctl start node4ords.service
+if hash systemctl; then
+    cp -f init.d/node4ords.service /etc/systemd/system/
+    cp node4ords/rsyslog.conf /etc/rsyslog.d/node4ords.conf
+    ${OOS_SERVICE_CTL} restart rsyslog
+    ${OOS_SERVICE_CTL} enable node4ords.service
+    ${OOS_SERVICE_CTL} start node4ords.service
+else
+    cp -f init.d/node4ords.conf /etc/init/
+    ${OOS_SERVICE_CTL} start node4ords
+fi

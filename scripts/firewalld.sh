@@ -2,7 +2,7 @@
 
 #*** FIREWALLD ***
 cd $OOS_SOURCE_DIR/tmp
-service firewalld start
+${OOS_SERVICE_CTL} stop firewalld 
 
 
 #Adding Tomcat firewall ports just in case want to test
@@ -16,7 +16,7 @@ perl -i -p -e "s/OOS_ORACLE_TNS_PORT/$OOS_ORACLE_TNS_PORT/g" oracle.xml
 perl -i -p -e "s/OOS_TOMCAT_PORT/$OOS_TOMCAT_PORT/g" tomcat.xml
 
 
-systemctl start firewalld
+${OOS_SERVICE_CTL} start firewalld
 firewall-cmd --zone=public --add-service=http --permanent
 firewall-cmd --reload
 
@@ -39,7 +39,7 @@ fi
 #Reload for any changes in above config
 firewall-cmd --reload
 
-systemctl enable firewalld
+${OOS_SERVICE_CTL} enable firewalld
 
 
 #List zone info for logs
