@@ -51,7 +51,7 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
 
 
 # Supported OS's
-This script currently works on the following operating systems
+This script currently works on the following Linux distributions
 
 <table>
   <tr>
@@ -71,8 +71,8 @@ This script currently works on the following operating systems
     <td>7.0</td>
   </tr>
   <tr>
-    <td>Debian (pending)</td>
-    <td>7.8</td>
+    <td>Debian</td>
+    <td>8.0</td>
   </tr>
 </table>
 
