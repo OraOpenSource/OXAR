@@ -51,9 +51,11 @@ while [[ $# > 0 ]]; do
 done
 
 OOS_UTILS_DIR=${OOS_SOURCE_DIR}/utils
+OOS_SERVICE_CTL=${OOS_UTILS_DIR}/servicectl.sh
 OOS_LOG_DIR=${OOS_SOURCE_DIR}/logs
 OOS_INSTALL_LOG=${OOS_LOG_DIR}/install.log
 OOS_ERROR_LOG=${OOS_LOG_DIR}/error.log
+
 
 if [ "$OOS_VERBOSE_OUT" = true ]; then
   OOS_LOG_OPTIONS=" > >(tee ${OOS_INSTALL_LOG} --append) 2> >(tee ${OOS_ERROR_LOG} --append >&2)"

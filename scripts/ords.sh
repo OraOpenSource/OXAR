@@ -6,7 +6,7 @@ ORDS_PARAMS=${ORDS_SOURCE_DIR}/params/ords_params.properties
 cd $OOS_SOURCE_DIR/tmp
 ${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
 
-systemctl stop tomcat
+${OOS_SERVICE_CTL} stop ${TOMCAT_SERVICE_NAME}
 
 mkdir -p ${ORDS_SOURCE_DIR}
 cd ${ORDS_SOURCE_DIR}
@@ -53,10 +53,8 @@ java -jar ords.war configdir /etc
 java -jar ords.war
 
 #Make tomcat the owner of the configuration
-chown -R tomcat.tomcat /etc/ords
+chown -R ${TOMCAT_USER}.${TOMCAT_USER} /etc/ords
 
-#Source tomcat.conf to ensure ${CATALINA_HOME} is set
-. /etc/tomcat/tomcat.conf
 rm -rf ${CATALINA_HOME}/webapps/ords/ ${CATALINA_HOME}/webapps/ords.war
 mv ords.war ${CATALINA_HOME}/webapps/
 
@@ -73,6 +71,6 @@ rm -rf apex_images/
 cp -rf ${OOS_SOURCE_DIR}/tmp/apex/images apex_images/
 
 #Make images accessible when using tomcat directly
-ln -sf /ords/apex_images/ /usr/share/tomcat/webapps/i
+ln -sf /ords/apex_images/ ${CATALINA_HOME}/webapps/i
 
-systemctl start tomcat
+${OOS_SERVICE_CTL} start ${TOMCAT_SERVICE_NAME}

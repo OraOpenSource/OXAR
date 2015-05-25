@@ -23,6 +23,7 @@ if [ -n "$(command -v yum)" ]; then
 elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* Installing packages with apt-get \*
   apt-get update -y
+
   apt-get install \
   unzip \
   libaio1 \
@@ -37,7 +38,8 @@ elif [ -n "$(command -v apt-get)" ]; then
   curl \
   alien \
   htop \
-  rlwrap -y
+  rlwrap \
+  firewalld -y
 else
   echo; echo \* No known package manager found \*
 fi
