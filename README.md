@@ -323,7 +323,9 @@ The APEX images are stored in `/ords/apex_images`
 Since ORDS is a module that is added to Tomcat, there is no direct stop/stop commands for it. To restart ORDS, restart Tomcat.
 
 ## Tomcat Manager
-This server uses [Apache Tomcat](http://tomcat.apache.org/) as the web container for ORDS. By default, the firewall restricts public access to the Tomcat server directly. If you do want to make it accessible run:
+This server uses [Apache Tomcat](http://tomcat.apache.org/) as the web container for ORDS. By default, the firewall restricts public access to the Tomcat server directly. *Note: To access APEX, you do not need to reference Tomcat directly (via port 8080 by default). Connecting to Tomcat is only required for additional debugging or configuration.*
+
+If you do want to make it accessible run:
 
 ```bash
 service firewalld start
