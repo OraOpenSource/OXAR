@@ -6,6 +6,7 @@ After=syslog.target network.target
 
 [Service]
 Type=simple
+EnvironmentFile=-/etc/node4ords.conf
 ExecStart=/usr/local/bin/node4ords
 StandardOutput=syslog
 StandardError=syslog
