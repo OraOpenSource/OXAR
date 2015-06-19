@@ -2,4 +2,6 @@
 *.sh text eol=lf
 *.xml text eol=lf
 *.properties text eol=lf
+*.conf text eol=lf
 init.d/* text eol=lf
+node4ords/* text eol=lf
