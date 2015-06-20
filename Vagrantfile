@@ -82,18 +82,17 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     export OOS_DEPLOY_TYPE="VAGRANT"
 
-    mkdir -p /tmp/vagrant-deploy
+    if [ -n "$(command -v yum)" ]; then
+      echo; echo \* Installing rsync with yum \*
+      yum install rsync -y
+    elif [ -n "$(command -v apt-get)" ]; then
+      echo; echo \* Installing rsync with apt-get \*
+      apt-get install rsync -y
+    else
+      echo; echo \* No known package manager found \*
+    fi
 
-    cp -R /vagrant/apex /tmp/vagrant-deploy/
-    cp -R /vagrant/firewalld /tmp/vagrant-deploy/
-    cp -R /vagrant/init.d /tmp/vagrant-deploy/
-    cp -R /vagrant/oracle /tmp/vagrant-deploy/
-    cp -R /vagrant/ords /tmp/vagrant-deploy/
-    cp -R /vagrant/scripts /tmp/vagrant-deploy/
-    cp -R /vagrant/utils /tmp/vagrant-deploy/
-    cp /vagrant/build.sh /tmp/vagrant-deploy/
-    cp /vagrant/config.sh /tmp/vagrant-deploy/
-    cp /vagrant/config.properties /tmp/vagrant-deploy/
+    rsync -rtv --exclude='files' --exclude='.*' /vagrant/ /tmp/vagrant-deploy
 
     cd /tmp/vagrant-deploy
 
