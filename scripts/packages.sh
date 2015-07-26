@@ -18,6 +18,7 @@ if [ -n "$(command -v yum)" ]; then
   which \
   net-tools \
   htop \
+  sudo \
   rlwrap -y
 
 elif [ -n "$(command -v apt-get)" ]; then
@@ -38,6 +39,7 @@ elif [ -n "$(command -v apt-get)" ]; then
   curl \
   alien \
   htop \
+  sudo \
   rlwrap \
   firewalld -y
 else
