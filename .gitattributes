@@ -1,2 +1,2 @@
-# Enforce LF endings for all shell scripts
-* text eol=lf
+# Enforce LF endings for all files Git considers text
+* text=auto eol=lf
