@@ -12,7 +12,12 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
+  
+  # The following are a list of boxes that have been tested and known to build
+  # successfully:
   config.vm.box = "chef/centos-7.0"
+  #config.vm.box = "debian/jessie64"
+  #config.vm.box = "ubuntu/vivid64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -93,6 +98,10 @@ Vagrant.configure(2) do |config|
     fi
 
     rsync -rtv --exclude='files' --exclude='.*' /vagrant/ /tmp/vagrant-deploy
+
+    if [[ `lsb_release -i` =~ (Ubuntu) ]]; then 
+      sed -i s/^.*$/UTC/ /etc/timezone; 
+    fi
 
     cd /tmp/vagrant-deploy
 

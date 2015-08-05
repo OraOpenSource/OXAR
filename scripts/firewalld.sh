@@ -7,7 +7,7 @@ ${OOS_SERVICE_CTL} stop firewalld
 if hash ufw 2>/dev/null; then
     update-rc.d firewalld disable
 
-    echo "y" | sudo ufw enable
+    echo "y" | ufw enable
     ufw allow http
     ufw allow ssh
 
