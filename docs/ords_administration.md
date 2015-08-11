@@ -8,7 +8,7 @@ There are a few ways to configure ORDS.
 
 ## Editing the configuration file(s)
 
-On the server, you can edit the configuration file directly by editing the file `/ords/conf/ords/defaults.xml`. If you are ever unsure where the config file is stored, you can find out by running the following command:
+On the server, you can edit the configuration file directly by editing the file `/etc/ords/defaults.xml`. If you are ever unsure where the config file is stored, you can find out by running the following command:
 
 ```bash
 java -jar /usr/share/tomcat/webapps/ords.war configdir
@@ -19,7 +19,7 @@ For a full list of settings and their purpose, refer to [Table A-1](http://docs.
 So, open the file with your preferred text editor, and update the values accordingly.
 
 ```bash
-vi /ords/conf/ords/defaults.xml
+vi /etc/ords/defaults.xml
 ```
 
 After you have finished updating the file, you will need to re-deploy ORDS. This is achieved by restarting tomcat with the following command.
@@ -60,7 +60,7 @@ sudo java -jar /usr/share/tomcat/webapps/ords.war set-property cache.caching tru
 Giving the following confirmation
 ```
 May 08, 2015 6:53:25 PM oracle.dbtools.rt.config.setup.SetProperty execute
-INFO: Modified: /ords/conf/ords/defaults.xml, setting: cache.caching = true
+INFO: Modified: /etc/ords/defaults.xml, setting: cache.caching = true
 ```
 
 ## SQL Developer
@@ -80,7 +80,7 @@ If you are not on HTTPS, you will need to add the `security.verifySSL` entry to 
 sudo java -jar /usr/share/tomcat/webapps/ords.war set-property security.verifySSL false
 ```
 
-Alternatively, edit the configuration file (`/ords/conf/ords/defaults.xml`) and set the value of the entry security.verifySSL to false as described in the docs: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#AELIG7183
+Alternatively, edit the configuration file (`/etc/ords/defaults.xml`) and set the value of the entry security.verifySSL to false as described in the docs: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#AELIG7183
 
 After that is all done, open SQL Developer and create a connection to your server. Do this by going to the Tools menu, REST Data Services, Manage Connections...
 
