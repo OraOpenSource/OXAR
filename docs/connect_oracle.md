@@ -77,7 +77,7 @@ Then I can connect to the database on localhost using the port 8888.
 
 Sample output:
 
-```bash
+```
 $ ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/trent/.ssh/id_rsa):
@@ -87,14 +87,14 @@ Your identification has been saved in /home/trent/.ssh/id_rsa.
 Your public key has been saved in /home/trent/.ssh/id_rsa.pub.
 The key fingerprint is:
 #output ommitted
-$ ssh-copy-id trent@192.168.1.9
+$ ssh-copy-id trent@192.168.1.10
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-trent@192.168.1.9's password:
+trent@192.168.1.10's password:
 
 Number of key(s) added: 1
 
-Now try logging into the machine, with:   "ssh 'trent@192.168.1.9'"
+Now try logging into the machine, with:   "ssh 'trent@192.168.1.10'"
 and check to make sure that only the key(s) you wanted were added.
 
 $ ./sql /nolog
