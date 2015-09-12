@@ -1,2 +1,6 @@
 # Enforce LF endings for all files Git considers text
 * text=auto eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
