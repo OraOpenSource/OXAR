@@ -2,7 +2,7 @@
 # echo_title.sh
 # Purpose: Wrapper for echoing titles
 args=$#
-title=$1
+OOS_ECHO_TITLE=$1
 
 if [[ $args -ne 1 ]]; then
   echo "echo_title.sh: Invalid number of arguments" >&2
@@ -10,4 +10,4 @@ if [[ $args -ne 1 ]]; then
   exit 1
 fi
 
-(echo; echo \* $title \*; echo) | tee ${OOS_INSTALL_LOG} --append
+(echo; echo \* $OOS_ECHO_TITLE \*; echo) | tee ${OOS_INSTALL_LOG} --append
