@@ -2,7 +2,7 @@
 <a name="constants"></a>
 
 # Oracle XE & APEX
-The goal of this project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handle the automatic build.
+The goal of the OXAR (pronounced "Oscar") project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handle the automatic build.
 
 *Note: Currently this build is not recommended for production us as it lacks backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
 
