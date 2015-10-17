@@ -1,4 +1,4 @@
-[![Analytics](https://ga-beacon.appspot.com/UA-59573016-4/oraclexe-apex/README.md?pixel)](https://github.com/igrigorik/ga-beacon)***This document is best viewed in [flatdoc format](http://oraopensource.github.io/flatdoc?repo=oraclexe-apex&path=README.md)***
+[![Analytics](https://ga-beacon.appspot.com/UA-59573016-4/oraclexe-apex/README.md?pixel)](https://github.com/igrigorik/ga-beacon)***This document is best viewed in [flatdoc format](http://oraopensource.github.io/flatdoc?repo=oxar&path=README.md)***
 <a name="constants"></a>
 
 # Oracle XE & APEX
@@ -6,7 +6,7 @@ The goal of the OXAR (pronounced "Oscar") project is to make it easy for develop
 
 *Note: Currently this build is not recommended for production us as it lacks backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
 
-For more information and to signup for our email list go to [oraopensource.com](http://www.oraopensource.com). You can follow the related blogs on this project [here](http://www.oraopensource.com/blog/?category=Oracle+XE+%2B+APEX+VM).
+For more information and to signup for our email list go to [oraopensource.com](http://www.oraopensource.com). You can follow the related blogs on this project [here](http://www.oraopensource.com/blog/?category=OXAR).
 
 If you need additional help, there is a [How-To video](http://www.oraopensource.com/blog/2015/2/25/video-how-to-build-oracle-xe-apex-machine) for this installation which walks you through the entire process.
 
