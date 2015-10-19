@@ -122,16 +122,16 @@ else
   apt-get install git-core
 fi
 
-git clone https://github.com/OraOpenSource/oraclexe-apex.git
-cd oraclexe-apex
+git clone https://github.com/OraOpenSource/oxar.git
+cd oxar
 ```
 
 ###Vagrant
 Run the following on your host machine *(you will need `git` installed on your host machine)*:
 
 ```bash
-git clone https://github.com/OraOpenSource/oraclexe-apex.git
-cd oraclexe-apex
+git clone https://github.com/OraOpenSource/oxar.git
+cd oxar
 ```
 
 ## Configure
