@@ -12,10 +12,10 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  
+
   # The following are a list of boxes that have been tested and known to build
-  # successfully:
-  config.vm.box = "chef/centos-7.0"
+  # successfully.:
+  config.vm.box = "puppetlabs/centos-7.0-64-nocm"
   #config.vm.box = "debian/jessie64"
   #config.vm.box = "ubuntu/vivid64"
 
@@ -58,11 +58,11 @@ Vagrant.configure(2) do |config|
   #   # Customize the amount of memory on the VM:
     vb.cpus = "1"
     vb.memory = "1024"
-    
+
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
     if Vagrant.has_plugin?("vagrant-vbguest")
-      # Set the following to 'true' after the VM has been successfully provisioned 
+      # Set the following to 'true' after the VM has been successfully provisioned
       config.vbguest.auto_update = false
     end
   end
@@ -99,8 +99,8 @@ Vagrant.configure(2) do |config|
 
     rsync -rtv --exclude='files' --exclude='.*' /vagrant/ /tmp/vagrant-deploy
 
-    if [[ `lsb_release -i` =~ (Ubuntu) ]]; then 
-      sed -i s/^.*$/UTC/ /etc/timezone; 
+    if [[ `lsb_release -i` =~ (Ubuntu) ]]; then
+      sed -i s/^.*$/UTC/ /etc/timezone;
     fi
 
     cd /tmp/vagrant-deploy
