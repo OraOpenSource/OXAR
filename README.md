@@ -67,7 +67,7 @@ This script currently works on the following Linux distributions
     <td>21</td>
   </tr>
   <tr>
-    <td>Oracle Enterprise Linux</td>
+    <td>Oracle Linux</td>
     <td>7.0</td>
   </tr>
   <tr>
