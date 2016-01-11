@@ -15,7 +15,8 @@ Vagrant.configure(2) do |config|
 
   # The following are a list of boxes that have been tested and known to build
   # successfully.:
-  config.vm.box = "puppetlabs/centos-7.0-64-nocm"
+  config.vm.box = "boxcutter/ol72"
+  #config.vm.box = "puppetlabs/centos-7.0-64-nocm"
   #config.vm.box = "debian/jessie64"
   #config.vm.box = "ubuntu/vivid64"
 

@@ -29,12 +29,12 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
   </tr>
   <tr>
     <td>APEX</td>
-    <td>5.0.0.00.31</td>
+    <td>5.0.3.00.03</td>
     <td>Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in config.properties</td>
   </tr>
   <tr>
     <td>ORDS</td>
-    <td>3.0.0.121.10.23</td>
+    <td>3.0.3.351.13.24</td>
     <td></td>
   </tr>
   <tr>
@@ -59,16 +59,16 @@ This script currently works on the following Linux distributions
     <th>Version</th>
   </tr>
   <tr>
+    <td>Oracle Linux</td>
+    <td>7.2</td>
+  </tr>
+  <tr>
     <td>CentOS</td>
     <td>7.0.1406</td>
   </tr>
   <tr>
     <td>Fedora</td>
     <td>21</td>
-  </tr>
-  <tr>
-    <td>Oracle Linux</td>
-    <td>7.0</td>
   </tr>
   <tr>
     <td>Debian</td>
@@ -362,6 +362,29 @@ Tomcat is located in `/usr/share/tomcat/`. Tomcat can be controlled by:
 systemctl stop tomcat
 systemctl start tomcat
 ```
+
+## Shell Access for Vagrant
+For VM created by Vagrant, the following user accounts can be used to access the VMs via SSH:
+<table>
+  <tr>
+    <th>Box</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>boxcutter/ol72</td>
+    <td>vagrant</td>
+    <td>vagrant</td>
+    <td>User account</td>
+  </tr>
+  <tr>
+    <td>boxcutter/ol72</td>
+    <td>root</td>
+    <td>vagrant</td>
+    <td>Root account</td>
+  </tr>
+</table>
 
 # Port Configurations
 The default port settings are as follows:
