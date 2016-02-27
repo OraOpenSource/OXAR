@@ -52,11 +52,12 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   echo; echo \* Installing NodeJS \*
   cd $OOS_SOURCE_DIR/tmp
   if [ -n "$(command -v yum)" ]; then
-    curl -sL https://rpm.nodesource.com/setup | bash -
-    yum install -y nodejs
+    #128 Get nodejs and npm from yum
+    # curl -sL https://rpm.nodesource.com/setup | bash -
+    yum install -y nodejs npm
   elif [ -n "$(command -v apt-get)" ]; then
-    curl -sL https://deb.nodesource.com/setup | bash -
-    apt-get install nodejs -y
+    # curl -sL https://deb.nodesource.com/setup | bash -
+    apt-get install nodejs npm -y
   else
     echo; echo \* No known package manager found \*
   fi
