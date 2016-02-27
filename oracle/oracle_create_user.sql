@@ -41,4 +41,4 @@ alter session set current_schema=&new_user_name.;
 
 @&l_script_name.
 
-exit
+-- exit
