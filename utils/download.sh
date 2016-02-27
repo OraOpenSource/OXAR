@@ -15,7 +15,8 @@ fi
 
 # Adapted from: http://stackoverflow.com/questions/12451278/bash-capture-stdout-to-a-variable-but-still-display-it-in-the-console
 echo "Requesting to download file ${download_path}"
-DOWNLOAD_OUTPUT=$(curl -O -C - ${download_path} --progress-bar 2> >(tee /dev/tty))
+#127: Added -L option to help assist with dropbox.com links.
+DOWNLOAD_OUTPUT=$(curl -L -O -C - ${download_path} --progress-bar 2> >(tee /dev/tty))
 
 exit_code=$?
 if [[ $exit_code = 0 ]]; then
