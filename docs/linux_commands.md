@@ -1,6 +1,6 @@
 # Linux Commands
 
-The goal of this document is to list random linux commands that may help debug and/or trouble shoot errors.
+The goal of this document is to list random linux commands that may help debug and/or troubleshoot errors.
 
 Purpose | Command | Description
 ------ | ------ | ------
