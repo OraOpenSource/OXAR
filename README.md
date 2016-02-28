@@ -114,7 +114,19 @@ You can copy files from your local machine to the remote server easily using ```
 scp oracle-xe-11.2.0-1.0.x86_64.rpm.zip username@servername.com:/tmp
 ```
 
-####Files-Vagrant
+#### File Help
+
+To assist getting your Oracle installation files configured for OXAR one approach is to use [Dropbox](http://dropbox.com). Once you have downloaded the install files, store them on dropbox and then reference them using the [Shared Link](https://www.dropbox.com/en/help/167) feature. Note that you need to change the `...?dl=0` to a `...?dl=1` at the end of the file. *For copyright purposes you should only use these links for your OXAR install and not share them publicly.*
+
+Instead of having to use `vi` to edit the file you can use `sed` to find and replace. An example is as follows: *(Note: the escaping of forward slashes (`/`) in the URL)*
+```bash
+sed -i 's/OOS_ORACLE_FILE_URL=CHANGEME/OOS_ORACLE_FILE_URL=https:\/\/www.dropbox.com\/s\/SHAREDLINKCODE\/oracle-xe-11.2.0-1.0.x86_64.rpm.zip?dl=1/g' config.properties
+sed -i 's/OOS_APEX_FILE_URL=CHANGEME/OOS_APEX_FILE_URL=https:\/\/www.dropbox.com\/s\/SHAREDLINKCODE\/apex_5.0.3_en.zip?dl=1/g' config.properties
+sed -i 's/OOS_ORDS_FILE_URL=CHANGEME/OOS_ORDS_FILE_URL=https:\/\/www.dropbox.com\/s\/SHAREDLINKCODE\/ords.3.0.2.294.08.40.zip?dl=1/g' config.properties
+sed -i 's/OOS_SQLCL_FILE_URL=/OOS_SQLCL_FILE_URL=https:\/\/www.dropbox.com\/s\/SHAREDLINKCODE\/sqlcl-4.2.0.16.049.0843-no-jre.zip?dl=1/g' config.properties
+```
+
+#### Files-Vagrant
 Vagrant automatically maps your current folder to `/vagrant` on its VM. You can copy your files to the subdirectory `files` in `oraclexe_apex` (on your host machine) and reference them with `/vagrant/files/<filename>`. The `files` subdirectory has been added to [.gitignore](.gitignore) to exclude the installation files from version control.
 
 Example:
