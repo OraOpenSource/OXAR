@@ -11,93 +11,34 @@ For more information and to signup for our email list go to [oraopensource.com](
 If you need additional help, there is a [How-To video](http://www.oraopensource.com/blog/2015/2/25/video-how-to-build-oracle-xe-apex-machine) for this installation which walks you through the entire process.
 
 # Current Software Versions
-<table>
-  <tr>
-    <th>App</th>
-    <th>Version</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>Oracle XE</td>
-    <td>11.2.0.2.0</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>SQLcl</td>
-    <td>4.1.0 Release Candidate</td>
-    <td>Command line SQL (beta)</td>
-  </tr>
-  <tr>
-    <td>APEX</td>
-    <td>5.0.3.00.03</td>
-    <td>Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in config.properties</td>
-  </tr>
-  <tr>
-    <td>ORDS</td>
-    <td>3.0.3.351.13.24</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Tomcat</td>
-    <td>7.0.57</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Node-oracledb</td>
-    <td>0.3.1</td>
-    <td>Node.js driver for Oracle: <a href="https://github.com/oracle/node-oracledb" target="_blank">https://github.com/oracle/node-oracledb</a></td>
-  </tr>
-</table>
+App | Version | Description
+------ | ------ | ------
+Oracle XE | 11.2.0.2.0 |
+SQLcl | 4.1.0 Release Candidate | Command line SQL (beta)
+APEX | 5.0.3.00.03 | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
+ORDS | 3.0.3.351.13.24 |
+Tomcat | 7.0.57
+Node-oracledb | 0.3.1 | [Node.js driver for Oracle](https://github.com/oracle/node-oracledb)
 
 
 # Supported OS's
 This script currently works on the following Linux distributions
 
-<table>
-  <tr>
-    <th>OS</th>
-    <th>Version</th>
-  </tr>
-  <tr>
-    <td>Oracle Linux</td>
-    <td>7.2</td>
-  </tr>
-  <tr>
-    <td>CentOS</td>
-    <td>7.0.1406</td>
-  </tr>
-  <tr>
-    <td>Fedora</td>
-    <td>21</td>
-  </tr>
-  <tr>
-    <td>Debian</td>
-    <td>8.0</td>
-  </tr>
-</table>
+OS | Version
+------ | ------
+Oracle Linux | 7.2
+CentOS | 7.0.1406
+Fedora | 21
+Debian | 8.0
 
 # Deployment Options
 
-<table>
-  <tr>
-    <th>Option</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>Native Build</td>
-    <td>This is the default option and assumes thats you will be running this script on the machine that it will be installed on. Common uses of this is to run in a VM or cloud machine.</td>
-  </tr>
-  <tr>
-    <td><a href="https://www.vagrantup.com/" target="_blank">Vagrant</a></td>
-    <td>Vagrant is a tool for building development environments. Some additional configuration is required when running this script with Vagrant. These changes are noted in the documentation</td>
-  </tr>
-  <tr>
-    <td>Prebuilt Images</td>
-    <td>Due to licensing issues, we can not provide a prebuilt image or appliance. As such you will need to manually build the VM yourself with the provided scripts.<br><br>
+Option | Description
+------ | ------
+Native Build | This is the default option and assumes thats you will be running this script on the machine that it will be installed on. Common uses of this is to run in a VM or cloud machine.
+[Vagrant](https://www.vagrantup.com/) | Vagrant is a tool for building development environments. Some additional configuration is required when running this script with Vagrant. These changes are noted in the documentation
+Prebuilt Images | Due to licensing issues, we can not provide a prebuilt image or appliance. As such you will need to manually build the VM yourself with the provided scripts. </br></br>If you are using Amazon AWS EC2, please be sure to follow the configuration steps listed [here](docs/amazon_aws.md).
 
-If you are using Amazon AWS EC2, please be sure to follow the configuration steps listed <a href="docs/amazon_aws.md">here</a>.</td>
-  </tr>
-</table>
 
 # Build
 You can build your own VM with the following instructions.
@@ -150,28 +91,13 @@ vi config.properties
 ### Files
 **Due to licensing requirements, you must download the Oracle installation files and modify the following parameters in the config file with the location of these files.**
 
-<table>
-  <tr>
-    <th>Parameter</th>
-    <th>Desc</th>
-  </tr>
-  <tr>
-    <td>OOS_ORACLE_FILE_URL</td>
-    <td>Download: http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html</td>
-  </tr>
-  <tr>
-    <td>OOS_APEX_FILE_URL</td>
-    <td>Download: http://download.oracleapex.com</td>
-  </tr>
-  <tr>
-    <td>OOS_ORDS_FILE_URL</td>
-    <td>Download: http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/index.html</td>
-  </tr>
-  <tr>
-    <td>OOS_SQLCL_FILE_URL</td>
-    <td>Download: http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html </br></br>This is an optional file</td>
-  </tr>
-</table>
+Parameter | Description
+------ | ------
+OOS_ORACLE_FILE_URL | [Download](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)
+OOS_APEX_FILE_URL | [Download](http://download.oracleapex.com)
+OOS_ORDS_FILE_URL | [Download](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/index.html)
+OOS_SQLCL_FILE_URL | [Download](http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html) *This is an optional file*
+
 
 These can be references to files on a web server or to the location on the server. Some examples:
 
@@ -199,23 +125,11 @@ OOS_ORACLE_FILE_URL=file:///vagrant/files/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 ### Modules
 You can optionally chose which modules you want installed. This install supports the following optional modules which can be modified in ```config.properties```
 
-<table>
-  <tr>
-    <th>Module</th>
-    <th>Default</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>OOS_MODULE_ORACLE</td>
-    <td>Y</td>
-    <td>Install Oracle XE</td>
-  </tr>
-  <tr>
-    <td>OOS_MODULE_APEX</td>
-    <td>Y</td>
-    <td>Install's APEX and all of it's components (Tomcat, ORDS, etc)</td>
-  </tr>
-</table>
+Module | Default | Description
+------ | ------ | ------
+OOS_MODULE_ORACLE | Y | Install Oracle XE
+OOS_MODULE_APEX | Y | Install's APEX and all of it's components (Tomcat, ORDS, etc)
+
 
 ### APEX
 There are additional APEX configurations that you may want to make in the ```scripts/apex_config.sql``` file. You can run them later on or manually configure them in the APEX admin account.
@@ -243,33 +157,13 @@ vagrant up
 ## Oracle / SQL*Plus / SQLcl
 
 There are many different ways to connect to Oracle with SQL*Plus. The [How to Connect to Oracle](docs/connect_oracle.md) document covers them.
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Password</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>OOS_USER</td>
-    <td>oracle</td>
-    <td>User you can use to develop with right away</td>
-  </tr>
-  <tr>
-    <td>SYS</td>
-    <td>oracle</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>SYSTEM</td>
-    <td>oracle</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>APEX_PUBLIC_USER</td>
-    <td>oracle</td>
-    <td></td>
-  </tr>
-</table>
+
+Username | Password | Description
+------ | ------ | ------
+OOS_USER | oracle | User you can use to develop with right away
+SYS | oracle |
+SYSTEM | oracle |
+APEX_PUBLIC_USER | oracle |
 
 To start/stop/restart Oracle run the following commands:
 ```bash
@@ -281,27 +175,10 @@ To start/stop/restart Oracle run the following commands:
 ## APEX
 To connect to APEX go to `http://<server_name>/` and it will direct you to the APEX login page.
 
-<table>
-  <tr>
-    <th>Workspace</th>
-    <th>Username</th>
-    <th>Password</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>INTERNAL</td>
-    <td>admin</td>
-    <td>Oracle1!</td>
-    <td>Workspace administrator account</td>
-  </tr>
-  <tr>
-    <td>OOS_USER</td>
-    <td>oos_user</td>
-    <td>oracle</td>
-    <td>You can start developing on this account. It is linked to OOS_USER schema</td>
-  </tr>
-</table>
-
+Workspace | Username | Password | Description
+------ | ------ | ------ | ------
+INTERNAL | admin | `Oracle1!` | Workspace administrator account
+OOS_USER | oos_user | `oracle` | You can start developing on this account. It is linked to OOS_USER schema
 
 
 ### APEX Web Listener
@@ -334,18 +211,9 @@ firewall-cmd --zone=public --add-service=tomcat
 
 You can then access Tomcat Manager via `http://<server_name>:8080/manager` or Application Express via `http://<server_name>:8080/ords`
 
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Password</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>tomcat</td>
-    <td>oracle</td>
-    <td>Admin account</td>
-  </tr>
-</table>
+Username | Password | Description
+------ | ------ | ------
+tomcat | oracle | Admin account
 
 
 By default the admin account is tomcat/oracle
@@ -365,69 +233,24 @@ systemctl start tomcat
 
 ## Shell Access for Vagrant
 For VM created by Vagrant, the following user accounts can be used to access the VMs via SSH:
-<table>
-  <tr>
-    <th>Box</th>
-    <th>Username</th>
-    <th>Password</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>boxcutter/ol72</td>
-    <td>vagrant</td>
-    <td>vagrant</td>
-    <td>User account</td>
-  </tr>
-  <tr>
-    <td>boxcutter/ol72</td>
-    <td>root</td>
-    <td>vagrant</td>
-    <td>Root account</td>
-  </tr>
-</table>
+
+Box | Username | Password | Description
+------ | ------ | ------ | ------
+boxcutter/ol72 | vagrant | vagrant | User account
+boxcutter/ol72 | root | vagrant | Root account
 
 # Port Configurations
 The default port settings are as follows:
-<table>
-  <tr>
-    <th>Port</th>
-    <th>Service</th>
-    <th>Open</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-  	<td>22</td>
-  	<td>SSH</td>
-  	<td>Yes</td>
-  	<td></td>
-  </tr>
-  <tr>
-  	<td>80</td>
-  	<td>Node.js</td>
-  	<td>Yes</td>
-  	<td>HTTP Server</td>
-  </tr>
-  <tr>
-    <td>1521</td>
-    <td>Oracle SQL connection</td>
-    <td>Optional (default: No)</td>
-  	<td></td>
-   </tr>
-  <tr>
-  	<td>8080</td>
-  	<td>Tomcat</td>
-  	<td>Optional (default: No)</td>
-  	<td></td>
-  </tr>
-  <tr>
-  	<td>8081</td>
-  	<td>PL/SQL Gateway</td>
-  	<td>No</td>
-  	<td>Disabled by default</td>
-  </tr>
-</table>
 
-Open Optional ports can be configured in`config.properties` in the `FIREWALL` section. If you want to modify the firewall settings after running the build script, open `scripts/firewalld.sh` and look for examples on how to open (both temporarily and permanently).
+Port | Service | Open | Description
+------ | ------ | ------ | ------
+22 | SSH | Yes |
+80 | Node.js | Yes | HTTP Server
+1521 | Oracle SQL connection | Optional (default: No) |
+8080 | Tomcat | Optional (default: No) |
+8081 | PL/SQL Gateway | No | Disabled by default
+
+Optional ports can be configured in`config.properties` in the `FIREWALL` section. If you want to modify the firewall settings after running the build script, open `scripts/firewalld.sh` and look for examples on how to open (both temporarily and permanently).
 
 To start/stop the Firewall:
 ```bash
@@ -437,32 +260,13 @@ systemctl stop firewalld
 
 ## Vagrant Port Mapping
 The following ports are mapped to the host and can be configured in [Vagrantfile](Vagrantfile):
-<table>
-  <tr>
-    <th>Port</th>
-    <th>Host Port</th>
-    <th>Service</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-  	<td>22</td>
-    <td>50022</td>
-  	<td>SSH</td>
-  	<td>An additional port may be assigned by Vagrant.</td>
-  </tr>
-  <tr>
-  	<td>80</td>
-    <td>50080</td>
-  	<td>Node.js</td>
-  	<td>HTTP Server</td>
-  </tr>
-  <tr>
-    <td>1521</td>
-    <td>50521</td>
-    <td>Oracle SQL connection</td>
-  	<td>The port is mapped but usable only if permitted by firewall rules **.</td>
-  </tr>
-</table>
+
+Port | Host Port | Service | Description
+------ | ------ | ------ | ------
+22 | 50022 | SSH | An additional port may be assigned by Vagrant.
+80 | 50080 | Node.js | HTTP Server
+1521 | 50521 | Oracle SQL connection | The port is mapped but usable only if permitted by firewall rules **.
+
 ** See [Port Configurations](#port-configurations).
 
 # Other
