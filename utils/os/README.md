@@ -13,9 +13,14 @@ It is highly recommended to disable root access to SSH logins. To do so run:
 To create a new user run:
 
 ```bash
-. create_user.sh <username> <ssh_key>
+./create_user.sh <username> <password> <ssh_key (optional)>
+
+#Ex:
+./create_user.sh martin martin "ssh-rsa keyinformation..."
 ```
 
-Where `ssh_key` is the URL to an public key. Examples are: `http://myserver.com/id_rsa.pub` or a file path e.g. `file:///tmp/id_rsa.pub`. This user is created without a password.
-
-The following article explains how to generate your own SSH key: [https://help.github.com/articles/generating-ssh-keys/](https://help.github.com/articles/generating-ssh-keys/)
+Name | Description
+---- | ----
+`username` | OS username
+`password` | Password
+`ssh_key` | Public SSH key on your system. Can be used for passwordless login (recommended). The following article explains how to generate your own SSH key: [https://help.github.com/articles/generating-ssh-keys/](https://help.github.com/articles/generating-ssh-keys/). If using this variable put in quotes to escape any spaces.
