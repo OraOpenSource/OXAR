@@ -40,6 +40,3 @@ begin
     p_additional_schemas => '');
 end;
 /
-
-
-exit

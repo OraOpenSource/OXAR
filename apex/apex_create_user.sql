@@ -48,6 +48,3 @@ begin
     p_allow_team_development_yn => 'Y');
 end;
 /
-
-
-exit
