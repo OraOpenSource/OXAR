@@ -1,4 +1,4 @@
-# Securing Linux
+# Securing System
 
 This document describes how to secure your linux environment. You should consider these suggestions if you are putting your OXAR installation on the internet or any publicly available server.
 
@@ -53,3 +53,7 @@ systemctl reload sshd
 echo -e "exec apex_instance_admin.remove_workspace(p_workspace => '$apex_workspace_oos_user', p_drop_users => 'Y');\n exit;" | sqlplus system/oracle
 
 ```
+
+## APEX
+
+- [] Change the APEX internal password. 
