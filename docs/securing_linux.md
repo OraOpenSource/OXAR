@@ -45,5 +45,4 @@ echo 'PermitRootLogin no' >> /etc/ssh/sshd_config
 sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 systemctl reload sshd
 
-# Lockdown SSH
 ```
