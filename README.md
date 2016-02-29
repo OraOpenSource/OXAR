@@ -164,6 +164,11 @@ To build the server run the following commands. It is very important that you ru
 vagrant up
 ```
 
+# Securing the Server
+
+If you use OXAR in a production instance or is available on the internet it is recommended that you lock down certain features. Review our [Securying System](docs/securing_system.md) document.
+
+
 # How to connect
 
 ## Oracle / SQL*Plus / SQLcl
