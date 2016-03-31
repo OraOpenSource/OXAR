@@ -8,6 +8,9 @@ alter user apex_public_user identified by OOS_APEX_PUB_USR_PWD;
 
 -- Optional
 
+--instance settings
+--1. Enable ORDS as the print server so PDF printing works out of the box
+ exec apex_instance_admin.set_parameter('PRINT_BIB_LICENSED', 'APEX_LISTENER');
 -- APEX configurations
 -- exec apex_instance_admin.set_parameter(p_parameter => 'STRONG_SITE_ADMIN_PASSWORD', p_value => 'N');
 -- exec apex_instance_admin.set_parameter(p_parameter => 'WORKSPACE_PROVISION_DEMO_OBJECTS', p_value => 'N');
