@@ -6,11 +6,15 @@ ORDS_PARAMS=${ORDS_SOURCE_DIR}/params/ords_params.properties
 cd $OOS_SOURCE_DIR/tmp
 ${OOS_UTILS_DIR}/download.sh $OOS_ORDS_FILE_URL
 
+#stop tomcat before upgrading/installing ORDS
 ${OOS_SERVICE_CTL} stop ${TOMCAT_SERVICE_NAME}
 
+#Create a directory to unzip ORDS into (tmp/ords)
 mkdir -p ${ORDS_SOURCE_DIR}
 cd ${ORDS_SOURCE_DIR}
+#extract ords*.zip
 unzip ../$OOS_ORDS_FILENAME
+#move the parameters file from ords to tmp/ords/ (where ords files are)
 mv -f ${OOS_SOURCE_DIR}/ords/ords_params.properties ${ORDS_PARAMS}
 
 #Update values from config.properties
@@ -30,9 +34,15 @@ else
   mkdir -p /etc/ords/
 fi
 
+#Make a folder to unzip ords.war into (tmp/ords/ords-archive)
 mkdir -p ords-archive
 cd ords-archive
+#unzip all the files
 unzip ../ords.war
+
+#Manual installation is stored in this path (scripts/install/core)
+#This parameters etc changes over time.
+#See: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#CHDFJHEA
 cd scripts/install/core
 
 #Remove the HIDE property. Script fails otherwise
