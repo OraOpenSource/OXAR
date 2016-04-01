@@ -45,6 +45,47 @@ unzip ../ords.war
 #See: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#CHDFJHEA
 cd scripts/install/core
 
+#Since the manual installation changes over time, beginning with 3.0.4, check
+#the version to act per version.
+#
+#-1 hack - to force the script to exit if it expects input (it would by default
+#expect a path to be set)
+VERSION_STR=$(echo "-1" | java -jar ${ORDS_SOURCE_DIR}/ords.war version)
+echo $VERSION_STR
+VERSION_PREFIX="Oracle REST Data Services "
+
+#Make sure the output of java -jar ords.war version returns
+if [[ "${VERSION_STR}" != ${VERSION_PREFIX}* ]]; then
+    echo "The version of ORDS you are attempting to install is not supported" >&2
+    echo "Please grab the latest version and try again" >&2
+    exit 1
+fi
+
+#Strip the prefix from the start of the version so we can pass the number version
+#Syntax: http://stackoverflow.com/a/16623897/3476713
+VERSION_NUM=${VERSION_STR#${VERSION_PREFIX}}
+
+#Split up the version number
+IFS='.' read -r -a VERSION_CMPS <<< "${VERSION_NUM}"
+ORDS_MAJOR=${VERSION_CMPS[0]}
+ORDS_MINOR=${VERSION_CMPS[1]}
+ORDS_REVISION=${VERSION_CMPS[2]}
+
+#3.0.4
+#Refer to: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#CHDFJHEA
+if [[ "${ORDS_MAJOR}" -eq "3" ]] && \
+    [[ "${ORDS_MINOR}" -eq "0" ]] && \
+    [[ "${ORDS_REVISION}" -eq "4" ]]
+then
+
+    echo "Version 3.0.4"
+    #TODO: implementation
+#future version skeleton
+#elif [[ "${ORDS_MAJOR}" -eq "3" ]] && \
+#    [[ "${ORDS_MINOR}" -eq "0" ]] && \
+#    [[ "${ORDS_REVISION}" -eq "4" ]]
+fi
+
 #Remove the HIDE property. Script fails otherwise
 sed -i.backup s/HIDE// ords_manual_create_rest_users.sql
 
