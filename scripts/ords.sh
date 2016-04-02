@@ -51,7 +51,6 @@ cd scripts/install/core
 #-1 hack - to force the script to exit if it expects input (it would by default
 #expect a path to be set)
 VERSION_STR=$(echo "-1" | java -jar ${ORDS_SOURCE_DIR}/ords.war version)
-echo $VERSION_STR
 VERSION_PREFIX="Oracle REST Data Services "
 
 #Make sure the output of java -jar ords.war version returns
@@ -73,28 +72,14 @@ ORDS_REVISION=${VERSION_CMPS[2]}
 
 #3.0.4
 #Refer to: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#CHDFJHEA
-if [[ "${ORDS_MAJOR}" -eq "3" ]] && \
-    [[ "${ORDS_MINOR}" -eq "0" ]] && \
-    [[ "${ORDS_REVISION}" -eq "4" ]]
-then
-
-    echo "Version 3.0.4"
-    #TODO: implementation
-#future version skeleton
-#elif [[ "${ORDS_MAJOR}" -eq "3" ]] && \
-#    [[ "${ORDS_MINOR}" -eq "0" ]] && \
-#    [[ "${ORDS_REVISION}" -eq "4" ]]
-fi
-
-#Remove the HIDE property. Script fails otherwise
-sed -i.backup s/HIDE// ords_manual_create_rest_users.sql
-
-# 3 inputs: for ords_public_user - password; tablespace; temp tablespace
-sqlplus sys/oracle as sysdba @ords_manual_install.sql SYSAUX TEMP ${ORDS_SOURCE_DIR}/scripts/ << EOF1
-${OOS_ORDS_PUBLIC_USER_PASSWORD}
-${OOS_ORDS_DEFAULT_TABLESPACE}
-${OOS_ORDS_TEMP_TABLESPACE}
+if [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.4" ]]; then
+    #Need to remove the hide property so the password can be piped in
+    sed -i.backup s/HIDE// ords_manual_install.sql
+    sqlplus sys/${OOS_ORACLE_PWD} as sysdba @ords_manual_install_db_def_tbs.sql ${ORDS_SOURCE_DIR}/logs/ << EOF1
+        ${OOS_ORDS_PUBLIC_USER_PASSWORD}
+#indent removed to properly read EOF1 (without tab prefix) to end statement
 EOF1
+fi
 
 cd ${ORDS_SOURCE_DIR}
 rm -rf ords-archive
@@ -106,6 +91,7 @@ java -jar ords.war
 
 #Make tomcat the owner of the configuration
 chown -R ${TOMCAT_USER}.${TOMCAT_USER} /etc/ords
+
 
 rm -rf ${CATALINA_HOME}/webapps/ords/ ${CATALINA_HOME}/webapps/ords.war
 mv ords.war ${CATALINA_HOME}/webapps/
