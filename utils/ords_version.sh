@@ -18,14 +18,14 @@ function printUsage {
 if [[ $args -ne 3 ]]; then
   echo "ords_version.sh: Invalid number of arguments" >&2
   printUsage
-  exit ${EX_INVALID_ARGS}
+  return ${EX_INVALID_ARGS}
 fi
 
 mkdir -p ${download_dest}
 
 cd ${download_dest}
 ${download_util} ${download_path}
-unzip ${OOS_ORDS_FILENAME} ords.war
+unzip -n ${OOS_ORDS_FILENAME} ords.war
 
 #Since the manual installation changes over time, beginning with 3.0.4, check
 #the version to act per version.
@@ -39,7 +39,8 @@ VERSION_PREFIX="Oracle REST Data Services "
 if [[ "${VERSION_STR}" != ${VERSION_PREFIX}* ]]; then
     echo "The version of ORDS you are attempting to install is not supported" >&2
     echo "Please grab the latest version and try again" >&2
-    exit ${EX_INVALID_ORDS}
+    rm -rf ${download_dest}/${OOS_ORDS_FILE_NAME}
+    return ${EX_INVALID_ORDS}
 fi
 
 #Strip the prefix from the start of the version so we can pass the number version
@@ -51,3 +52,5 @@ IFS='.' read -r -a VERSION_CMPS <<< "${VERSION_NUM}"
 ORDS_MAJOR=${VERSION_CMPS[0]}
 ORDS_MINOR=${VERSION_CMPS[1]}
 ORDS_REVISION=${VERSION_CMPS[2]}
+
+rm -rf ${download_dest}/${OOS_ORDS_FILE_NAME}
