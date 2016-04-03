@@ -63,9 +63,6 @@ if [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.4" ]]; then
         ${OOS_ORDS_PUBLIC_USER_PASSWORD}
 #indent removed to properly read EOF1 (without tab prefix) to end statement
 EOF1
-else
-    echo "This verion of ORDS is not yet supprted in OXAR" >&2
-    echo "Please report this at http://github.com/OraOpenSource/oxar/issues" >&2
 fi
 
 cd ${ORDS_SOURCE_DIR}
