@@ -16,7 +16,7 @@ App | Version | Description
 Oracle XE | 11.2.0.2.0 |
 SQLcl | 4.1.0 Release Candidate | Command line SQL (beta)
 APEX | 5.0.3.00.03 | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
-ORDS | 3.0.3.351.13.24 |
+ORDS | 3.0.4.60.12.48 |
 Tomcat | 7.0.57
 Node-oracledb | 0.3.1 | [Node.js driver for Oracle](https://github.com/oracle/node-oracledb)
 
