@@ -28,7 +28,8 @@ perl -i -p -e "s/<tomcat-users>/<tomcat-users>\n  <\!-- Auto generated content b
 
 # Copy the configuration template over
 cp -f ${CATALINA_HOME}/conf/server.xml ${CATALINA_HOME}/conf/server_original.xml
-cp -f $OOS_SOURCE_DIR/tomcat/server.xml ${CATALINA_HOME}/conf/server.xml
+# See #150
+\cp -f $OOS_SOURCE_DIR/tomcat/server.xml ${CATALINA_HOME}/conf/server.xml
 
 # Set the preferred port
 sed -i "s/OOS_TOMCAT_SERVER_PORT/${OOS_TOMCAT_PORT}/" ${CATALINA_HOME}/conf/server.xml
