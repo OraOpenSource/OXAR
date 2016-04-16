@@ -36,12 +36,13 @@ VERSION_STR=$(echo "-1" | java -jar ${download_dest}/ords.war version)
 VERSION_PREFIX="Oracle REST Data Services "
 
 #Make sure the output of java -jar ords.war version returns as expected
-if [[ "${VERSION_STR}" != ${VERSION_PREFIX}* ]]; then
-    echo "The version of ORDS you are attempting to install is not supported" >&2
-    echo "Please grab the latest version and try again" >&2
-    rm -rf ${download_dest}/${OOS_ORDS_FILE_NAME}
-    return ${EX_INVALID_ORDS}
-fi
+# #149 temporarily removed validations
+# if [[ "${VERSION_STR}" != ${VERSION_PREFIX}* ]]; then
+#     echo "The version of ORDS you are attempting to install is not supported" >&2
+#     echo "Please grab the latest version and try again" >&2
+#     rm -rf ${download_dest}/${OOS_ORDS_FILE_NAME}
+#     return ${EX_INVALID_ORDS}
+# fi
 
 #Strip the prefix from the start of the version so we can pass the number version
 #Syntax: http://stackoverflow.com/a/16623897/3476713
