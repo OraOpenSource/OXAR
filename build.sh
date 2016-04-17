@@ -71,18 +71,39 @@ mkdir -p $OOS_SOURCE_DIR/tmp
 cd $OOS_SOURCE_DIR
 
 
-# Dependencies
-# Must be run first since configuration validations require java and unzip. See #149 for more details
-. ${OOS_UTILS_DIR}/echo_title.sh "Running updates"
-cd $OOS_SOURCE_DIR
-eval "source ./scripts/packages.sh $OOS_LOG_OPTIONS"
+# #149 Unzip and Java are pre-requisites for configuration validations
+if [ -n "$(command -v yum)" ]; then
+  echo; echo \* Installing packages with yum \*
+  yum update -y
 
+  yum install \
+  unzip \
+  java-1.7.0-openjdk-src.x86_64 \
+  -y
+
+elif [ -n "$(command -v apt-get)" ]; then
+  echo; echo \* Installing packages with apt-get \*
+  apt-get update -y
+
+  apt-get install \
+  unzip \
+  openjdk-7-jdk \
+  -y
+else
+  echo; echo \* No known package manager found \*
+fi
 
 #See http://stackoverflow.com/questions/692000/how-do-i-write-stderr-to-a-file-while-using-tee-with-a-pipe
 #and http://stackoverflow.com/questions/21465297/tee-stdout-and-stderr-to-separate-files-while-retaining-them-on-their-respective
 #Load configurations
 . ${OOS_UTILS_DIR}/echo_title.sh "Loading configurations"
 eval "source ./config.sh $OOS_LOG_OPTIONS"
+
+# Dependencies
+. ${OOS_UTILS_DIR}/echo_title.sh "Running updates"
+cd $OOS_SOURCE_DIR
+eval "source ./scripts/packages.sh $OOS_LOG_OPTIONS"
+
 
 #Install ratom
 . ${OOS_UTILS_DIR}/echo_title.sh "Installing ratom"

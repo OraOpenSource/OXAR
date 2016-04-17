@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# #149 unzio and java have been moved to build.sh as they are pre-requisites for configuration
 if [ -n "$(command -v yum)" ]; then
   echo; echo \* Installing packages with yum \*
   yum update -y
@@ -7,11 +8,9 @@ if [ -n "$(command -v yum)" ]; then
   yum install epel-release -y
 
   yum install \
-  unzip \
   libaio \
   bc \
   perl \
-  java-1.7.0-openjdk-src.x86_64 \
   git \
   firewalld \
   java \
@@ -26,13 +25,11 @@ elif [ -n "$(command -v apt-get)" ]; then
   apt-get update -y
 
   apt-get install \
-  unzip \
   libaio1 \
   unixodbc \
   openssh-server \
   bc \
   perl \
-  openjdk-7-jdk \
   git-core \
   ufw \
   gnome-nettool \
