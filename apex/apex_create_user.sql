@@ -40,6 +40,7 @@ begin
   apex_util.create_user(
     p_user_name => '&workspace_user_name',
     p_web_password => '&workspace_user_pass',
+    p_change_password_on_first_use => 'N',
     p_developer_privs => 'ADMIN:CREATE:DATA_LOADER:EDIT:HELP:MONITOR:SQL',
     p_default_schema => '&workspace_schema',
     p_allow_app_building_yn => 'Y',
