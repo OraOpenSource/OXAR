@@ -56,4 +56,14 @@ echo -e "exec apex_instance_admin.remove_workspace(p_workspace => '$apex_workspa
 
 ## APEX
 
-- [] Change the APEX internal password. 
+- [] Change the APEX internal password.
+
+## ORDS
+
+In order to use the OAuth functionality in a non-https environment, the ORDS property `security.verifySSL` is set to false (as per: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#AELIG7183). This is the default for the OXAR installation.
+
+If you will be using ORDS over HTTPS, it won't be a bad idea to update this `true`. This can be done on the server by running:
+
+```bash
+sudo java -jar /usr/share/tomcat/webapps/ords.war set-property security.verifySSL true
+```

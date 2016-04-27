@@ -69,6 +69,8 @@ cd ${ORDS_SOURCE_DIR}
 rm -rf ords-archive
 
 java -jar ords.war configdir /etc
+java -jar ords.war set-property security.verifySSL false
+
 
 #config ORDS
 java -jar ords.war
