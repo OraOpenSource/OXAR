@@ -71,6 +71,11 @@ rm -rf ords-archive
 java -jar ords.war configdir /etc
 java -jar ords.war set-property security.verifySSL false
 
+if [ "${OOS_ENABLE_XLS2COLLECTION}" == "Y" ]; then
+    java -jar ords.war set-property apex.excel2collection true
+    java -jar ords.war set-property apex.excel2collection.useSheetName true
+fi
+
 
 #config ORDS
 java -jar ords.war
