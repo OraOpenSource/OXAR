@@ -34,16 +34,7 @@ else
   mkdir -p /etc/ords/
 fi
 
-#Make a folder to unzip ords.war into (tmp/ords/ords-archive)
-mkdir -p ords-archive
-cd ords-archive
-#unzip all the files
-unzip ../ords.war
-
-#Manual installation is stored in this path (scripts/install/core)
-#This parameters etc changes over time.
-#See: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#CHDFJHEA
-cd scripts/install/core
+java -jar ords.war configdir /etc
 
 #Since the manual installation changes over time, beginning with 3.0.4, check
 #the version to act per version. Parameters set in the validation (fired from
@@ -57,28 +48,37 @@ cd scripts/install/core
 #3.0.4
 #Refer to: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#CHDFJHEA
 if [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.4" ]]; then
+    #Make a folder to unzip ords.war into (tmp/ords/ords-archive)
+    mkdir -p ords-archive
+    cd ords-archive
+    #unzip all the files
+    unzip ../ords.war
+
+    #Manual installation is stored in this path (scripts/install/core)
+    #This parameters etc changes over time.
+    #See: http://docs.oracle.com/cd/E56351_01/doc.30/e56293/install.htm#CHDFJHEA
+    cd scripts/install/core
     #Need to remove the hide property so the password can be piped in
     sed -i.backup s/HIDE// ords_manual_install.sql
     sqlplus sys/${OOS_ORACLE_PWD} as sysdba @ords_manual_install_db_def_tbs.sql ${ORDS_SOURCE_DIR}/logs/ << EOF1
         ${OOS_ORDS_PUBLIC_USER_PASSWORD}
 #indent removed to properly read EOF1 (without tab prefix) to end statement
 EOF1
+
+    #config ORDS
+    java -jar ords.war
+    rm -rf ords-archive
+elif [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.5" ]]; then
+    java -jar ords.war install simple
 fi
 
 cd ${ORDS_SOURCE_DIR}
-rm -rf ords-archive
-
-java -jar ords.war configdir /etc
 java -jar ords.war set-property security.verifySSL false
 
 if [ "${OOS_ENABLE_XLS2COLLECTION}" == "Y" ]; then
     java -jar ords.war set-property apex.excel2collection true
     java -jar ords.war set-property apex.excel2collection.useSheetName true
 fi
-
-
-#config ORDS
-java -jar ords.war
 
 #Make tomcat the owner of the configuration
 chown -R ${TOMCAT_USER}.${TOMCAT_USER} /etc/ords

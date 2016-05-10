@@ -11,14 +11,14 @@ For more information and to signup for our email list go to [oraopensource.com](
 If you need additional help, there is a [How-To video](http://www.oraopensource.com/blog/2015/2/25/video-how-to-build-oracle-xe-apex-machine) for this installation which walks you through the entire process.
 
 # Current Software Versions
-App | Version | Description
------- | ------ | ------
-Oracle XE | 11.2.0.2.0 |
-SQLcl | 4.1.0 Release Candidate | Command line SQL (beta)
-APEX | 5.0.3.00.03 | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
-ORDS | 3.0.4.60.12.48 |
-Tomcat | 7.0.57
-Node-oracledb | 0.3.1 | [Node.js driver for Oracle](https://github.com/oracle/node-oracledb)
+App              | Version                 | Description
+------           | ------                  | ------
+Oracle XE        | 11.2.0.2.0              |
+SQLcl            | 4.1.0 Release Candidate | Command line SQL (beta)
+APEX             | 5.0.3.00.03             | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
+ORDS             | 3.0.5.124.10.54         |
+Tomcat           | 7.0.57
+Node-oracledb    | 0.3.1                   | [Node.js driver for Oracle](https://github.com/oracle/node-oracledb)
 
 
 # Supported OS's
