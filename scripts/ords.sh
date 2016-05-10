@@ -66,6 +66,7 @@ if [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.4" ]]; then
 EOF1
 
     #config ORDS
+    cd ${ORDS_SOURCE_DIR}
     java -jar ords.war
     rm -rf ords-archive
 elif [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.5" ]]; then
