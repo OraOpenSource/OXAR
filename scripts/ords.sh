@@ -75,6 +75,7 @@ fi
 
 cd ${ORDS_SOURCE_DIR}
 java -jar ords.war set-property security.verifySSL false
+java -jar ords.war set-property security.requestValidationFunction wwv_flow_epg_include_modules.authorize
 
 if [ "${OOS_ENABLE_XLS2COLLECTION}" == "Y" ]; then
     java -jar ords.war set-property apex.excel2collection true
