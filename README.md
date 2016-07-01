@@ -76,15 +76,13 @@ cd oxar
 ```
 
 ## Configure
-
-*If doing a Vagrant install can modify `config.properties` in your local text editor.*
+Regardless of whether you're doing a native or Vagrant based build, you will need to modify the `config.properties` file prior to running the installation script. At a minimum, you will need to replace the CHANGME tokens to point to the appropriate files. Read below for help on modifying this file. *If doing a Vagrant install, you can modify `config.properties` using your local text editor.*
 
 ```bash
-#Look for "CHANGEME" in this file
 #Hints for vi:
 #Type:<esc key>?CHANGEME   to search for CHANGEME
 #Once done modifying an entry, hit <esc> and type: n  to search for next entry
-#Read below for help on modifying this file
+
 vi config.properties
 ```
 
