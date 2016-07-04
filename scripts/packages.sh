@@ -13,7 +13,7 @@ if [ -n "$(command -v yum)" ]; then
   perl \
   git \
   firewalld \
-  java \
+  # java \
   which \
   net-tools \
   htop \

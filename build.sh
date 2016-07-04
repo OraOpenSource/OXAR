@@ -78,7 +78,7 @@ if [ -n "$(command -v yum)" ]; then
 
   yum install \
   unzip \
-  java-1.7.0-openjdk-src.x86_64 \
+  java \
   -y
 
 elif [ -n "$(command -v apt-get)" ]; then
@@ -87,7 +87,7 @@ elif [ -n "$(command -v apt-get)" ]; then
 
   apt-get install \
   unzip \
-  openjdk-7-jdk \
+  openjdk-8-jdk \
   -y
 else
   echo; echo \* No known package manager found \*
