@@ -100,7 +100,7 @@ Vagrant.configure(2) do |config|
 
     # [apng, 2016-07-01] A different approach to detecting and executing distro
     #                    specific code.
-    # if [ -n "$(command -v lsb_release)" ] && [[ `lsb_release -i` =~ (Ubuntu) ]]; then
+    #                    Information about os-release: http://0pointer.de/blog/projects/os-release.html
     if [ -f '/etc/os-release' ]; then
       echo; echo \* Source os-release for OS information \*
       . /etc/os-release
@@ -111,6 +111,7 @@ Vagrant.configure(2) do |config|
         rpm -ivh $(echo 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-'${VERSION_ID:0:1}'.noarch.rpm')
       fi
 
+      # If the timezone is not set, Tomcat will not run as the JVM requires this to be set.
       if [ $ID == 'ubuntu' ]; then
         sed -i s/^.*$/UTC/ /etc/timezone;
       fi
