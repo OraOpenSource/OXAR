@@ -15,10 +15,10 @@ Vagrant.configure(2) do |config|
 
   # The following are a list of boxes that have been tested and known to build
   # successfully.:
+  # [apng, 2016-07-03] Switching over to boxcutter boxes.
   config.vm.box = "boxcutter/ol72"
-  #config.vm.box = "puppetlabs/centos-7.0-64-nocm"
-  #config.vm.box = "debian/jessie64"
-  #config.vm.box = "ubuntu/vivid64"
+  # config.vm.box = "boxcutter/centos72"
+  # config.vm.box = "boxcutter/ubuntu1604"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -98,11 +98,26 @@ Vagrant.configure(2) do |config|
       echo; echo \* No known package manager found \*
     fi
 
-    rsync -rtv --exclude='files' --exclude='.*' /vagrant/ /tmp/vagrant-deploy
+    # [apng, 2016-07-01] A different approach to detecting and executing distro
+    #                    specific code.
+    #                    Information about os-release: http://0pointer.de/blog/projects/os-release.html
+    if [ -f '/etc/os-release' ]; then
+      echo; echo \* Source os-release for OS information \*
+      . /etc/os-release
 
-    if [[ `lsb_release -i` =~ (Ubuntu) ]]; then
-      sed -i s/^.*$/UTC/ /etc/timezone;
+      if [ $ID == 'ol' ]; then
+        # Install epel-release
+        echo; echo \* Installing epel-release for Oracle Linux $VERSION_ID \*
+        rpm -ivh $(echo 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-'${VERSION_ID:0:1}'.noarch.rpm')
+      fi
+
+      # If the timezone is not set, Tomcat will not run as the JVM requires this to be set.
+      if [ $ID == 'ubuntu' ]; then
+        sed -i s/^.*$/UTC/ /etc/timezone;
+      fi
     fi
+
+    rsync -rtv --exclude='files' --exclude='.*' /vagrant/ /tmp/vagrant-deploy
 
     cd /tmp/vagrant-deploy
 
