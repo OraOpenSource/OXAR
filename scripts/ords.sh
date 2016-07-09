@@ -69,7 +69,8 @@ EOF1
     cd ${ORDS_SOURCE_DIR}
     java -jar ords.war
     rm -rf ords-archive
-elif [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.5" ]]; then
+elif [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.5"
+    || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.6" ]]; then
     java -jar ords.war install simple
 fi
 
@@ -84,7 +85,6 @@ fi
 
 #Make tomcat the owner of the configuration
 chown -R ${TOMCAT_USER}.${TOMCAT_USER} /etc/ords
-
 
 rm -rf ${CATALINA_HOME}/webapps/ords/ ${CATALINA_HOME}/webapps/ords.war
 mv ords.war ${CATALINA_HOME}/webapps/
