@@ -57,7 +57,8 @@ if [ "$OOS_MODULE_ORDS" = "Y" ]; then
     if [[ "$?" != "0" ]]; then
         exit 1
     elif [[ ! "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.4" ]] \
-        && [[ ! "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.5" ]]; then
+        && [[ ! "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.5" ]] \
+        && [[ ! "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.6" ]]; then
         echo "This version of ORDS is not yet supprted in OXAR" >&2
         echo "Please report this at http://github.com/OraOpenSource/oxar/issues" >&2
         exit 1
