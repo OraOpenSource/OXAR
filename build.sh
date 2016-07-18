@@ -192,6 +192,9 @@ if [ "$OOS_MODULE_ORDS" = "Y" ]; then
   eval "source ./scripts/ords.sh $OOS_LOG_OPTIONS"
 fi
 
+if [ "$OOS_DEBUG" = true ]; then
+  read -rsp $'ORDS installed. Press enter to continue...\n'
+fi
 
 #SQLcl
 if [ "$OOS_MODULE_SQLCL" = "Y" ]; then
