@@ -36,12 +36,18 @@ fi
 
 #Parsing arguments adapted from: http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 OOS_VERBOSE_OUT=false
+# #166 Debug mode
+OOS_DEBUG=false
 while [[ $# > 0 ]]; do
   key="$1"
   case $key in
     -v|--verbose)
       OOS_VERBOSE_OUT=true
       ;;
+    -d|--debug)
+      OOS_DEBUG=true
+      ;;
+
     *)
       echo "Unsupported flag: $key"
       exit 1;
@@ -132,6 +138,9 @@ if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
   eval "source ./scripts/oracle_config.sh $OOS_LOG_OPTIONS"
 fi
 
+if [ "$OOS_DEBUG" = true ]; then
+  read -rsp $'Oracle installed. Press enter to continue...\n'
+fi
 
 #APEX install
 if [ "$OOS_MODULE_APEX" = "Y" ]; then
@@ -144,6 +153,9 @@ if [ "$OOS_MODULE_APEX" = "Y" ]; then
   eval "source ./scripts/apex_config.sh $OOS_LOG_OPTIONS"
 fi
 
+if [ "$OOS_DEBUG" = true ]; then
+  read -rsp $'APEX installed. Press enter to continue...\n'
+fi
 
 #12: Install Oracle Node driver
 if [ "$OOS_MODULE_NODE_ORACLEDB" = "Y" ]; then
