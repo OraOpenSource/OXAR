@@ -18,10 +18,10 @@ cp node4ords/node4ords /usr/local/bin/node4ords
 if hash systemctl 2>/dev/null; then
     cp -f init.d/node4ords.service /etc/systemd/system/
     cp node4ords/rsyslog.conf /etc/rsyslog.d/node4ords.conf
-    ${OOS_SERVICE_CTL} restart rsyslog
-    ${OOS_SERVICE_CTL} enable node4ords.service
-    ${OOS_SERVICE_CTL} start node4ords.service
+    systemctl restart rsyslog
+    systemctl enable node4ords.service
+    systemctl start node4ords.service
 else
     cp -f init.d/node4ords.conf /etc/init/
-    ${OOS_SERVICE_CTL} start node4ords
+    systemctl start node4ords
 fi
