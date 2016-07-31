@@ -15,13 +15,8 @@ cd ${OOS_SOURCE_DIR}
 cp node4ords/node4ords.conf /etc/node4ords.conf
 cp node4ords/node4ords /usr/local/bin/node4ords
 
-if hash systemctl 2>/dev/null; then
-    cp -f init.d/node4ords.service /etc/systemd/system/
-    cp node4ords/rsyslog.conf /etc/rsyslog.d/node4ords.conf
-    systemctl restart rsyslog
-    systemctl enable node4ords.service
-    systemctl start node4ords.service
-else
-    cp -f init.d/node4ords.conf /etc/init/
-    systemctl start node4ords
-fi
+cp -f init.d/node4ords.service /etc/systemd/system/
+cp node4ords/rsyslog.conf /etc/rsyslog.d/node4ords.conf
+systemctl restart rsyslog
+systemctl enable node4ords.service
+systemctl start node4ords.service
