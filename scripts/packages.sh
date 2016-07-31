@@ -54,6 +54,12 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   elif [ -n "$(command -v apt-get)" ]; then
     # curl -sL https://deb.nodesource.com/setup | bash -
     apt-get install nodejs npm -y
+    # Ubuntu's node binary is nodejs, which will cause conflict with node4ords
+    # Need to create a link to `node` to ensure it runs as expected.
+    # See: http://stackoverflow.com/questions/18130164/nodejs-vs-node-on-ubuntu-12-04
+    if not which node; then
+        sudo ln -s $(which nodejs) /usr/bin/node
+    fi
   else
     echo; echo \* No known package manager found \*
   fi
