@@ -2,7 +2,7 @@
 
 #*** FIREWALLD ***
 cd $OOS_SOURCE_DIR/tmp
-${OOS_SERVICE_CTL} stop firewalld
+systemctl stop firewalld
 
 if hash ufw 2>/dev/null; then
     update-rc.d firewalld disable
@@ -33,7 +33,7 @@ else
     perl -i -p -e "s/OOS_TOMCAT_PORT/$OOS_TOMCAT_PORT/g" tomcat.xml
 
 
-    ${OOS_SERVICE_CTL} start firewalld
+    systemctl start firewalld
     firewall-cmd --zone=public --add-service=http --permanent
     firewall-cmd --reload
 
@@ -56,7 +56,7 @@ else
     #Reload for any changes in above config
     firewall-cmd --reload
 
-    ${OOS_SERVICE_CTL} enable firewalld
+    systemctl enable firewalld
 
 
     #List zone info for logs
