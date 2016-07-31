@@ -57,7 +57,7 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
     # Ubuntu's node binary is nodejs, which will cause conflict with node4ords
     # Need to create a link to `node` to ensure it runs as expected.
     # See: http://stackoverflow.com/questions/18130164/nodejs-vs-node-on-ubuntu-12-04
-    if not which node; then
+    if ! which node; then
         sudo ln -s $(which nodejs) /usr/bin/node
     fi
   else
