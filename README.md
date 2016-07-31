@@ -24,12 +24,13 @@ Node-oracledb    | 0.3.1                   | [Node.js driver for Oracle](https:/
 # Supported OS's
 This script currently works on the following Linux distributions
 
-OS | Version
------- | ------
-Oracle Linux | 7.2
-CentOS | 7.0.1406
-Fedora | 21
-Debian | 8.0
+OS            | Minimum version
+------        | ------
+Oracle Linux  | 7.2
+CentOS        | 7.0.1406
+Fedora        | 21
+Debian        | 8.0
+Ubuntu        | 16.04
 
 # Deployment Options
 
