@@ -202,6 +202,12 @@ if [ "$OOS_MODULE_SQLCL" = "Y" ]; then
   eval "source ./scripts/sqlcl.sh $OOS_LOG_OPTIONS"
 fi
 
+# Add Ons
+if [ "$OOS_MODULE_APEX" ] && [ "$OOS_AOP_YN" = "Y" ]; then
+  . ${OOS_UTILS_DIR}/echo_title.sh "Installing AOP"
+  cd $OOS_SOURCE_DIR
+  eval "source ./scripts/aop.sh $OOS_LOG_OPTIONS"
+fi
 
 #*** CLEANUP ***
 # Leave files for now
