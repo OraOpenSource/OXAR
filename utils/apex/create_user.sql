@@ -1,7 +1,7 @@
 -- Should be run as SYS
 -- Create APEX Workspace User
 --
--- Example: sqlplus sys/oracle@localhost:1521/xe as sysdba @apex_create_user martin my_schema martin password
+-- Example: sqlplus sys/oracle@localhost:1521/xe as sysdba @create_user martin my_schema martin password
 --
 -- Takes in 4 parameters:
 -- 1: Workspace Name

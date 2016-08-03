@@ -1,5 +1,5 @@
 -- Should be run as SYS
--- Example: sqlplus sys/oracle@localhost:1521/xe as sysdba @apex_create_workspace martin my_schema
+-- Example: sqlplus sys/oracle@localhost:1521/xe as sysdba @create_workspace martin my_schema
 --
 -- Create APEX Workspace
 --
