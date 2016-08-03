@@ -4,7 +4,7 @@
 cd $OOS_SOURCE_DIR
 
 # Create schema for AOP
-echo exit | sqlplus sys/$OOS_ORACLE_PWD as sysdba @utils/oracle/create_user.sql $OOS_AOP_SCHEMA_NAME $OOS_AOP_SCHEMA_PASS
+echo exit | sqlplus sys/$OOS_ORACLE_PWD as sysdba @utils/oracle/create_user.sql $OOS_AOP_SCHEMA_NAME $OOS_AOP_SCHEMA_PASS Y
 
 # Create AOP Workspace
 echo creating AOP APEX Workspace
