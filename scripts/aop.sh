@@ -12,4 +12,4 @@ echo exit | sqlplus sys/$OOS_ORACLE_PWD as sysdba @utils/apex/create_workspace.s
 
 # Create AOP Workspace User
 echo creating AOP APEX User
-echo exit | sqlplus sys/$OOS_ORACLE_PWD as sysdba @../utils/apex/create_user.sql $OOS_AOP_APEX_WORKSPACE $OOS_AOP_SCHEMA_NAME $OOS_AOP_APEX_USER_NAME $OOS_AOP_APEX_USER_PWD
+echo exit | sqlplus sys/$OOS_ORACLE_PWD as sysdba @utils/apex/create_user.sql $OOS_AOP_APEX_WORKSPACE $OOS_AOP_SCHEMA_NAME $OOS_AOP_APEX_USER_NAME $OOS_AOP_APEX_USER_PWD
