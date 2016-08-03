@@ -1,5 +1,5 @@
 -- Example call:
--- sqlplus sys/oracle@localhost:1521/xe as sysdba @oracle_create_user.sql martin password Y
+-- sqlplus sys/oracle@localhost:1521/xe as sysdba @create_user.sql martin password Y
 --
 -- Takes in 3 parameters:
 -- 1: new username

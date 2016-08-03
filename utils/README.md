@@ -2,4 +2,5 @@
 
 Name | Description
 --- | ---
-[oracle/adr_purge.sh](oracle/adr_purge.sh) | Purges the Oracle indecent files. See [#109](/../../issues/109) for more information
+[`oracle/adr_purge.sh`](oracle/adr_purge.sh) | Purges the Oracle indecent files. See [#109](/../../issues/109) for more information
+[`oracle/create_user.sql`](oracle/create_user.sql) | Creates an Oracle user

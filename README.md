@@ -289,8 +289,8 @@ Port | Host Port | Service | Description
 ## OS Utility Scripts
 When setting up a new server their are some common things that you may want to do such as creating a new user, disabling root SSH access, etc. Though these tasks are outside the goal of this project, we've created a new folder [`utils/os`](utils/os) to store some of these common scripts which may help when setting up a new server.
 
-## Oracle Utility Scrpts
-This install uses some common Oracle scripts that may be useful to run at a later time. For example, the `oracle_create_user.sql`, creates a user with all the necessary privileges to start using. For more info, go to the [`oracle`](oracle) folder.
+## Oracle Utility Scripts
+This install uses some common Oracle scripts that may be useful to run at a later time. For example, the `create_user.sql`, creates a user with all the necessary privileges to start using. For more info, go to the [`oracle`](oracle) folder.
 
 ## Editing server files locally
 To make it easier to edit files on the server (and avoid using vi), [Remote-Atom](https://github.com/randy3k/remote-atom) (ratom) is installed by default. This requires that you have the [Atom](https://atom.io/) text editor on your desktop and have installed the [ratom](https://github.com/randy3k/remote-atom).
