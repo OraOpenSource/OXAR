@@ -18,7 +18,13 @@ SQLcl            | 4.1.0 Release Candidate | Command line SQL (beta)
 APEX             | 5.0.3.00.03             | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
 ORDS             | 3.0.5.124.10.54         |
 Tomcat           | 7.0.57
+Node JS          | 6.x                     |
+
+## Node.js Tools
+App              | Version                 | Description
+------           | ------                  | ------
 Node-oracledb    | 0.3.1                   | [Node.js driver for Oracle](https://github.com/oracle/node-oracledb)
+[pm2](https://github.com/Unitech/pm2) | latest | Process manager for Node.js apps
 
 
 # Supported OS's

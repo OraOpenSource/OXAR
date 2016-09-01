@@ -67,6 +67,11 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
     echo; echo \* No known package manager found \*
   fi
 
+  # 176 pm2 process manager for Node.js
+  npm install pm2 -g
+  # Start PM2 on boot
+  pm2 startup
+
   #13: Bower support (since node.js will be installed by default)
   echo; echo \* Installing Bower \*; echo
   if [ "$(which bower)" == "" ]; then
