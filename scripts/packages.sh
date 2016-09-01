@@ -48,12 +48,15 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   echo; echo \* Installing NodeJS \*
   cd $OOS_SOURCE_DIR/tmp
   if [ -n "$(command -v yum)" ]; then
-    #128 Get nodejs and npm from yum
-    # curl -sL https://rpm.nodesource.com/setup | bash -
+    #175 Get nodejs from nodesource to get latest version
+    curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
     yum install -y nodejs npm
+
   elif [ -n "$(command -v apt-get)" ]; then
-    # curl -sL https://deb.nodesource.com/setup | bash -
-    apt-get install nodejs npm -y
+    #175 Get nodejs from nodesource to get latest version
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+    apt-get install -y nodejs
+
     # Ubuntu's node binary is nodejs, which will cause conflict with node4ords
     # Need to create a link to `node` to ensure it runs as expected.
     # See: http://stackoverflow.com/questions/18130164/nodejs-vs-node-on-ubuntu-12-04
