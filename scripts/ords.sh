@@ -60,7 +60,7 @@ if [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.4" ]]; then
     cd scripts/install/core
     #Need to remove the hide property so the password can be piped in
     sed -i.backup s/HIDE// ords_manual_install.sql
-    sqlplus sys/${OOS_ORACLE_PWD} as sysdba @ords_manual_install_db_def_tbs.sql ${ORDS_SOURCE_DIR}/logs/ << EOF1
+    sqlplus -L sys/${OOS_ORACLE_PWD} as sysdba @ords_manual_install_db_def_tbs.sql ${ORDS_SOURCE_DIR}/logs/ << EOF1
         ${OOS_ORDS_PUBLIC_USER_PASSWORD}
 #indent removed to properly read EOF1 (without tab prefix) to end statement
 EOF1
