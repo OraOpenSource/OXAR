@@ -34,6 +34,10 @@ if [[ $(whoami) != "root" ]]; then
   exit 1
 fi
 
+# Get the exit status in sourced scripts to follow the called script instead of tee
+# See: http://stackoverflow.com/a/6872163/3476713
+set -o pipefail
+
 #Parsing arguments adapted from: http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 OOS_VERBOSE_OUT=false
 # #166 Debug mode
