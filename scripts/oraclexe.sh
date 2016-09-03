@@ -100,6 +100,15 @@ perl -i -p -e "s/1521/$OOS_ORACLE_TNS_PORT/g" tnsnames.ora
 /etc/init.d/oracle-xe stop
 /etc/init.d/oracle-xe start
 
+cd $OOS_SOURCE_DIR/oracle/
+sqlplus -L system/${OOS_ORACLE_PWD} @validate.sql > /dev/null
+DB_VALIDATE_RESULT=$?
+if [[ $DB_VALIDATE_RESULT -ne 0 ]]; then
+    echo "The database installation seems to have failed. Exiting install" >&2
+    echo "Please check logs for an indication of what went wrong" >&2
+    exit $DB_VALIDATE_RESULT
+fi
+
 #Cleanup
 cd $OOS_SOURCE_DIR/tmp
 rm -rf $OOS_ORACLE_FILENAME
