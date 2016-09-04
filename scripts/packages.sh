@@ -17,7 +17,8 @@ if [ -n "$(command -v yum)" ]; then
   net-tools \
   htop \
   sudo \
-  rlwrap -y
+  rlwrap \
+  certbot -y
 
 elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* Installing packages with apt-get \*
@@ -37,7 +38,8 @@ elif [ -n "$(command -v apt-get)" ]; then
   htop \
   sudo \
   rlwrap \
-  firewalld -y
+  firewalld \
+  certbot -y
 else
   echo; echo \* No known package manager found \*
 fi
@@ -50,12 +52,16 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   if [ -n "$(command -v yum)" ]; then
     #175 Get nodejs from nodesource to get latest version
     curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
-    yum install -y nodejs npm
+    yum install -y nodejs
+    # "To compile and install native addons from npm you may also need to install build tools:" (https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
+    yum install -y gcc-c++ make
 
   elif [ -n "$(command -v apt-get)" ]; then
     #175 Get nodejs from nodesource to get latest version
     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
     apt-get install -y nodejs
+    # "To compile and install native addons from npm you may also need to install build tools:" (https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
+    apt-get install -y build-essential
 
     # Ubuntu's node binary is nodejs, which will cause conflict with node4ords
     # Need to create a link to `node` to ensure it runs as expected.

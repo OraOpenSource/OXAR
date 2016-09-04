@@ -113,6 +113,10 @@ eval "source ./config.sh $OOS_LOG_OPTIONS"
 cd $OOS_SOURCE_DIR
 eval "source ./scripts/packages.sh $OOS_LOG_OPTIONS"
 
+if [ "$OOS_DEBUG" = true ]; then
+  read -rsp $'Packages installed. Press enter to continue...\n'
+fi
+
 
 #Install ratom
 . ${OOS_UTILS_DIR}/echo_title.sh "Installing ratom"
