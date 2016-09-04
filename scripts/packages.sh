@@ -17,7 +17,8 @@ if [ -n "$(command -v yum)" ]; then
   net-tools \
   htop \
   sudo \
-  rlwrap -y
+  rlwrap \
+  certbot -y
 
 elif [ -n "$(command -v apt-get)" ]; then
   echo; echo \* Installing packages with apt-get \*
@@ -37,7 +38,8 @@ elif [ -n "$(command -v apt-get)" ]; then
   htop \
   sudo \
   rlwrap \
-  firewalld -y
+  firewalld \
+  certbot -y
 else
   echo; echo \* No known package manager found \*
 fi
