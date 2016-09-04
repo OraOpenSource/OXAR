@@ -60,6 +60,8 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
     #175 Get nodejs from nodesource to get latest version
     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
     apt-get install -y nodejs
+    # "To compile and install native addons from npm you may also need to install build tools:" (https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
+    apt-get install -y build-essential
 
     # Ubuntu's node binary is nodejs, which will cause conflict with node4ords
     # Need to create a link to `node` to ensure it runs as expected.
