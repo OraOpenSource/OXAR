@@ -208,8 +208,11 @@ This project uses [Node4ORDS](https://github.com/OraOpenSource/node4ords) as a w
 
 Node4ORDS is installed in `/opt/node4ords`. It can be controlled by:
 ```bash
-systemctl start node4ords
-systemctl stop node4ords
+pm2 start node4ords --watch
+pm2 stop node4ords
+# For older versions of OXAR
+# systemctl start node4ords
+# systemctl stop node4ords
 ```
 
 Static content can be put in `/var/www/public/` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listener configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
