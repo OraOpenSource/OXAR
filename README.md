@@ -252,8 +252,8 @@ firewall-cmd --zone=public --remove-service=tomcat
 Tomcat is located in `/usr/share/tomcat/`. Tomcat can be controlled by:
 
 ```bash
-systemctl stop tomcat
-systemctl start tomcat
+systemctl stop tomcat@oxar
+systemctl start tomcat@oxar
 ```
 
 ## Shell Access for Vagrant
