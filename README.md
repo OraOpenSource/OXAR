@@ -98,10 +98,10 @@ vi config.properties
 
 Parameter | Description
 ------ | ------
-OOS_ORACLE_FILE_URL | [Download](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)
-OOS_APEX_FILE_URL | [Download](http://download.oracleapex.com)
-OOS_ORDS_FILE_URL | [Download](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/index.html)
-OOS_SQLCL_FILE_URL | [Download](http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html) *This is an optional file*
+`OOS_ORACLE_FILE_URL` | [Download](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)
+`OOS_APEX_FILE_URL` | [Download](http://download.oracleapex.com)
+`OOS_ORDS_FILE_URL` | [Download](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/index.html)
+`OOS_SQLCL_FILE_URL` | [Download](http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html) *This is an optional file*
 
 
 These can be references to files on a web server or to the location on the server. Some examples:
@@ -144,26 +144,26 @@ You can optionally chose which modules you want installed. This install supports
 
 Module | Default | Description
 ------ | ------ | ------
-OOS_MODULE_ORACLE | Y | Install Oracle XE
-OOS_MODULE_APEX | Y | Install's APEX and all of it's components (Tomcat, ORDS, etc)
+`OOS_MODULE_ORACLE` | Y | Install Oracle XE
+`OOS_MODULE_APEX` | Y | Install's APEX and all of it's components (Tomcat, ORDS, etc)
 
 
 ### APEX
 There are additional APEX configurations that you may want to make in the ```scripts/apex_config.sql``` file. You can run them later on or manually configure them in the APEX admin account.
 
-###Vagrant
+### Vagrant
 By default you don't need to configure anything, however you may want to modify various things about your Vagrant machine. To do so, modify `Vagrantfile`.
 
 ## Build
 To build the server run the following commands. It is very important that you run it starting from the same folder that it resides in.
 
-###Native Install
+### Native Install
 
 ```bash
 . build.sh
 ```
 
-###Vagrant
+### Vagrant
 
 ```bash
 vagrant up
@@ -182,10 +182,10 @@ There are many different ways to connect to Oracle with SQL*Plus. The [How to Co
 
 Username | Password | Description
 ------ | ------ | ------
-OOS_USER | oracle | User you can use to develop with right away
-SYS | oracle |
-SYSTEM | oracle |
-APEX_PUBLIC_USER | oracle |
+`OOS_USER` | `oracle` | User you can use to develop with right away
+`SYS` | `oracle` |
+`SYSTEM` | `oracle` |
+`APEX_PUBLIC_USER` | `oracle` |
 
 To start/stop/restart Oracle run the following commands:
 ```bash
@@ -195,12 +195,12 @@ To start/stop/restart Oracle run the following commands:
 ```
 
 ## APEX
-To connect to APEX go to `http://<server_name>/` and it will direct you to the APEX login page.
+To connect to APEX go to `http://<server_name>/` or `https://<server_name>/` and it will direct you to the APEX login page.
 
 Workspace | Username | Password | Description
 ------ | ------ | ------ | ------
-INTERNAL | admin | `Oracle1!` | Workspace administrator account
-OOS_USER | oos_user | `oracle` | You can start developing on this account. It is linked to OOS_USER schema
+`INTERNAL` | `admin` | `Oracle1!` | Workspace administrator account
+`OOS_USER` | `oos_user` | `oracle` | You can start developing on this account. It is linked to OOS_USER schema
 
 
 ### APEX Web Listener
@@ -216,6 +216,13 @@ pm2 stop node4ords
 ```
 
 Static content can be put in `/var/www/public/` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listener configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
+
+#### SSL
+OXAR now supports SSL out of the box with an unsigned certificate. To access go to `https://<server_name>`. You will be shown a warning that the certificate is unsigned. Accept and continue.
+
+To manage SSL options (including forcing SSL) modify `/opt/node4ords/config.js`. Complete documentation on all options on the [Node4ORDS](https://github.com/OraOpenSource/node4ords/) main page.
+
+You can easily generate a signed certificate by running [node4ords/letsencrypt.sh](node4ords/letsencrypt.sh). This requires that the domain name be associated to the servers current IP address. For more info read the documentation in the [node4ords](node4ords) directory.
 
 ### ORDS
 [Oracle REST Data Services (ORDS)](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/) allows web servers (such as Tomcat) to connect serve up APEX pages. It is located in `/ords`
