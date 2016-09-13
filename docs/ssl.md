@@ -20,3 +20,7 @@ This script will generate a signed certificate for OXAR. **It requires the domai
 Syntax: `./node4ords/letsencrypt.sh <domainname> <emailaddress>`
 
 Node4ORDS will be stopped and restarted during this process and its configuration will be updated to use the new signed certificates rather than the default unsigned certificate.
+
+## Forcing HTTPS over HTTP
+
+To force HTTPS only connections modify `/opt/node4ords/config.js` and set `config.web.https.forceHttps = true`. In the future this option may be `true` by default.
