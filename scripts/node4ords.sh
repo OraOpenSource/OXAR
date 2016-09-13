@@ -4,9 +4,7 @@ mkdir -p /var/www #for /var/www/public created in the node4ords installation
 cd /opt
 
 #Get project
-# TODO **** mdsouza: remove the branch
-# git clone https://github.com/OraOpenSource/node4ords.git
-git clone -b mdsouza https://github.com/OraOpenSource/node4ords.git
+git clone https://github.com/OraOpenSource/node4ords.git
 cd ./node4ords
 npm install --unsafe-perm
 sed -i "s/http\:\/\/localhost:8080/http\:\/\/localhost:${OOS_TOMCAT_PORT}/" config.js
