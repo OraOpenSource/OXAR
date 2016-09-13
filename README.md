@@ -222,6 +222,8 @@ OXAR now supports SSL out of the box with an unsigned certificate. To access go 
 
 To manage SSL options (including forcing SSL) modify `/opt/node4ords/config.js`. Complete documentation on all options on the [Node4ORDS](https://github.com/OraOpenSource/node4ords/) main page.
 
+You can easily generate a signed certificate by running [node4ords/letsencrypt.sh](node4ords/letsencrypt.sh). This requires that the domain name be associated to the servers current IP address. For more info read the documentation in the [node4ords](node4ords) directory.
+
 ### ORDS
 [Oracle REST Data Services (ORDS)](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/) allows web servers (such as Tomcat) to connect serve up APEX pages. It is located in `/ords`
 
