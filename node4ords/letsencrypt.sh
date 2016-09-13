@@ -13,14 +13,16 @@
 domainName=$1
 emailAddress=$2
 
+syntax="./letsencrypt.sh <domainName> <emailAddress>"
+
 # Validate parameters
 if [[ -z "$domainName" ]]; then
-  echo "Missing Domain Name"
+  echo "Missing Domain Name. Example: $syntax"
   exit 1
 fi
 
 if [[ -z "$emailAddress" ]]; then
-  echo "Missing Email Address"
+  echo "Missing Email Address. Example: $syntax"
   exit 1
 fi
 
