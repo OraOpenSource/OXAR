@@ -4,7 +4,7 @@
 # Oracle XE & APEX
 The goal of the OXAR (pronounced "Oscar") project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handle the automatic build.
 
-*Note: Currently this build is not recommended for production us as it lacks backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
+*Note: Currently this build lacks a backup script. It is recommended to do your own backup*
 
 For more information and to signup for our email list go to [oraopensource.com](http://www.oraopensource.com). You can follow the related blogs on this project [here](http://www.oraopensource.com/blog/?category=OXAR).
 
