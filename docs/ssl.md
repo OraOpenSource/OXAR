@@ -6,7 +6,7 @@ To manage SSL options (including forcing SSL) modify `/opt/node4ords/config.js`.
 
 ## Signed Certificate
 
-You can easily generate a signed certificate by running [../node4ords/letsencrypt.sh](node4ords/letsencrypt.sh). This requires that the domain name be associated to the servers current IP address. [Let’s Encrypt](https://letsencrypt.org/) is a free certificate authority and is used to obtain the signed certificate.
+You can easily generate a signed certificate by running [node4ords/letsencrypt.sh](../node4ords/letsencrypt.sh). This requires that the domain name be associated to the servers current IP address. [Let’s Encrypt](https://letsencrypt.org/) is a free certificate authority and is used to obtain the signed certificate.
 
 This script will generate a signed certificate for OXAR. It requires the domain name associated with the server's IP address and a valid email address.
 

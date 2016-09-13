@@ -218,7 +218,7 @@ pm2 stop node4ords
 Static content can be put in `/var/www/public/` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listener configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
 
 #### SSL
-OXAR now supports SSL out of the box with an unsigned certificate. For configurations options and how to obtained a signed certificate read the [docs/ssl.md](SSL docs)
+OXAR now supports SSL out of the box with an unsigned certificate. For configurations options and how to obtained a signed certificate read the [SSL docs](docs/ssl.md)
 
 ### ORDS
 [Oracle REST Data Services (ORDS)](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/) allows web servers (such as Tomcat) to connect serve up APEX pages. It is located in `/ords`
