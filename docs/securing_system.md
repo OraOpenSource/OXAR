@@ -67,3 +67,7 @@ If you will be using ORDS over HTTPS, it won't be a bad idea to update this `tru
 ```bash
 sudo java -jar /usr/share/tomcat/webapps/ords.war set-property security.verifySSL true
 ```
+
+## SSL
+
+You can enable and force SSL. Read the [SSL docs](ssl.md).
