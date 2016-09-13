@@ -15,7 +15,7 @@ config.web.https.certPath = '/var/www/certs/localhost.crt';
 
 You can easily generate a signed certificate by running [node4ords/letsencrypt.sh](../node4ords/letsencrypt.sh). This requires that the domain name be associated to the servers current IP address. [Let’s Encrypt](https://letsencrypt.org/) is a free certificate authority and is used to obtain the signed certificate.
 
-This script will generate a signed certificate for OXAR. **It requires the domain name associated with the server's IP address and a valid email address.** If the server's IP address is not mapped to the domain name then it will fail.
+This script will generate a signed certificate for OXAR. **It requires the domain name associated with the server's IP address and a valid email address.** If the server's IP address is not mapped to the domain name then it will fail. If you do run the script and Let's Encrypt fails then you can restore the SSL configuration using the above settings.
 
 Syntax: `./node4ords/letsencrypt.sh <domainname> <emailaddress>`
 
