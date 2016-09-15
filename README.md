@@ -241,7 +241,7 @@ You can then access Tomcat Manager via `http://<server_name>:8080/manager` or Ap
 
 Username | Password | Description
 ------ | ------ | ------
-tomcat | oracle | Admin account
+`tomcat` | `oracle` | Admin account
 
 
 By default the admin account is tomcat/oracle
