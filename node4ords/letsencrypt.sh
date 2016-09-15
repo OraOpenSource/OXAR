@@ -15,7 +15,13 @@ emailAddress=$2
 
 syntax="./letsencrypt.sh <domainName> <emailAddress>"
 
-# Validate parameters
+# Validation
+if [[ $(whoami) != "root" ]]; then
+  echo "This script must be run as root."
+  echo "Try: sudo $syntax"
+  exit 1
+fi
+
 if [[ -z "$domainName" ]]; then
   echo "Missing Domain Name. Example: $syntax"
   exit 1
