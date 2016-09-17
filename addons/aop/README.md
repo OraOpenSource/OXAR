@@ -4,7 +4,7 @@
 
 ## Configuration
 
-The following options are modifiable for configuring AOP as part of AOP in [config.properties](../config.properties)
+The following options are modifiable for configuring AOP as part of AOP in [config.properties](/config.properties)
 
 Name | Default | Description
 --- | --- | ---
