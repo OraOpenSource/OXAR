@@ -169,6 +169,14 @@ To build the server run the following commands. It is very important that you ru
 vagrant up
 ```
 
+# Add-ons
+
+OXAR now supports 3rd party add-ons to be included into OXAR. Current list of add-ons:
+
+Name | Description
+--- | ---
+[APEX Office Print](addons/aop) | Flexible print server for Oracle Application Express (APEX) to generate your Office and PDF-documents in no time and effort - we make printing easy.
+
 # Securing the Server
 
 If you use OXAR in a production instance or is available on the internet it is recommended that you lock down certain features. Review our [Securing System](docs/securing_system.md) document.
