@@ -45,7 +45,7 @@ echo "Searching for latest version ... (might take a couple of seconds)"
 echo
 
 # *** Call AOP Webservice to get the latest version of AOP ***
-url=$(curl -s -X GET 'https://www.apexrnd.be/ords/apexofficeprint/aop/oxar/dgielis@apexrnd.be/$AOP_EMAIL')
+url=$(curl -s -X GET 'https://www.apexofficeprint.com/ords/apexofficeprint/oxar/local/$AOP_EMAIL')
 
 #echo "the url to download is: $url"
 
