@@ -31,6 +31,7 @@ Vagrant.configure(2) do |config|
   # config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "forwarded_port", guest: 22, host: 50022
   config.vm.network "forwarded_port", guest: 80, host: 50080
+  config.vm.network "forwarded_port", guest: 443, host: 50443
   config.vm.network "forwarded_port", guest: 1521, host: 50521
 
   # Create a private network, which allows host-only access to the machine
@@ -104,12 +105,6 @@ Vagrant.configure(2) do |config|
     if [ -f '/etc/os-release' ]; then
       echo; echo \* Source os-release for OS information \*
       . /etc/os-release
-
-      if [ $ID == 'ol' ]; then
-        # Install epel-release
-        echo; echo \* Installing epel-release for Oracle Linux $VERSION_ID \*
-        rpm -ivh $(echo 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-'${VERSION_ID:0:1}'.noarch.rpm')
-      fi
 
       # If the timezone is not set, Tomcat will not run as the JVM requires this to be set.
       if [ $ID == 'ubuntu' ]; then
