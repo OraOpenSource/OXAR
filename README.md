@@ -4,7 +4,7 @@
 # Oracle XE & APEX
 The goal of the OXAR (pronounced "Oscar") project is to make it easy for developers to quickly build and/or launch a fully functional instance of Oracle XE and APEX. The scripts provided in this project handle the automatic build.
 
-*Note: Currently this build is not recommended for production us as it lacks backup scripts, SSL encryption for APEX, etc. These features will be implemented in future releases.*
+*Note: Currently this build lacks a backup script. It is recommended to do your own backup*
 
 For more information and to signup for our email list go to [oraopensource.com](http://www.oraopensource.com). You can follow the related blogs on this project [here](http://www.oraopensource.com/blog/?category=OXAR).
 
@@ -18,18 +18,25 @@ SQLcl            | 4.1.0 Release Candidate | Command line SQL (beta)
 APEX             | 5.0.3.00.03             | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
 ORDS             | 3.0.5.124.10.54         |
 Tomcat           | 7.0.57
+Node JS          | 6.x                     |
+
+## Node.js Tools
+App              | Version                 | Description
+------           | ------                  | ------
 Node-oracledb    | 0.3.1                   | [Node.js driver for Oracle](https://github.com/oracle/node-oracledb)
+[pm2](https://github.com/Unitech/pm2) | latest | Process manager for Node.js apps
 
 
 # Supported OS's
 This script currently works on the following Linux distributions
 
-OS | Version
------- | ------
-Oracle Linux | 7.2
-CentOS | 7.0.1406
-Fedora | 21
-Debian | 8.0
+OS            | Minimum version
+------        | ------
+Oracle Linux  | 7.2
+CentOS        | 7.0.1406
+Fedora        | 21
+Debian        | 8.0
+Ubuntu        | 16.04
 
 # Deployment Options
 
@@ -91,10 +98,10 @@ vi config.properties
 
 Parameter | Description
 ------ | ------
-OOS_ORACLE_FILE_URL | [Download](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)
-OOS_APEX_FILE_URL | [Download](http://download.oracleapex.com)
-OOS_ORDS_FILE_URL | [Download](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/index.html)
-OOS_SQLCL_FILE_URL | [Download](http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html) *This is an optional file*
+`OOS_ORACLE_FILE_URL` | [Download](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)
+`OOS_APEX_FILE_URL` | [Download](http://download.oracleapex.com)
+`OOS_ORDS_FILE_URL` | [Download](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/index.html)
+`OOS_SQLCL_FILE_URL` | [Download](http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html) *This is an optional file*
 
 
 These can be references to files on a web server or to the location on the server. Some examples:
@@ -137,30 +144,38 @@ You can optionally chose which modules you want installed. This install supports
 
 Module | Default | Description
 ------ | ------ | ------
-OOS_MODULE_ORACLE | Y | Install Oracle XE
-OOS_MODULE_APEX | Y | Install's APEX and all of it's components (Tomcat, ORDS, etc)
+`OOS_MODULE_ORACLE` | Y | Install Oracle XE
+`OOS_MODULE_APEX` | Y | Install's APEX and all of it's components (Tomcat, ORDS, etc)
 
 
 ### APEX
 There are additional APEX configurations that you may want to make in the ```scripts/apex_config.sql``` file. You can run them later on or manually configure them in the APEX admin account.
 
-###Vagrant
+### Vagrant
 By default you don't need to configure anything, however you may want to modify various things about your Vagrant machine. To do so, modify `Vagrantfile`.
 
 ## Build
 To build the server run the following commands. It is very important that you run it starting from the same folder that it resides in.
 
-###Native Install
+### Native Install
 
 ```bash
 . build.sh
 ```
 
-###Vagrant
+### Vagrant
 
 ```bash
 vagrant up
 ```
+
+# Add-ons
+
+OXAR now supports 3rd party add-ons to be included into OXAR. Current list of add-ons:
+
+Name | Description
+--- | ---
+[APEX Office Print](addons/aop) | Flexible print server for Oracle Application Express (APEX) to generate your Office and PDF-documents in no time and effort - we make printing easy.
 
 # Securing the Server
 
@@ -175,10 +190,10 @@ There are many different ways to connect to Oracle with SQL*Plus. The [How to Co
 
 Username | Password | Description
 ------ | ------ | ------
-OOS_USER | oracle | User you can use to develop with right away
-SYS | oracle |
-SYSTEM | oracle |
-APEX_PUBLIC_USER | oracle |
+`OOS_USER` | `oracle` | User you can use to develop with right away
+`SYS` | `oracle` |
+`SYSTEM` | `oracle` |
+`APEX_PUBLIC_USER` | `oracle` |
 
 To start/stop/restart Oracle run the following commands:
 ```bash
@@ -188,12 +203,12 @@ To start/stop/restart Oracle run the following commands:
 ```
 
 ## APEX
-To connect to APEX go to `http://<server_name>/` and it will direct you to the APEX login page.
+To connect to APEX go to `http://<server_name>/` or `https://<server_name>/` and it will direct you to the APEX login page.
 
 Workspace | Username | Password | Description
 ------ | ------ | ------ | ------
-INTERNAL | admin | `Oracle1!` | Workspace administrator account
-OOS_USER | oos_user | `oracle` | You can start developing on this account. It is linked to OOS_USER schema
+`INTERNAL` | `admin` | `Oracle1!` | Workspace administrator account
+`OOS_USER` | `oos_user` | `oracle` | You can start developing on this account. It is linked to OOS_USER schema
 
 
 ### APEX Web Listener
@@ -201,11 +216,17 @@ This project uses [Node4ORDS](https://github.com/OraOpenSource/node4ords) as a w
 
 Node4ORDS is installed in `/opt/node4ords`. It can be controlled by:
 ```bash
-systemctl start node4ords
-systemctl stop node4ords
+pm2 start node4ords --watch
+pm2 stop node4ords
+# For older versions of OXAR
+# systemctl start node4ords
+# systemctl stop node4ords
 ```
 
 Static content can be put in `/var/www/public/` and referenced by `http://<server_name>/public/<filepath>`. More information about the web listener configuration can be found at the [Node4ORDS](https://github.com/OraOpenSource/node4ords) project page.
+
+#### SSL
+OXAR now supports SSL out of the box with an unsigned certificate. For configurations options and how to obtained a signed certificate read the [SSL docs](docs/ssl.md)
 
 ### ORDS
 [Oracle REST Data Services (ORDS)](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/) allows web servers (such as Tomcat) to connect serve up APEX pages. It is located in `/ords`
@@ -228,7 +249,7 @@ You can then access Tomcat Manager via `http://<server_name>:8080/manager` or Ap
 
 Username | Password | Description
 ------ | ------ | ------
-tomcat | oracle | Admin account
+`tomcat` | `oracle` | Admin account
 
 
 By default the admin account is tomcat/oracle
@@ -242,8 +263,8 @@ firewall-cmd --zone=public --remove-service=tomcat
 Tomcat is located in `/usr/share/tomcat/`. Tomcat can be controlled by:
 
 ```bash
-systemctl stop tomcat
-systemctl start tomcat
+systemctl stop tomcat@oxar
+systemctl start tomcat@oxar
 ```
 
 ## Shell Access for Vagrant
@@ -288,8 +309,8 @@ Port | Host Port | Service | Description
 ## OS Utility Scripts
 When setting up a new server their are some common things that you may want to do such as creating a new user, disabling root SSH access, etc. Though these tasks are outside the goal of this project, we've created a new folder [`utils/os`](utils/os) to store some of these common scripts which may help when setting up a new server.
 
-## Oracle Utility Scrpts
-This install uses some common Oracle scripts that may be useful to run at a later time. For example, the `oracle_create_user.sql`, creates a user with all the necessary privileges to start using. For more info, go to the [`oracle`](oracle) folder.
+## Oracle Utility Scripts
+This install uses some common Oracle scripts that may be useful to run at a later time. For example, the `create_user.sql`, creates a user with all the necessary privileges to start using. For more info, go to the [`oracle`](oracle) folder.
 
 ## Editing server files locally
 To make it easier to edit files on the server (and avoid using vi), [Remote-Atom](https://github.com/randy3k/remote-atom) (ratom) is installed by default. This requires that you have the [Atom](https://atom.io/) text editor on your desktop and have installed the [ratom](https://github.com/randy3k/remote-atom).

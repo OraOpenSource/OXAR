@@ -34,14 +34,24 @@ if [[ $(whoami) != "root" ]]; then
   exit 1
 fi
 
+# Get the exit status in sourced scripts to follow the called script instead of tee
+# See: http://stackoverflow.com/a/6872163/3476713
+set -o pipefail
+
 #Parsing arguments adapted from: http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 OOS_VERBOSE_OUT=false
+# #166 Debug mode
+OOS_DEBUG=false
 while [[ $# > 0 ]]; do
   key="$1"
   case $key in
     -v|--verbose)
       OOS_VERBOSE_OUT=true
       ;;
+    -d|--debug)
+      OOS_DEBUG=true
+      ;;
+
     *)
       echo "Unsupported flag: $key"
       exit 1;
@@ -51,7 +61,6 @@ while [[ $# > 0 ]]; do
 done
 
 OOS_UTILS_DIR=${OOS_SOURCE_DIR}/utils
-OOS_SERVICE_CTL=${OOS_UTILS_DIR}/servicectl.sh
 OOS_LOG_DIR=${OOS_SOURCE_DIR}/logs
 OOS_INSTALL_LOG=${OOS_LOG_DIR}/install.log
 OOS_ERROR_LOG=${OOS_LOG_DIR}/error.log
@@ -104,6 +113,10 @@ eval "source ./config.sh $OOS_LOG_OPTIONS"
 cd $OOS_SOURCE_DIR
 eval "source ./scripts/packages.sh $OOS_LOG_OPTIONS"
 
+if [ "$OOS_DEBUG" = true ]; then
+  read -rsp $'Packages installed. Press enter to continue...\n'
+fi
+
 
 #Install ratom
 . ${OOS_UTILS_DIR}/echo_title.sh "Installing ratom"
@@ -132,6 +145,9 @@ if [ "$OOS_MODULE_ORACLE" = "Y" ]; then
   eval "source ./scripts/oracle_config.sh $OOS_LOG_OPTIONS"
 fi
 
+if [ "$OOS_DEBUG" = true ]; then
+  read -rsp $'Oracle installed. Press enter to continue...\n'
+fi
 
 #APEX install
 if [ "$OOS_MODULE_APEX" = "Y" ]; then
@@ -144,6 +160,9 @@ if [ "$OOS_MODULE_APEX" = "Y" ]; then
   eval "source ./scripts/apex_config.sh $OOS_LOG_OPTIONS"
 fi
 
+if [ "$OOS_DEBUG" = true ]; then
+  read -rsp $'APEX installed. Press enter to continue...\n'
+fi
 
 #12: Install Oracle Node driver
 if [ "$OOS_MODULE_NODE_ORACLEDB" = "Y" ]; then
@@ -180,6 +199,9 @@ if [ "$OOS_MODULE_ORDS" = "Y" ]; then
   eval "source ./scripts/ords.sh $OOS_LOG_OPTIONS"
 fi
 
+if [ "$OOS_DEBUG" = true ]; then
+  read -rsp $'ORDS installed. Press enter to continue...\n'
+fi
 
 #SQLcl
 if [ "$OOS_MODULE_SQLCL" = "Y" ]; then
@@ -188,6 +210,17 @@ if [ "$OOS_MODULE_SQLCL" = "Y" ]; then
   eval "source ./scripts/sqlcl.sh $OOS_LOG_OPTIONS"
 fi
 
+# Add Ons
+if [ "$OOS_MODULE_APEX" ] && [ "$OOS_AOP_YN" = "Y" ]; then
+  . ${OOS_UTILS_DIR}/echo_title.sh "Installing AOP"
+  cd $OOS_SOURCE_DIR
+  eval "source ./addons/aop/aop.sh $OOS_LOG_OPTIONS"
+
+  if [ "$OOS_DEBUG" = true ]; then
+    read -rsp $'AOP installed. Press enter to continue...\n'
+  fi
+
+fi
 
 #*** CLEANUP ***
 # Leave files for now

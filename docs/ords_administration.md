@@ -25,7 +25,7 @@ vi /etc/ords/defaults.xml
 After you have finished updating the file, you will need to re-deploy ORDS. This is achieved by restarting tomcat with the following command.
 
 ```bash
-systemctl restart tomcat
+systemctl restart tomcat@oxar
 ```
 
 ## On the command line

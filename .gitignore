@@ -6,3 +6,5 @@ files/**
 !files/README.txt
 
 logs/
+
+temp
