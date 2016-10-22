@@ -228,10 +228,7 @@ fi
 # cd $OOS_SOURCE_DIR
 # rm -rf tmp
 
-#Reboot if not deployed through Vagrant.
-if [ "$OOS_DEPLOY_TYPE" != "VAGRANT" ];
-  then
-    echo "Installation complete. You can review logs at ${OOS_LOG_DIR}"
-    echo Rebooting in: ; for i in {15..1..1};do echo -n "$i." && sleep 1; done
-    shutdown -r now
-fi;
+#Reboot
+echo "Installation complete. You can review logs at ${OOS_LOG_DIR}"
+echo Rebooting in: ; for i in {15..1..1};do echo -n "$i." && sleep 1; done
+shutdown -r now
