@@ -35,8 +35,8 @@ OS | Minimum version | Comments
 Oracle Linux  | 7.2 |
 CentOS        | 7.0.1406 |
 ~~Fedora~~        | ~~21~~ |
-~~Debian~~        | ~~8.0~~ | See [#198](/issues/198) for more information
-~~Ubuntu~~        | ~~16.04~~ | See [#198](/issues/198) for more information
+~~Debian~~        | ~~8.0~~ | See #198 for more information
+~~Ubuntu~~        | ~~16.04~~ | See #198 for more information
 
 # Deployment Options
 
