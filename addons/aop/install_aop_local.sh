@@ -23,6 +23,7 @@ AOP_EMAIL=$1
 
 AOP_LIBRE_OFFICE_VER="5.2.1"
 AOP_LIBRE_OFFICE_VER_SHORT="5.2"
+AOP_SOURCE_DIR="$( cd -P "$( dirname "$OOS_SOURCE" )" && pwd )"
 
 if [ -n "$(command -v yum)" ]; then
   AOP_OS_NAME=centos
@@ -94,11 +95,12 @@ fi
 cd /tmp
 
 
-echo >> /etc/profile
-echo "AOP local version" >> /etc/profile
-echo "export PATH=\$PATH:/opt/libreoffice$AOP_LIBRE_OFFICE_VER_SHORT/program">> /etc/profile
-echo >> /etc/profile
+# For after reboot
+cd $AOP_SOURCE_DIR
+echo "export PATH=\$PATH:/opt/libreoffice$AOP_LIBRE_OFFICE_VER_SHORT/program">> 99_aop.sh
+cp 99_aop.sh /etc/profile.d/
 
+# So it works now
 export PATH=$PATH:/opt/libreoffice$AOP_LIBRE_OFFICE_VER_SHORT/program
 
 echo "*** LibreOffice installed - Version***"
