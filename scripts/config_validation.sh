@@ -4,6 +4,15 @@
 #Moved to separate file for issue #17
 echo; echo Config Validations; echo;
 
+#Only permit CentOS and OL for now. See issue #198
+. /etc/os-release
+if [[ "${ID}" != "ol" ]] \
+  && [[ "${ID}" != "centos" ]]; then
+  echo "You are running on an unsupported Linux distribution" >&2
+  echo "Please try using CentOS or Oracle Linux" >&2
+  exit 1
+fi
+
 if [ -n "$(command -v yum)" ]; then
   echo package manager is yum
 elif [ -n "$(command -v apt-get)" ]; then
