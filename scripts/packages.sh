@@ -51,14 +51,16 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   cd $OOS_SOURCE_DIR/tmp
   if [ -n "$(command -v yum)" ]; then
     #175 Get nodejs from nodesource to get latest version
-    curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+    # curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+    curl --silent --location https://rpm.nodesource.com/setup_7.x | bash -
     yum install -y nodejs
     # "To compile and install native addons from npm you may also need to install build tools:" (https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
     yum install -y gcc-c++ make
 
   elif [ -n "$(command -v apt-get)" ]; then
     #175 Get nodejs from nodesource to get latest version
-    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+    # curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+    curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
     apt-get install -y nodejs
     # "To compile and install native addons from npm you may also need to install build tools:" (https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
     apt-get install -y build-essential
