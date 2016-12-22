@@ -51,8 +51,8 @@ echo Current Entropy: $entropy_avail
 if [ $entropy_avail -lt 1000 ]
 then
   yum install -y haveged
-  chkconfig haveged on
-  service haveged start
+  systemctl enable haveged
+  systemctl start haveged
 fi
 
 
