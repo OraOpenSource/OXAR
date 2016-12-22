@@ -16,8 +16,9 @@ Vagrant.configure(2) do |config|
   # The following are a list of boxes that have been tested and known to build
   # successfully.:
   # [apng, 2016-07-03] Switching over to boxcutter boxes.
-  config.vm.box = "boxcutter/ol72"
-  # config.vm.box = "boxcutter/centos72"
+  # [apng, 2016-12-21] Changing default OS to centos72 
+  # config.vm.box = "boxcutter/ol72"
+  config.vm.box = "boxcutter/centos72"
   # config.vm.box = "boxcutter/ubuntu1604"
 
   # Disable automatic box update checking. If you disable this, then
