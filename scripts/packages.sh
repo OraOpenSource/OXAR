@@ -44,6 +44,18 @@ else
   echo; echo \* No known package manager found \*
 fi
 
+# See #200: Entropy issues for cloud servers
+echo; echo \* Checking Entropy \*; echo
+entropy_avail=$( cat /proc/sys/kernel/random/entropy_avail )
+echo Current Entropy: $entropy_avail
+if [ $entropy_avail -lt 1000 ]
+then
+  yum install -y haveged
+  chkconfig haveged on
+  service haveged start
+fi
+
+
 #https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 #Download and install Node.js
 if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
