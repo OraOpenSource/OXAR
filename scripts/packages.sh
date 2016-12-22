@@ -78,14 +78,16 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   # 176 pm2 process manager for Node.js
   npm install pm2 -g
   # Start PM2 on boot
-  if [ -n "$(command -v yum)" ]; then
-    pm2 startup redhat
-  elif [ -n "$(command -v apt-get)" ]; then
-    pm2 startup ubuntu
-  else
-    echo; echo \* pm2 startup: No known OS platform found. Running generic command \*
-    pm2 startup
-  fi
+  pm2 startup
+  # old way below. changed in 2.2.x
+  # if [ -n "$(command -v yum)" ]; then
+  #   pm2 startup redhat
+  # elif [ -n "$(command -v apt-get)" ]; then
+  #   pm2 startup ubuntu
+  # else
+  #   echo; echo \* pm2 startup: No known OS platform found. Running generic command \*
+  #   pm2 startup
+  # fi
 
   #13: Bower support (since node.js will be installed by default)
   echo; echo \* Installing Bower \*; echo
