@@ -44,6 +44,18 @@ else
   echo; echo \* No known package manager found \*
 fi
 
+# See #200: Entropy issues for cloud servers
+echo; echo \* Checking Entropy \*; echo
+entropy_avail=$( cat /proc/sys/kernel/random/entropy_avail )
+echo Current Entropy: $entropy_avail
+if [ $entropy_avail -lt 1000 ]
+then
+  yum install -y haveged
+  systemctl enable haveged
+  systemctl start haveged
+fi
+
+
 #https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 #Download and install Node.js
 if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
@@ -78,9 +90,18 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   # 176 pm2 process manager for Node.js
   npm install pm2 -g
   
-  echo; echo \* pm2 startup: Let PM2 detect the available init system command \*
+  # Start PM2 on boot
   pm2 startup
-
+  # old way below. changed in 2.2.x
+  # if [ -n "$(command -v yum)" ]; then
+  #   pm2 startup redhat
+  # elif [ -n "$(command -v apt-get)" ]; then
+  #   pm2 startup ubuntu
+  # else
+  #   echo; echo \* pm2 startup: No known OS platform found. Running generic command \*
+  #   pm2 startup
+  # fi
+  
   #13: Bower support (since node.js will be installed by default)
   echo; echo \* Installing Bower \*; echo
   if [ "$(which bower)" == "" ]; then
