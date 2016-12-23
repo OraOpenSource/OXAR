@@ -31,8 +31,10 @@ echo "Creating your AOP cloud account ... (might take a couple of seconds)"
 echo
 
 # *** Call AOP Webservice to get the latest version of AOP ***
-url=$(curl -s -X GET 'https://www.apexofficeprint.com/ords/apexofficeprint/oxar/cloud/$AOP_EMAIL')
+curl -s -X GET "https://www.apexofficeprint.com/ords/apexofficeprint/oxar/cloud/${AOP_EMAIL}" > aop_api_key.txt
+
+aop_api_key=`cat aop_api_key.txt`
 
 echo
-echo "Your API key is: $url"
+echo "Your API key is: $aop_api_key"
 echo

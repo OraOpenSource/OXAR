@@ -4,7 +4,7 @@ create or replace package aop_sample2_pkg as
 */
 
 -- AOP Version
-c_aop_version  constant varchar2(5)   := '2.2';
+c_aop_version  constant varchar2(5)   := '2.4';
 
 --
 -- Store output in AOP Output table
@@ -22,8 +22,8 @@ procedure send_email_prc(
     p_output_blob      in blob,
     p_output_filename  in varchar2,
     p_output_mime_type in varchar2);
-    
-    
+
+
 --
 -- AOP_PLSQL_PKG example
 --
@@ -34,6 +34,16 @@ procedure call_aop_plsql2_pkg;
 -- AOP_API2_PKG example
 --
 procedure call_aop_api2_pkg;
+
+procedure schedule_aop_api2_pkg;
+
+
+--
+-- REST example
+--
+function get_file(p_customer_id   in number,
+                  p_output_type   in varchar2)
+return blob;
 
 
 end aop_sample2_pkg;
@@ -49,10 +59,10 @@ procedure aop_store_document(
     p_output_filename  in varchar2,
     p_output_mime_type in varchar2)
 as
-begin                
+begin
   insert into aop_output (output_blob, filename, mime_type, last_update_date)
   values (p_output_blob, p_output_filename, p_output_mime_type, sysdate);
-  
+
   commit;
 end aop_store_document;
 
@@ -67,18 +77,18 @@ procedure send_email_prc(
 as
   l_id number;
 begin
-  l_id := apex_mail.send( 
-            p_to => 'support@apexofficeprint.com', 
-            p_from => 'support@apexofficeprint.com', 
-            p_subj => 'Mail from APEX with attachment', 
-            p_body => 'Please review the attachment.', 
+  l_id := apex_mail.send(
+            p_to => 'support@apexofficeprint.com',
+            p_from => 'support@apexofficeprint.com',
+            p_subj => 'Mail from APEX with attachment',
+            p_body => 'Please review the attachment.',
             p_body_html => '<b>Please</b> review the attachment.') ;
-  apex_mail.add_attachment( 
-      p_mail_id    => l_id, 
-      p_attachment => p_output_blob, 
-      p_filename   => p_output_filename, 
+  apex_mail.add_attachment(
+      p_mail_id    => l_id,
+      p_attachment => p_output_blob,
+      p_filename   => p_output_filename,
       p_mime_type  => p_output_mime_type) ;
-  commit;    
+  commit;
 end send_email_prc;
 
 
@@ -87,10 +97,10 @@ end send_email_prc;
 --
 procedure call_aop_plsql2_pkg
 as
-  c_mime_type_docx  varchar2(100) := 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'; 
+  c_mime_type_docx  varchar2(100) := 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
   c_mime_type_xlsx  varchar2(100) := 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
   c_mime_type_pptx  varchar2(100) := 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
-  c_mime_type_pdf   varchar2(100) := 'application/pdf';   
+  c_mime_type_pdf   varchar2(100) := 'application/pdf';
   l_template        blob;
   l_output_file     blob;
 begin
@@ -98,16 +108,16 @@ begin
     into l_template
     from aop_template
    where id = 1;
-   
+
   l_output_file := aop_plsql2_pkg.make_aop_request(
                      p_json        => '[{ "filename": "file1", "data": [{ "cust_first_name": "APEX Office Print" }] }]',
                      p_template    => l_template,
                      p_output_type => 'docx',
                      p_aop_remote_debug => 'Yes');
-                     
+
   insert into aop_output (output_blob, filename, mime_type, last_update_date)
   values (l_output_file, 'output.docx', c_mime_type_docx, sysdate);
-end call_aop_plsql2_pkg;  
+end call_aop_plsql2_pkg;
 
 
 --
@@ -119,29 +129,29 @@ as
   l_return          blob;
   l_output_filename varchar2(100) := 'output';
 
-begin  
+begin
   -- define bind variables
   l_binds(1).name := 'p_id';
   l_binds(1).value := '1';
 
   for i in 1..l_binds.count
   loop
-    dbms_output.put_line('AOP: Bind ' || to_char(i) || ': ' || l_binds(i).name || ': ' || l_binds(i).value);                            
+    dbms_output.put_line('AOP: Bind ' || to_char(i) || ': ' || l_binds(i).name || ': ' || l_binds(i).value);
   end loop;
-      
+
   l_return := aop_api2_pkg.plsql_call_to_aop (
                 p_data_type       => 'SQL',
                 p_data_source     => q'[
                   select
-                    'file1' as "filename", 
+                    'file1' as "filename",
                     cursor(
                       select
                         c.cust_first_name as "cust_first_name",
                         c.cust_last_name as "cust_last_name",
                         c.cust_city as "cust_city",
-                        cursor(select o.order_total as "order_total", 
+                        cursor(select o.order_total as "order_total",
                                       'Order ' || rownum as "order_name",
-                                  cursor(select p.product_name as "product_name", 
+                                  cursor(select p.product_name as "product_name",
                                                 i.quantity as "quantity",
                                                 i.unit_price as "unit_price", APEX_WEB_SERVICE.BLOB2CLOBBASE64(p.product_image) as "image"
                                            from demo_order_items i, demo_product_info p
@@ -154,12 +164,12 @@ begin
                       from demo_customers c
                       where customer_id = :p_id
                     ) as "data"
-                  from dual                
+                  from dual
                 ]',
                 p_template_type   => 'SQL',
                 p_template_source => q'[
                    select template_type, template_blob
-                    from aop_template  
+                    from aop_template
                    where id = 1
                 ]',
                 p_output_type     => 'docx',
@@ -168,10 +178,98 @@ begin
                 p_aop_url         => 'http://www.apexofficeprint.com/api/',
                 p_api_key         => '1C511A58ECC73874E0530100007FD01A',
                 p_app_id          => 232);
-                
+
   insert into aop_output (output_blob, filename, mime_type, last_update_date)
   values (l_return, l_output_filename, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', sysdate);
 end call_aop_api2_pkg;
+
+
+-- procedure which can be scheduled with dbms_scheduler
+-- to automatically receive a PDF with a specific Interactive Report
+-- debugging is set to Yes
+-- set dbms_output or htp output on
+-- view the debug output with: select * from apex_debug_messages;
+-- view the JSON with: select clob001 from apex_collections where collection_name = 'AOP_DEBUG';
+procedure schedule_aop_api2_pkg
+as
+  l_binds           wwv_flow_plugin_util.t_bind_list;
+  l_return          blob;
+  l_output_filename varchar2(100) := 'output';
+  l_id              number;
+begin
+  aop_api2_pkg.create_apex_session(
+    p_app_id       => 232,
+    --p_user_name    => 'DIMI',
+    p_page_id      => 5,
+    p_enable_debug => 'Yes');
+
+  apex_util.set_session_state('P5_CUSTOMER_ID','2');
+
+  l_return := aop_api2_pkg.plsql_call_to_aop (
+                p_data_type       => aop_api2_pkg.c_source_type_rpt,
+                p_data_source     => 'ir1|PRIMARY',
+                p_template_type   => aop_api2_pkg.c_source_type_apex,
+                p_template_source => 'aop_interactive.docx',
+                p_output_type     => 'pdf',
+                p_output_filename => l_output_filename,
+                p_binds           => l_binds,
+                p_aop_url         => 'http://www.apexofficeprint.com/api/',
+                p_api_key         => '1C511A58ECC73874E0530100007FD01A',
+                p_app_id          => 232,
+                p_page_id         => 5);
+
+  l_id := apex_mail.send(
+            p_to => 'support@apexofficeprint.com',
+            p_from => 'support@apexofficeprint.com',
+            p_subj => 'Mail from APEX with attachment PLSQL 2',
+            p_body => 'Please review the attachment.',
+            p_body_html => '<b>Please</b> review the attachment.') ;
+  apex_mail.add_attachment(
+      p_mail_id    => l_id,
+      p_attachment => l_return,
+      p_filename   => l_output_filename,
+      p_mime_type  => aop_api2_pkg.c_mime_type_pdf) ;
+  apex_mail.push_queue;
+end schedule_aop_api2_pkg;
+
+
+--
+-- REST example
+--
+function get_file(p_customer_id   in number,
+                  p_output_type   in varchar2)
+return blob
+as PRAGMA AUTONOMOUS_TRANSACTION;
+  l_binds           wwv_flow_plugin_util.t_bind_list;
+  l_template        varchar2(100);
+  l_output_filename varchar2(100);
+  l_return          blob;
+begin
+  if p_output_type = 'xlsx'
+  then
+    l_template := 'aop_IR_template.xlsx';
+  else
+    l_template := 'aop_interactive.docx';
+  end if;
+  l_return := aop_api2_pkg.plsql_call_to_aop (
+                p_data_type       => aop_api2_pkg.c_source_type_rpt,
+                p_data_source     => 'ir1|PRIMARY',
+                p_template_type   => aop_api2_pkg.c_source_type_apex,
+                p_template_source => l_template,
+                p_output_type     => p_output_type,
+                p_output_filename => l_output_filename,
+                p_binds           => l_binds,
+                p_aop_url         => 'http://www.apexofficeprint.com/api/',
+                p_api_key         => '1C511A58ECC73874E0530100007FD01A',
+                p_app_id          => 232,
+                p_page_id         => 5,
+                p_user_name       => 'ADMIN',
+                p_init_code       => q'[apex_util.set_session_state('P5_CUSTOMER_ID',']'|| to_char(p_customer_id) || q'[');]',
+                p_aop_remote_debug=> 'No');
+  -- we have to do a commit in order to call this function from a SQL statement
+  commit;
+  return l_return;
+end get_file;
 
 end aop_sample2_pkg;
 /
@@ -180,14 +278,17 @@ create or replace package aop_test2_pkg as
 /* Copyright 2016 - APEX R&D
 */
 
--- AOP Version  
-c_aop_version            constant varchar2(5) := '2.2';     
+-- AOP Version
+c_aop_version            constant varchar2(5) := '2.4';
 
 
 -- Run automated tests in table AOP_AUTOMATED_TEST; if p_id is null, all tests will be ran
 procedure run_automated_tests(
-  p_id     in aop_automated_test.id%type, 
+  p_id     in aop_automated_test.id%type,
   p_app_id in number);
+
+
+-- to convert base64 you can use http://base64converter.com
 
 end aop_test2_pkg;
 /
@@ -195,18 +296,18 @@ create or replace package body aop_test2_pkg as
 
 -- Run automated tests in table AOP_AUTOMATED_TEST; if p_id is null, all tests will be ran
 procedure run_automated_tests(
-  p_id     in aop_automated_test.id%type, 
+  p_id     in aop_automated_test.id%type,
   p_app_id in number)
 as
   l_return blob;
-  l_error  varchar2(4000); 
+  l_error  varchar2(4000);
   l_start  date;
   l_end    date;
   l_output_filename varchar2(150);
   --
   l_aop_url          varchar2(1000);
   l_api_key          varchar2(40);
-  l_aop_remote_debug varchar2(3);
+  l_aop_remote_debug varchar2(10);
   l_output_converter varchar2(100);
 begin
   -- note that session state needs to be set manually for the items (see pre-rendering page 8)
@@ -225,21 +326,21 @@ begin
         result             = null,
         processing_seconds = null,
         run_date           = sysdate
-   where id = p_id 
+   where id = p_id
       or p_id is null;
 
   -- loop over reports
-  for r in (select id, data_type, data_source, 
-                   template_type, template_source, 
+  for r in (select id, data_type, data_source,
+                   template_type, template_source,
                    output_type, output_filename, output_to, output_type_item_name,
                    filename, special, procedure_, app_id, page_id
               from aop_automated_test
-             where (id = p_id 
+             where (id = p_id
                 or p_id is null)
-               and app_id = p_app_id 
+               and app_id = p_app_id
              order by seq_nr
            )
-  loop     
+  loop
     begin
       l_start := sysdate;
       l_output_filename := nvl(r.output_filename,'output');
@@ -263,7 +364,7 @@ begin
                     p_page_id               => r.page_id
                   );
       l_end := sysdate;
-                
+
       update aop_automated_test
          set received_bytes = dbms_lob.getlength(l_return),
              output_blob = l_return,
@@ -274,7 +375,7 @@ begin
      exception
        when others
        then
-         l_end := sysdate;       
+         l_end := sysdate;
          l_error := substr(SQLERRM, 1, 4000);
          update aop_automated_test
             set received_bytes = null,
@@ -282,9 +383,10 @@ begin
                 result = l_error,
                 processing_seconds = round((l_end-l_start)*60*60*24,2)
           where id = r.id;
-     end;     
+     end;
   end loop;
 end run_automated_tests;
+
 
 end aop_test2_pkg;
 /
