@@ -14,11 +14,11 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
 App              | Version                 | Description
 ------           | ------                  | ------
 Oracle XE        | 11.2.0.2.0              |
-SQLcl            | 4.1.0 Release Candidate | Command line SQL (beta)
-APEX             | 5.0.3.00.03             | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
-ORDS             | 3.0.8.277.08.01    |
+SQLcl            | 4.2.0                   | Command line SQL
+APEX             | 5.1.0.00.45             | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
+ORDS             | 3.0.9.348.07.16         |
 Tomcat           | 7.0.57
-Node JS          | 6.x                     |
+Node JS          | 7.x                     |
 
 ## Node.js Tools
 App              | Version                 | Description
@@ -32,8 +32,8 @@ This script currently works on the following Linux distributions
 
 OS | Minimum version | Comments
 ------ | ------ | ------
-Oracle Linux  | 7.2 |
-CentOS        | 7.0.1406 |
+CentOS        | 7.2 |
+~~Oracle Linux~~  | ~~7.2~~ |
 ~~Fedora~~        | ~~21~~ |
 ~~Debian~~        | ~~8.0~~ | See #198 for more information
 ~~Ubuntu~~        | ~~16.04~~ | See #198 for more information
