@@ -23,7 +23,7 @@ Node JS          | 7.x                     |
 ## Node.js Tools
 App              | Version                 | Description
 ------           | ------                  | ------
-Node-oracledb    | 0.3.1                   | [Node.js driver for Oracle](https://github.com/oracle/node-oracledb)
+oracledb         | latest                  | [Node.js driver for Oracle](https://github.com/oracle/node-oracledb)
 [pm2](https://github.com/Unitech/pm2) | latest | Process manager for Node.js apps
 
 
