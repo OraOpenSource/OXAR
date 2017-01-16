@@ -18,3 +18,11 @@ if [ "$OOS_APEX_CREATE_USER_YN" = "Y" ]; then
 else
   echo Not creating APEX User
 fi
+
+#Create ACL
+if [ "$OOS_ORACLE_ACL_APEX_ALL_YN" = "Y" ]; then
+  echo Creating Network ACL ALL
+  sqlplus -L sys/$OOS_ORACLE_PWD as sysdba @apex_acl_all.sql
+else
+  echo Not created APEX ACL
+fi

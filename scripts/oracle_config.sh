@@ -11,14 +11,6 @@ else
 fi
 cd $OOS_SOURCE_DIR/oracle
 
-#Create ACL
-if [ "$OOS_ORACLE_ACL_APEX_ALL_YN" = "Y" ]; then
-  echo Creating Network ACL ALL
-  sqlplus -L sys/$OOS_ORACLE_PWD as sysdba @apex_acl_all.sql
-else
-  echo Not created APEX ACL
-fi
-
 #XE has SYSTEM as the Default tablespace by default. Set back to USERS
 echo Setting default tablespace
 sqlplus -L sys/${OOS_ORACLE_PWD} as sysdba @default_tablespace.sql << EOF1
