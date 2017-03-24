@@ -1,13 +1,14 @@
-#How to Connect to Oracle
+# How to Connect to Oracle
 
 By default Oracle listens to port 1521 for SQL*Plus connections. This is an unencrypted connection, meaning that all data is sent in clear text. Even in corporate settings, it may not be a good practice to connect directly to 1521 as someone could then look at the data you're sending and/or obtain the connection information to your database. This definitely not a recommended practice if you connect to 1521 over the internet.
 
 The best way to get around this is to restrict access to port 1521 (which the build scripts do by default) and then leverage SSH tunnelling to connect to your database. They're several ways to do this.
 
-##SQL Developer
-They're already good articles about how to do this so it won't be covering in [this document](http://www.thatjeffsmith.com/archive/2014/09/30-sql-developer-tips-in-30-days-day-17-using-ssh-tunnels/). For pre-4.1 installations view this article. For versions 4.1 and onwards SQL Developer has a new SSH Hosts tab dedicated to SSH tunnelling which is covered in [this article](http://dbaontap.com/2015/03/10/ssh-tunnel-with-sqldev-4-1-ea1-and-ea2-side-by-side/).
+## SQL Developer
 
-##SSH Tunnelling
+There are already good articles about how to do this so it won't be covering in [this document](http://www.thatjeffsmith.com/archive/2014/09/30-sql-developer-tips-in-30-days-day-17-using-ssh-tunnels/). For pre-4.1 installations view this article. For versions 4.1 and onwards SQL Developer has a new SSH Hosts tab dedicated to SSH tunnelling which is covered in [this article](http://dbaontap.com/2015/03/10/ssh-tunnel-with-sqldev-4-1-ea1-and-ea2-side-by-side/).
+
+## SSH Tunnelling
 
 They're some cases where you may to run an SQL\*Plus script which is stored on your local machine. In order to run it you need to do two things: open an SSH tunnel that maps a local port to the server's port 1521, and then connect via SQL*Plus to that new local port.
 
@@ -28,7 +29,7 @@ When doing SSH tunnelling, you may want to keep two different terminal windows o
 
 You can also setup SSH tunnelling on Windows using Putty. [This article](http://howto.ccs.neu.edu/howto/windows/ssh-port-tunneling-with-putty/) describes how to do it using [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
-##Opening Port 1521
+## Opening Port 1521
 
 Though not recommending on public networks, you may want to open port 1521 for a direct connection to the database. This is ideal when using a Virtual Machine (VM) on your system with a local internal network. They're several ways to open port 1521 from the firewall.
 
@@ -58,12 +59,13 @@ You can now connect directly to the server by running:
 sqlplus giffy/oracle@//vcentos:1521/XE
 ```
 
-##SQLcl
+## SQLcl
+
 SQLcl is the new command line interface that will replace SQL*Plus. [This article](http://www.talkapex.com/2015/04/installing-sqlcl.html) describes how to install it on your local machine. You can use sqlcl then with the SQL Tunnelling technique covered above.
 
 SQLcl is now an optional install. If installed you can run it locally on the machine, just like you would an `sqlplus` command. Instead use `sqlcl`.
 
-###SSH tunnel
+### SSH tunnel
 
 The default configuration of this project is to leave the TNS port (1521) closed. If this is the case, you will need to use an ssh tunnel to connect. This can be achieved either with your OS as described above, or by using the `sshtunnel` command available in `sqlcl`.
 
