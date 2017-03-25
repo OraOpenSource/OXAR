@@ -2,7 +2,7 @@
 
 By default Oracle listens to port 1521 for SQL*Plus connections. This is an unencrypted connection, meaning that all data is sent in clear text. Even in corporate settings, it may not be a good practice to connect directly to 1521 as someone could then look at the data you're sending and/or obtain the connection information to your database. This definitely not a recommended practice if you connect to 1521 over the internet.
 
-The best way to get around this is to restrict access to port 1521 (which the build scripts do by default) and then leverage SSH tunnelling to connect to your database. They are several ways to do this.
+The best way to get around this is to restrict access to port 1521 (which the build scripts do by default) and then leverage SSH tunnelling to connect to your database. There are several ways to do this.
 
 ## SQL Developer
 
@@ -10,7 +10,7 @@ There are already good articles about how to do this so it won't be covering in 
 
 ## SSH Tunnelling
 
-Ther are some cases where you may to run an SQL\*Plus script which is stored on your local machine. In order to run it you need to do two things: open an SSH tunnel that maps a local port to the server's port 1521, and then connect via SQL*Plus to that new local port.
+There are some cases where you may to run an SQL\*Plus script which is stored on your local machine. In order to run it you need to do two things: open an SSH tunnel that maps a local port to the server's port 1521, and then connect via SQL*Plus to that new local port.
 
 To create the tunnel, open a new terminal window and run the following command. In this example it will map local port 1525 to remort port 1521.
 
