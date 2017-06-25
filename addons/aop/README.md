@@ -1,6 +1,6 @@
 # APEX Office Print
 
-[APEX Office Print](apexofficeprint.com) (AOP) TODO...
+[APEX Office Print](apexofficeprint.com) (AOP) version 3.0 for APEX 5.1 (sources for APEX 5.0 included too)
 
 ## Configuration
 
