@@ -19,6 +19,7 @@ APEX             | 5.1.0.00.45             | Currently supports APEX 5.x and APE
 ORDS             | 3.0.10.165.06.53        |
 Tomcat           | 7.0.57
 Node JS          | 7.x                     |
+APEX Office Print| 3.0                     | Supported from version APEX 5.0 upwards
 
 ## Node.js Tools
 App              | Version                 | Description
