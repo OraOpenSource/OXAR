@@ -28,5 +28,5 @@ echo exit | sqlplus $OOS_AOP_SCHEMA_NAME/$OOS_AOP_SCHEMA_PASS @install_db_sample
 echo exit | sqlplus $OOS_AOP_SCHEMA_NAME/$OOS_AOP_SCHEMA_PASS @aop_sample3_db_obj.sql 
 echo exit | sqlplus $OOS_AOP_SCHEMA_NAME/$OOS_AOP_SCHEMA_PASS @aop_db_sample_pkg.sql 
 echo exit | sqlplus $OOS_AOP_SCHEMA_NAME/$OOS_AOP_SCHEMA_PASS @db_pkg_native_compile.sql 
-# install sample database app here (APEX 5.1 - change to _50 for APEX 5.0 version)
-echo exit | sqlplus sys/$OOS_ORACLE_PWD as sysdba @install_apex_app.sql $OOS_AOP_APEX_WORKSPACE $OOS_AOP_SCHEMA_NAME 500 AOP aop_sample3_apex_app_51.sql
+# install sample database app here (change to _51 for APEX 5.1 version)
+echo exit | sqlplus sys/$OOS_ORACLE_PWD as sysdba @install_apex_app.sql $OOS_AOP_APEX_WORKSPACE $OOS_AOP_SCHEMA_NAME 500 AOP aop_sample3_apex_app_50.sql
