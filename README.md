@@ -52,7 +52,7 @@ Prebuilt Images | Due to licensing issues, we can not provide a prebuilt image o
 You can build your own VM with the following instructions.
 
 ## Download
-###Native Build
+### Native Build
 
 ```bash
 #Ensure user is currently root
@@ -75,7 +75,7 @@ git clone https://github.com/OraOpenSource/oxar.git
 cd oxar
 ```
 
-###Vagrant
+### Vagrant
 Run the following on your host machine *(you will need `git` installed on your host machine)*:
 
 ```bash
