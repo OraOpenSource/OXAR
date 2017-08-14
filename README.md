@@ -16,7 +16,7 @@ App              | Version                 | Description
 Oracle XE        | 11.2.0.2.0              |
 SQLcl            | 4.2.0                   | Command line SQL
 APEX             | 5.1.0.00.45             | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
-ORDS             | 3.0.10.165.06.53        |
+ORDS             | 3.0.11.180.12.34        |
 Tomcat           | 7.0.57
 Node JS          | 7.x                     |
 APEX Office Print| 3.0                     | Supported from version APEX 5.0 upwards
