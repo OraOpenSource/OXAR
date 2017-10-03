@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
   # [apng, 2016-07-03] Switching over to boxcutter boxes.
   # [apng, 2016-12-21] Changing default OS to centos72 
   # config.vm.box = "boxcutter/ol72"
-  config.vm.box = "boxcutter/centos72"
+  config.vm.box = "boxcutter/centos7"
   # config.vm.box = "boxcutter/ubuntu1604"
 
   # Disable automatic box update checking. If you disable this, then
@@ -62,7 +62,7 @@ Vagrant.configure(2) do |config|
     vb.cpus = "1"
     vb.memory = "1024"
 
-    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
 
     if Vagrant.has_plugin?("vagrant-vbguest")
       # Set the following to 'true' after the VM has been successfully provisioned
