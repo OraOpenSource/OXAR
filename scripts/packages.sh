@@ -64,7 +64,8 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   if [ -n "$(command -v yum)" ]; then
     #175 Get nodejs from nodesource to get latest version
     # curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
-    curl --silent --location https://rpm.nodesource.com/setup_7.x | bash -
+    # curl --silent --location https://rpm.nodesource.com/setup_7.x | bash -
+    curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
     yum install -y nodejs
     # "To compile and install native addons from npm you may also need to install build tools:" (https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
     yum install -y gcc-c++ make
@@ -89,7 +90,7 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
 
   # 176 pm2 process manager for Node.js
   npm install pm2 -g
-  
+
   # Start PM2 on boot
   pm2 startup
   # old way below. changed in 2.2.x
@@ -101,7 +102,7 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   #   echo; echo \* pm2 startup: No known OS platform found. Running generic command \*
   #   pm2 startup
   # fi
-  
+
   #13: Bower support (since node.js will be installed by default)
   echo; echo \* Installing Bower \*; echo
   if [ "$(which bower)" == "" ]; then
