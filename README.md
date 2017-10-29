@@ -15,10 +15,10 @@ App              | Version                 | Description
 ------           | ------                  | ------
 Oracle XE        | 11.2.0.2.0              |
 SQLcl            | 4.2.0                   | Command line SQL
-APEX             | 5.1.0.00.45             | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
-ORDS             | 3.0.10.165.06.53        |
-Tomcat           | 7.0.57
-Node JS          | 7.x                     |
+APEX             | 5.1.3.00.05             | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
+ORDS             | 3.0.12.263.15.32        |
+Tomcat           | 7.0.57                  |
+Node JS          | 8.x                     |
 APEX Office Print| 3.0                     | Supported from version APEX 5.0 upwards
 
 ## Node.js Tools
@@ -33,7 +33,7 @@ This script currently works on the following Linux distributions
 
 OS | Minimum version | Comments
 ------ | ------ | ------
-CentOS        | 7.2 |
+CentOS        | 7 |
 ~~Oracle Linux~~  | ~~7.2~~ |
 ~~Fedora~~        | ~~21~~ |
 ~~Debian~~        | ~~8.0~~ | See #198 for more information
