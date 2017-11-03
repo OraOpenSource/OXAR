@@ -10,7 +10,7 @@ fi
 git clone https://github.com/oracle/node-oracledb.git
 cd node-oracledb
 
-npm install -g
+npm install -g --unsafe-perm
 
 cd ${OOS_SOURCE_DIR}
 cp profile.d/30oos_nodejs.sh /etc/profile.d/
