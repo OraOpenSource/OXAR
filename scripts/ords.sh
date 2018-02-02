@@ -115,8 +115,8 @@ ln -sf /ords/apex_images/ ${CATALINA_HOME}/webapps/i
 if [[ -n "$(command -v getenforce)" ]] && [[  $(getenforce) == "Enforcing" ]]; then
   semanage fcontext -a -t tomcat_var_run_t '/etc/ords(/.*)?'
   restorecon -R -v /etc/ords
-  semanage fcontext -a -t tomcat_var_run_t '/var/lib/tomcat/webapps/i(/.*)?'
-  restorecon -R -v /var/lib/tomcat/webapps/i
+  semanage fcontext -a -t tomcat_var_run_t '/var/lib/tomcat/webapps(/.*)?'
+  restorecon -R -v /var/lib/tomcat/webapps
 fi
 
 systemctl start ${TOMCAT_SERVICE_NAME}
