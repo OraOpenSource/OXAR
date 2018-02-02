@@ -112,7 +112,7 @@ cp -rf ${OOS_SOURCE_DIR}/tmp/apex/images apex_images/
 ln -sf /ords/apex_images/ ${CATALINA_HOME}/webapps/i
 
 #Check if SELinux is Enforcing
-if [[ -n "$(command -v getenforce)" ]] && [[  `getenforce` == "Enforcing" ]]; then
+if [[ -n "$(command -v getenforce)" ]] && [[  $(getenforce) == "Enforcing" ]]; then
   semanage fcontext -a -t tomcat_var_run_t '/etc/ords(/.*)?'
   restorecon -R -v /etc/ords
 fi
