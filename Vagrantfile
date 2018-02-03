@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
   # [apng, 2016-07-03] Switching over to boxcutter boxes.
   # [apng, 2016-12-21] Changing default OS to centos72
   # [apng, 2017-10-28] boxcutter boxes no longer listed on Vagrant Cloud
-  config.vm.box = "bento/centos-7"
+  config.vm.box = "centos/7"
 
 
   # Disable automatic box update checking. If you disable this, then

@@ -76,7 +76,8 @@ elif [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.5"
     || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.9"
     || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.10"
     || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.11"
-    || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.12" ]]; then
+    || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.12"
+    || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "17.4.1" ]]; then
     java -jar ords.war install simple
 fi
 
@@ -109,5 +110,13 @@ cp -rf ${OOS_SOURCE_DIR}/tmp/apex/images apex_images/
 
 #Make images accessible when using tomcat directly
 ln -sf /ords/apex_images/ ${CATALINA_HOME}/webapps/i
+
+#Check if SELinux is Enforcing
+if [[ -n "$(command -v getenforce)" ]] && [[  $(getenforce) == "Enforcing" ]]; then
+  semanage fcontext -a -t tomcat_var_run_t '/etc/ords(/.*)?'
+  restorecon -R -v /etc/ords
+  semanage fcontext -a -t tomcat_var_run_t '/var/lib/tomcat/webapps(/.*)?'
+  restorecon -R -v /var/lib/tomcat/webapps
+fi
 
 systemctl start ${TOMCAT_SERVICE_NAME}
