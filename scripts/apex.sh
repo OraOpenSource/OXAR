@@ -15,9 +15,9 @@ sqlplus -L sys/$OOS_ORACLE_PWD as sysdba @../run.sql
 cd $OOS_SOURCE_DIR/tmp
 
 #${OOS_APEX_ZIP_FILENAME,,} converts to lowercase
-if [[ ${OOS_APEX_ZIP_FILENAME,,} != "apex_5"* ]]
+if [[ ${OOS_APEX_ZIP_FILENAME,,} == "apex_4"* ]]
 then
-  echo "Pre APEX 5.x Install. Using old change password method";
+  echo "Pre APEX 5.x/18.x Install. Using old change password method";
 
   echo "@apxxepwd $OOS_APEX_ADMIN_PWD" > run.sql
   echo 'exit' >> run.sql
@@ -25,7 +25,7 @@ then
   sqlplus -L sys/$OOS_ORACLE_PWD as sysdba @../run.sql
 
 else
-  echo "APEX 5.0 Install. Using new change password method";
+  echo "APEX 5.x/18.x Install. Using new change password method";
 
   #Need to remove the "HIDE" from the accept statement or else the << EOF1 doesn't work
   cd apex
