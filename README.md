@@ -15,11 +15,11 @@ App              | Version                 | Description
 ------           | ------                  | ------
 Oracle XE        | 11.2.0.2.0              |
 SQLcl            | 4.2.0                   | Command line SQL
-APEX             | 5.1.3.00.05             | Currently supports APEX 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
-ORDS             | 3.0.12.263.15.32        |
+APEX             | 18.1                    | Currently supports APEX 18.x, 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
+ORDS             | 18.1.1                  |
 Tomcat           | 7.0.57                  |
 Node JS          | 8.x                     |
-APEX Office Print| 3.0                     | Supported from version APEX 5.0 upwards
+APEX Office Print| 3.0                     | Currently only supports 5.x. Disable the option to install this add-on if you are installing versions earlier or later than 5.x
 
 ## Node.js Tools
 App              | Version                 | Description
