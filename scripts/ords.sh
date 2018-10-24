@@ -78,7 +78,9 @@ elif [[ "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.5"
     || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.11"
     || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "3.0.12"
     || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "17.4.1"
-    || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "18.1.1" ]]; then
+    || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "18.1.1"
+    || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "18.2.0"
+    || "${ORDS_MAJOR}.${ORDS_MINOR}.${ORDS_REVISION}" == "18.3.0" ]]; then
     java -jar ords.war install simple
 fi
 
