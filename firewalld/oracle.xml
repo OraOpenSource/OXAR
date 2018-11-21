@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>Oracle</short>
-  <description>Oracle</description>
-  <port protocol="tcp" port="OOS_ORACLE_TNS_PORT"/>
-</service>
