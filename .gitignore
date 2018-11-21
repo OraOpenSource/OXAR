@@ -1,10 +1,1 @@
 *.screenflow
-
-### Vagrant ###
-.vagrant/
-files/**
-!files/README.txt
-
-logs/
-
-temp
